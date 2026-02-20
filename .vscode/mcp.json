@@ -1,0 +1,13 @@
+{
+	"servers": {
+		"Finance & Operations": {
+			"url": [MCPURL],
+			"type": "http"
+		},
+		"Microsoft Learn": {
+			"url": " https://learn.microsoft.com/api/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}

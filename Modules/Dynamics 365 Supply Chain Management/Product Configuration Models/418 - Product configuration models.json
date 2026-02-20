@@ -1,0 +1,45 @@
+{
+    "Description": "Product configuration models",
+    "SourceEntityList": [
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "10",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "418",
+            "QueryData": null,
+            "SourceEntityName": "Product configuration models V2",
+            "TargetEntity": "PCProductConfigurationModelV2Entity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "20",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "418",
+            "QueryData": null,
+            "SourceEntityName": "Product configuration model versions",
+            "TargetEntity": "PCProductConfigurationModelVersionEntity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "30",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "418",
+            "QueryData": null,
+            "SourceEntityName": "Constraint-based product configuration model parameters",
+            "TargetEntity": "EcoResConstraintBasedProductConfigurationModelParametersEntity",
+            "TemplateExclusionFields": null
+        }
+    ],
+    "TemplateId": "418 - Product configuration models"
+}

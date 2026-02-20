@@ -1,0 +1,3786 @@
+{
+  "Modules\\Administration\\Organization Administration\\Organization Administration.md": [
+    {
+      "display_name": "Address format lines",
+      "dmf_entity": "LogisticsAddressFormatLineEntity",
+      "odata_entity": "AddressFormatLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Address format",
+      "dmf_entity": "LogisticsAddressFormatEntity",
+      "odata_entity": "AddressFormats",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Address parameters",
+      "dmf_entity": "LogisticsAddressParametersEntity",
+      "odata_entity": "AddressParameters",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Countries / Regions",
+      "dmf_entity": "LogisticsAddressCountryRegionEntity",
+      "odata_entity": "AddressCountryRegions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "County",
+      "dmf_entity": "LogisticsAddressCountyEntity",
+      "odata_entity": "AddressCounties",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Cities",
+      "dmf_entity": "LogisticsAddressCityEntity",
+      "odata_entity": "AddressCities",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Districts",
+      "dmf_entity": "LogisticsAddressDistrictEntity",
+      "odata_entity": "AddressDistricts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "State / Province",
+      "dmf_entity": "LogisticsAddressStateEntity",
+      "odata_entity": "AddressStates",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Zip / Postal codes",
+      "dmf_entity": "LogisticsAddressZipCodeEntity",
+      "odata_entity": "AddressPostalCodes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Currencies",
+      "dmf_entity": "CurrencyEntity",
+      "odata_entity": "Currencies",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Currency exchange rate type",
+      "dmf_entity": "ExchangeRateTypeEntity",
+      "odata_entity": "ExchangeRateTypes",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Currency pair exchange rates",
+      "dmf_entity": "ExchangeRateCurrencyPairEntity",
+      "odata_entity": "ExchangeRateCurrencyPairs",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Financial Calendar",
+      "dmf_entity": "FiscalCalendarEntity",
+      "odata_entity": "FiscalCalendars",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Financial Calendar Year",
+      "dmf_entity": "FiscalCalendarYearEntity",
+      "odata_entity": "FiscalCalendarYears",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Financial Calendar Period",
+      "dmf_entity": "FiscalCalendarPeriodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Global Address Book",
+      "dmf_entity": "DirPartyEntity",
+      "odata_entity": "DirParties",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Legal entities",
+      "dmf_entity": "LegalEntityEntity",
+      "odata_entity": "LegalEntities",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Operating units",
+      "dmf_entity": "OMOperatingUnitEntity",
+      "odata_entity": "OperatingUnits",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Organization hierarchy - published",
+      "dmf_entity": "OMOrganizationHierarchyPublishedEntity",
+      "odata_entity": "OrganizationHierarchyPublishedV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Organization hierarchy purposes",
+      "dmf_entity": "OMHierarchyPurposeEntity",
+      "odata_entity": "OrganizationHierarchyPurposes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Organization hierarchy type",
+      "dmf_entity": "OMHierarchyTypeEntity",
+      "odata_entity": "OrganizationHierarchyTypes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Language",
+      "dmf_entity": "LanguageEntity",
+      "odata_entity": "LanguageCodes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Party contacts V3",
+      "dmf_entity": "DirPartyContactEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Party postal addresses V2",
+      "dmf_entity": "DirPartyPostalAddressEntity",
+      "odata_entity": "PartyPostalAddresses",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "System Users",
+      "dmf_entity": "SystemUserEntity",
+      "odata_entity": "SystemUsers",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "User information",
+      "dmf_entity": "UserInfoEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Security roles",
+      "dmf_entity": "SecurityRoleEntity",
+      "odata_entity": "SecurityRoles",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Security user role associations",
+      "dmf_entity": "SecurityUserRoleAssociationEntity",
+      "odata_entity": "SecurityUserRoleAssociations",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Units",
+      "dmf_entity": "UnitEntity",
+      "odata_entity": "UnitsOfMeasure",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Unit conversions",
+      "dmf_entity": "UnitConversionEntity",
+      "odata_entity": "UnitOfMeasureConversions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Number sequences",
+      "dmf_entity": "NumberSequenceEntity",
+      "odata_entity": "NumberSequencesV2References",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Workflow version",
+      "dmf_entity": "WorkflowVersionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow version notification",
+      "dmf_entity": "WorkflowVersionNoteEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow element",
+      "dmf_entity": "WorkflowElementEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow element notification",
+      "dmf_entity": "WorkflowElementNoteEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow step",
+      "dmf_entity": "WorkflowStepEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow escalation path",
+      "dmf_entity": "WorkflowEscalationPathEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow escalation step",
+      "dmf_entity": "WorkflowEscalationStepEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow parallel branch",
+      "dmf_entity": "WorkflowParallelBranchEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow sub workflow",
+      "dmf_entity": "WorkflowSubWorkflowEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow sub workflow element",
+      "dmf_entity": "WorkflowSubWorkflowElementEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow version association",
+      "dmf_entity": "WorkflowVersionAssociationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow version association element notification",
+      "dmf_entity": "WorkflowVersionAssociationElemNoteEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow expression",
+      "dmf_entity": "WorkflowExpressionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow time span",
+      "dmf_entity": "WorkflowTimeSpanEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow table",
+      "dmf_entity": "WorkflowTableEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow parallel activity",
+      "dmf_entity": "WorkflowParallelActivityEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Work item queue",
+      "dmf_entity": "WorkflowWorkItemQueueEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Work item queue group",
+      "dmf_entity": "WorkflowWorkItemQueueGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Work item queue group assignment",
+      "dmf_entity": "WorkflowWorkItemQueueGroupAssignmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow message text",
+      "dmf_entity": "WorkflowMessageTextEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow line item",
+      "dmf_entity": "WorkflowLineItemWorkflowEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow tracking status",
+      "dmf_entity": "WorkflowTrackingStatusEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Workflow tracking table",
+      "dmf_entity": "WorkflowTrackingTableEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Commerce\\Multi-Channel Setup Retail E-Commerce DTC\\Retail.md": [
+    {
+      "display_name": "Bar code mask characters",
+      "dmf_entity": "RetailBarcodeMaskCharacterEntity",
+      "odata_entity": "RetailBarcodeMaskCharacters",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Bar code mask segments",
+      "dmf_entity": "RetailBarcodeMaskSegmentEntity",
+      "odata_entity": "RetailBarcodeMaskSegments",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Bar code masks",
+      "dmf_entity": "RetailBarcodeMaskEntity",
+      "odata_entity": "RetailBarcodeMasks",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Bar code setup",
+      "dmf_entity": "RetailBarcodeSetupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Cancellation charges",
+      "dmf_entity": "RetailCancellationChargeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Card types",
+      "dmf_entity": "RetailCardTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Catalog",
+      "dmf_entity": "EcoResCatalogEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Category hierarchy",
+      "dmf_entity": "EcoResCategoryHierarchyEntity",
+      "odata_entity": "ProductCategoryHierarchies",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer attribute groups",
+      "dmf_entity": "CustAttrGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Delivery charges groups",
+      "dmf_entity": "DlvChargeDeliveryGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Delivery modes",
+      "dmf_entity": "DlvDeliveryModeEntity",
+      "odata_entity": "DeliveryModesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Hardware profiles",
+      "dmf_entity": "RetailHardwareProfileEntity",
+      "odata_entity": "RetailHardwareProfiles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Info code groups",
+      "dmf_entity": "RetailInfoCodeGroupEntity",
+      "odata_entity": "RetailInfocodeGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Info codes",
+      "dmf_entity": "RetailInfoCodeEntity",
+      "odata_entity": "InfocodesV2",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Info sub codes",
+      "dmf_entity": "RetailSubInfoCodeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Loyalty programs",
+      "dmf_entity": "RetailLoyaltyProgramEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Loyalty reward points",
+      "dmf_entity": "RetailLoyaltyRewardPointEntity",
+      "odata_entity": "RetailLoyaltyRewardPoints",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Loyalty schemes",
+      "dmf_entity": "RetailLoyaltySchemeEntity",
+      "odata_entity": "RetailLoyaltySchemes",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Loyalty tiers",
+      "dmf_entity": "RetailLoyaltyTierEntity",
+      "odata_entity": "RetailLoyaltyTiers",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "POS button grid buttons",
+      "dmf_entity": "RetailButtonGridButtonsEntity",
+      "odata_entity": "RetailButtonGridButtons",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "POS button grids",
+      "dmf_entity": "RetailButtonGridEntity",
+      "odata_entity": "RetailButtonGrids",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "POS functionality profiles",
+      "dmf_entity": "RetailFunctionalityProfileEntity",
+      "odata_entity": "RetailFunctionalityProfiles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "POS permissions",
+      "dmf_entity": "RetailPOSPermissionGroupEntity",
+      "odata_entity": "RetailPosPermissionGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "POS receipt profiles lines",
+      "dmf_entity": "RetailReceiptProfileLineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "POS receipt profiles",
+      "dmf_entity": "RetailReceiptProfileEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "POS screen layout zones",
+      "dmf_entity": "RetailScreenLayoutZoneEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "POS screen layouts",
+      "dmf_entity": "RetailScreenLayoutEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "POS visual profiles",
+      "dmf_entity": "RetailVisualProfileEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Payment methods",
+      "dmf_entity": "RetailStorePaymentMethodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Payment connector configuration",
+      "dmf_entity": "RetailPaymentConnectorConfigEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Periodic discounts",
+      "dmf_entity": "RetailPeriodicDiscountEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Price groups",
+      "dmf_entity": "PriceGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product filters",
+      "dmf_entity": "RetailProductFilterEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Reason codes",
+      "dmf_entity": "RetailInfoCodeEntity",
+      "odata_entity": "InfocodesV2",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Retail channels",
+      "dmf_entity": "RetailChannelEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Retail devices",
+      "dmf_entity": "RetailDeviceEntity",
+      "odata_entity": "RetailDevices",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Retail registers",
+      "dmf_entity": "RetailTerminalEntity",
+      "odata_entity": "RetailTerminals",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax override groups",
+      "dmf_entity": "RetailSalesTaxOverrideGroupEntity",
+      "odata_entity": "RetailSalesTaxOverrideGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Sales tax overrides",
+      "dmf_entity": "RetailSalesTaxOverrideEntity",
+      "odata_entity": "RetailSalesTaxOverrides",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Store address book",
+      "dmf_entity": "RetailStoreAddressBookEntity",
+      "odata_entity": "RetailStoreAddressBooks",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Store locator groups",
+      "dmf_entity": "RetailStoreLocatorGroupEntity",
+      "odata_entity": "RetailStoreLocatorGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Store sections",
+      "dmf_entity": "RetailStoreSectionEntity",
+      "odata_entity": "RetailStoreSections",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Store shelves",
+      "dmf_entity": "RetailStoreShelfEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Assortments",
+      "dmf_entity": "RetailAssortmentEntity",
+      "odata_entity": "RetailAssortments",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Catalog products",
+      "dmf_entity": "EcoResCatalogProductEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Channel categories",
+      "dmf_entity": "RetailChannelCategoryEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Channel navigation hierarchy",
+      "dmf_entity": "RetailChannelNavigationHierarchyEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Loyalty reward point translations",
+      "dmf_entity": "RetailLoyaltyRewardPointTranslationEntity",
+      "odata_entity": "RetailLoyaltyRewardPointTranslations",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Loyalty scheme channels",
+      "dmf_entity": "RetailLoyaltySchemeChannelEntity",
+      "odata_entity": "RetailLoyaltySchemeChannels",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Loyalty scheme products",
+      "dmf_entity": "RetailLoyaltySchemeProductEntity",
+      "odata_entity": "RetailLoyaltySchemes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Loyalty tier rules",
+      "dmf_entity": "RetailLoyaltyTierRuleEntity",
+      "odata_entity": "RetailLoyaltyTierRules",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "POS register financial dimensions",
+      "dmf_entity": "RetailTerminalFinancialDimensionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Retail channel payment methods",
+      "dmf_entity": "RetailChannelPaymentMethodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\Accounts Payable\\Accounts Payable.md": [
+    {
+      "display_name": "1099 fields",
+      "dmf_entity": "Tax1099FieldsEntity",
+      "odata_entity": "Tax1099Fields",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Aging period definitions",
+      "dmf_entity": "AgingPeriodDefinitionEntity",
+      "odata_entity": "AgingPeriodDefinitions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Business segments",
+      "dmf_entity": "smmBusinessSegmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Buyer groups",
+      "dmf_entity": "InventBuyerGroupEntity",
+      "odata_entity": "BuyerGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Cash discount",
+      "dmf_entity": "CashDiscountEntity",
+      "odata_entity": "CashDiscounts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Delivery charges groups",
+      "dmf_entity": "DlvChargeDeliveryGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Destination code",
+      "dmf_entity": "DeliveryDestinationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Expedite codes",
+      "dmf_entity": "MCRExpediteCodeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item charge groups",
+      "dmf_entity": "InventChargeProductGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Line discount vendor groups",
+      "dmf_entity": "PriceDiscLineDiscountVendorGroupEntity",
+      "odata_entity": "LineDiscountVendorGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Line of business",
+      "dmf_entity": "LineOfBusinessEntity",
+      "odata_entity": "LineOfBusinesses",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Payment calendar",
+      "dmf_entity": "PaymentCalendarEntity",
+      "odata_entity": "PaymentCalendars",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Payment day lines",
+      "dmf_entity": "PaymentDayEntity",
+      "odata_entity": "PaymentDays",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Payment schedule",
+      "dmf_entity": "PaymentScheduleEntity",
+      "odata_entity": "PaymentSchedules",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Price vendor groups",
+      "dmf_entity": "PriceDiscPriceVendorGroupEntity",
+      "odata_entity": "PriceVendorGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Procurement charge codes",
+      "dmf_entity": "PurchProcurementChargeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product categories",
+      "dmf_entity": "EcoResProductCategoryEntity",
+      "odata_entity": "ProductCategories",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product category hierarchies",
+      "dmf_entity": "EcoResProductCategoryHierarchyEntity",
+      "odata_entity": "ProductCategoryHierarchies",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product category hierarchy translations",
+      "dmf_entity": "EcoResProductCategoryHierarchyTranslationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product category translations",
+      "dmf_entity": "EcoResProductCategoryTranslationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Purchase pools",
+      "dmf_entity": "PurchPurchaseOrderPoolEntity",
+      "odata_entity": "PurchaseOrderPools",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Sales tax groups",
+      "dmf_entity": "TaxGroupEntity",
+      "odata_entity": "TaxGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Terms of delivery",
+      "dmf_entity": "DeliveryTermsEntity",
+      "odata_entity": "DeliveryTerms",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Terms of payment",
+      "dmf_entity": "PaymentTermEntity",
+      "odata_entity": "PaymentTerms",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Total discount vendor groups",
+      "dmf_entity": "PriceDiscTotalDiscountVendorGroupEntity",
+      "odata_entity": "TotalDiscountVendorGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor charges group",
+      "dmf_entity": "VendChargeVendorGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor exception groups",
+      "dmf_entity": "VendorExceptionGroupEntity",
+      "odata_entity": "VendorExceptionGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor invoice policy rule types",
+      "dmf_entity": "VendInvoicePolicyRuleTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor payment fee",
+      "dmf_entity": "VendorPaymentFeeEntity",
+      "odata_entity": "VendorPaymentFees",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor payment format",
+      "dmf_entity": "VendorPaymentFormatEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor payment method",
+      "dmf_entity": "VendorPaymentMethodEntity",
+      "odata_entity": "VendorPaymentMethods",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor price tolerance groups",
+      "dmf_entity": "VendorPriceToleranceGroupEntity",
+      "odata_entity": "VendorPriceToleranceGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor reasons",
+      "dmf_entity": "VendVendorReasonsEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor, form parameters",
+      "dmf_entity": "VendorFormSetupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Business subsegments",
+      "dmf_entity": "smmBusinessSubsegmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Modes of delivery",
+      "dmf_entity": "DlvDeliveryModeEntity",
+      "odata_entity": "DeliveryModesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Multiline discount vendor groups",
+      "dmf_entity": "PriceDiscMultilineDiscountVendorGroupEntity",
+      "odata_entity": "MultilineDiscountVendorGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Payment schedule lines",
+      "dmf_entity": "PaymentScheduleLineEntity",
+      "odata_entity": "PaymentScheduleLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product category hierarchy roles",
+      "dmf_entity": "EcoResProductCategoryHierarchyRoleEntity",
+      "odata_entity": "ProductCategoryHierarchyRoles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor groups",
+      "dmf_entity": "VendVendorGroupEntity",
+      "odata_entity": "VendorGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor invoice form printing configurations",
+      "dmf_entity": "VendFormletterVendorInvoiceFormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor payment method specification",
+      "dmf_entity": "VendorPaymentMethodSpecificationEntity",
+      "odata_entity": "VendorPaymentMethodSpecifications",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Payment calendar rule",
+      "dmf_entity": "PaymentCalendarRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendors V2",
+      "dmf_entity": "VendVendorV2Entity",
+      "odata_entity": "VendorsV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor bank accounts",
+      "dmf_entity": "VendVendorBankAccountEntity",
+      "odata_entity": "VendorBankAccounts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor posting profile",
+      "dmf_entity": "VendorPostingProfileHeaderEntity",
+      "odata_entity": "PostingProfileHeaders",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor ledger accounts",
+      "dmf_entity": "VendorPostingProfileLineEntity",
+      "odata_entity": "PostingProfileLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Vendor parameters",
+      "dmf_entity": "vendVendorParametersEntity",
+      "odata_entity": "VendorParameters",
+      "match_method": "verified"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\Accounts Receivable\\Accounts Receivable.md": [
+    {
+      "display_name": "Aging period definitions",
+      "dmf_entity": "AgingPeriodDefinitionEntity",
+      "odata_entity": "AgingPeriodDefinitions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Business segments",
+      "dmf_entity": "smmBusinessSegmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Cash discount",
+      "dmf_entity": "CashDiscountEntity",
+      "odata_entity": "CashDiscounts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Collection letter setup",
+      "dmf_entity": "CollectionLetterCourseEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Commission customer group",
+      "dmf_entity": "CommissionCustomerGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Commission item group",
+      "dmf_entity": "CommissionProductGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Commission sales group",
+      "dmf_entity": "CommissionSalesRepresentativeGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer bank accounts",
+      "dmf_entity": "CustomerBankAccountEntity",
+      "odata_entity": "CustomerBankAccounts",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Customer charge groups",
+      "dmf_entity": "CustChargeCustomerGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer definitions",
+      "dmf_entity": "CustCustomerBaseEntity",
+      "odata_entity": "CustomersV3",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer details V2",
+      "dmf_entity": "CustCustomerDetailV2Entity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer groups",
+      "dmf_entity": "CustCustomerGroupEntity",
+      "odata_entity": "CustomerGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer payment fee",
+      "dmf_entity": "CustomerPaymentFeeEntity",
+      "odata_entity": "CustomerPaymentFees",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer payment method",
+      "dmf_entity": "CustomerPaymentMethodEntity",
+      "odata_entity": "CustomerPaymentMethods",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer reasons",
+      "dmf_entity": "CustCustomerReasonEntity",
+      "odata_entity": "CustomerReasons",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer write-off reason codes",
+      "dmf_entity": "CustWriteOffFinancialReasonsSetupEntity",
+      "odata_entity": "WriteOffFinancialReasonsSetups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Delivery charges groups",
+      "dmf_entity": "DlvChargeDeliveryGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Expedite codes",
+      "dmf_entity": "MCRExpediteCodeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Interest codes",
+      "dmf_entity": "CustInterestCodeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item charge groups",
+      "dmf_entity": "InventChargeProductGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Line discount customer groups",
+      "dmf_entity": "PriceDiscLineDiscountCustomerGroupEntity",
+      "odata_entity": "LineDiscountCustomerGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Line of business",
+      "dmf_entity": "LineOfBusinessEntity",
+      "odata_entity": "LineOfBusinesses",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Payment calendar",
+      "dmf_entity": "PaymentCalendarEntity",
+      "odata_entity": "PaymentCalendars",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Payment day lines",
+      "dmf_entity": "PaymentDayEntity",
+      "odata_entity": "PaymentDays",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Payment schedule",
+      "dmf_entity": "PaymentScheduleEntity",
+      "odata_entity": "PaymentSchedules",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Price customer groups",
+      "dmf_entity": "PriceDiscPriceCustomerGroupEntity",
+      "odata_entity": "PriceCustomerGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Printed form notes",
+      "dmf_entity": "FormLetterPrintedFormNoteEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales charge codes",
+      "dmf_entity": "SalesChargeEntity",
+      "odata_entity": "SalesCharge",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Sales districts",
+      "dmf_entity": "smmSalesDistrictEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales order pools",
+      "dmf_entity": "SalesOrderPoolEntity",
+      "odata_entity": "SalesOrderPools",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Statistics group",
+      "dmf_entity": "CustCustomerStatisticsGroupEntity",
+      "odata_entity": "CustomerStatisticsGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Terms of delivery",
+      "dmf_entity": "DeliveryTermsEntity",
+      "odata_entity": "DeliveryTerms",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Terms of payment",
+      "dmf_entity": "PaymentTermEntity",
+      "odata_entity": "PaymentTerms",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Total discount customer groups",
+      "dmf_entity": "PriceDiscTotalDiscountCustomerGroupEntity",
+      "odata_entity": "TotalDiscountCustomerGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Business subsegments",
+      "dmf_entity": "smmBusinessSubsegmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Commission calculation",
+      "dmf_entity": "CommissionCalculationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer payment method specification",
+      "dmf_entity": "CustomerPaymentMethodSpecificationEntity",
+      "odata_entity": "CustomerPaymentMethodSpecifications",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Interest codes with fees",
+      "dmf_entity": "CustInterestCodeWithFeeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Interest codes with ranges",
+      "dmf_entity": "CustInterestCodeWithRangeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Modes of delivery",
+      "dmf_entity": "DlvDeliveryModeEntity",
+      "odata_entity": "DeliveryModesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Payment schedule lines",
+      "dmf_entity": "PaymentScheduleLineEntity",
+      "odata_entity": "PaymentScheduleLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer facing form printing configurations",
+      "dmf_entity": "CustFormletterCustomerFacingFormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Free text invoice form printing configurations",
+      "dmf_entity": "CustFormletterCustomerFreeTextInvoiceFormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer account statement form printing configurations",
+      "dmf_entity": "CustFormletterCustomerAccountStatementFormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Interest note form printing configurations",
+      "dmf_entity": "CustFormletterCustomerInterestNoteFormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Collection letter form printing configurations",
+      "dmf_entity": "CustFormletterCustomerCollectionLetterFormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer posting profiles",
+      "dmf_entity": "CustCustomerPostingProfileHeaderEntity",
+      "odata_entity": "CustomerPostingProfiles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer ledger accounts",
+      "dmf_entity": "CustCustomerPostingProfileLineEntity",
+      "odata_entity": "CustomerPostingProfileLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer parameters",
+      "dmf_entity": "CustomerParametersEntity",
+      "odata_entity": "CustomerParameters",
+      "match_method": "auto-exact"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\Budgeting\\Budgeting.md": [
+    {
+      "display_name": "Budget code",
+      "dmf_entity": "BudgetTransactionCodeEntity",
+      "odata_entity": "BudgetTransactionCodes",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Budget control configuration activation",
+      "dmf_entity": "BudgetControlConfigurationActivationEntity",
+      "odata_entity": "BudgetControlConfigurationActivations",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget control configuration",
+      "dmf_entity": "BudgetControlConfigurationEntity",
+      "odata_entity": "BudgetControlConfigurations",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget control cycle model",
+      "dmf_entity": "BudgetCycleEntity",
+      "odata_entity": "BudgetCycles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget control dimension attribute value set",
+      "dmf_entity": "BudgetControlDimensionAttributeValueSetEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Budget control documents and journals",
+      "dmf_entity": "BudgetControlDocumentsAndJournalsEntity",
+      "odata_entity": "BudgetControlDocumentsAndJournals",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget control group criteria",
+      "dmf_entity": "BudgetControlGroupCriteriaEntity",
+      "odata_entity": "BudgetControlGroupCriteria",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget control group",
+      "dmf_entity": "BudgetControlGroupEntity",
+      "odata_entity": "BudgetControlGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget control message level",
+      "dmf_entity": "BudgetControlMessageLevelEntity",
+      "odata_entity": "BudgetControlMessageLevels",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget control over budget permissions",
+      "dmf_entity": "BudgetControlOverBudgetPermissionsEntity",
+      "odata_entity": "BudgetControlOverBudgetPermissions",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget control rules",
+      "dmf_entity": "BudgetControlRuleEntity",
+      "odata_entity": "BudgetControlRules",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget dimensions",
+      "dmf_entity": "BudgetDimensionEntity",
+      "odata_entity": "BudgetDimensions",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget model",
+      "dmf_entity": "BudgetModelEntity",
+      "odata_entity": "BudgetModels",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget parameters",
+      "dmf_entity": "BudgetParametersEntity",
+      "odata_entity": "BudgetParameters",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan allocation schedule",
+      "dmf_entity": "BudgetPlanAllocationScheduleEntity",
+      "odata_entity": "BudgetPlanAllocationSchedules",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget plan column",
+      "dmf_entity": "BudgetPlanColumnEntity",
+      "odata_entity": "BudgetPlanColumns",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan layout",
+      "dmf_entity": "BudgetPlanLayoutEntity",
+      "odata_entity": "BudgetPlanLayouts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan preparation",
+      "dmf_entity": "BudgetPlanPrepareEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Budget plan priority",
+      "dmf_entity": "BudgetPlanPriorityEntity",
+      "odata_entity": "BudgetPlanPriorities",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan process administration",
+      "dmf_entity": "BudgetPlanProcessAdministrationEntity",
+      "odata_entity": "BudgetPlanProcessAdministrations",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget plan process",
+      "dmf_entity": "BudgetPlanProcessEntity",
+      "odata_entity": "BudgetPlanProcesses",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan scenario",
+      "dmf_entity": "BudgetPlanScenarioEntity",
+      "odata_entity": "BudgetPlanScenarios",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan stage rule",
+      "dmf_entity": "BudgetPlanStageRuleEntity",
+      "odata_entity": "BudgetPlanStageRules",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget plan stage",
+      "dmf_entity": "BudgetPlanStageEntity",
+      "odata_entity": "BudgetPlanStages",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget plan workflow stage",
+      "dmf_entity": "BudgetPlanWorkflowStageEntity",
+      "odata_entity": "BudgetPlanWorkflowStages",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget sub model",
+      "dmf_entity": "BudgetSubModelEntity",
+      "odata_entity": "BudgetSubModels",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Budget transfer rules",
+      "dmf_entity": "BudgetTransferRulesEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Forecast position budget cost elements",
+      "dmf_entity": "ForecastPositionBudgetCostElementEntity",
+      "odata_entity": "ForecastPositionCostElements",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Forecast positions",
+      "dmf_entity": "ForecastPositionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Period allocation categories",
+      "dmf_entity": "BudgetPeriodAllocationCategoryEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Budget control configuration budget group",
+      "dmf_entity": "BudgetControlConfigBudgetGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Budget control configuration dimension",
+      "dmf_entity": "BudgetControlConfigDimensionEntity",
+      "odata_entity": "BudgetControlDimensionAttributes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan allocation schedule lines",
+      "dmf_entity": "BudgetPlanAllocationScheduleLineEntity",
+      "odata_entity": "BudgetPlanAllocationSchedules",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Budget plan layout columns",
+      "dmf_entity": "BudgetPlanLayoutColumnEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Budget plan layout elements",
+      "dmf_entity": "BudgetPlanLayoutElementEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Budget plan process stage rules",
+      "dmf_entity": "BudgetPlanProcessStageRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\Cash & Bank Management\\Cash & Bank Management.md": [
+    {
+      "display_name": "Bank groups",
+      "dmf_entity": "BankGroupEntity",
+      "odata_entity": "BankGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Bank transaction types",
+      "dmf_entity": "BankTransactionTypeEntity",
+      "odata_entity": "BankTransactionTypes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Bank facility groups",
+      "dmf_entity": "BankFacilityGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Bank facility types",
+      "dmf_entity": "BankFacilityTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Bank transaction groups",
+      "dmf_entity": "BankTransactionGroupEntity",
+      "odata_entity": "BankTransactionGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Customer charge groups",
+      "dmf_entity": "CustChargeGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Payment purpose codes",
+      "dmf_entity": "PaymentPurposeCodeEntity",
+      "odata_entity": "PaymentPurposeCodes",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Bank accounts",
+      "dmf_entity": "BankAccountEntity",
+      "odata_entity": "BankAccounts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Reconciliation matching rules",
+      "dmf_entity": "BankReconciliationMatchingRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Reconciliation matching rule sets",
+      "dmf_entity": "BankReconciliationMatchingRuleSetEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Transaction code mapping",
+      "dmf_entity": "BankTransactionCodeMappingEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Check layout",
+      "dmf_entity": "BankCheckLayoutEntity",
+      "odata_entity": "BankCheckLayouts",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Bank statement import",
+      "dmf_entity": "BankStatementImportEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Bank posting profiles",
+      "dmf_entity": "BankPostingProfileEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Bank parameters",
+      "dmf_entity": "BankParametersEntity",
+      "odata_entity": "BankParameters",
+      "match_method": "verified"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\Expense Management\\Expense Management.md": [
+    {
+      "display_name": "Allowance day rates",
+      "dmf_entity": "TrvAllowanceDayRateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Allowance rate",
+      "dmf_entity": "TrvAllowanceRateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Cash advance accounts",
+      "dmf_entity": "TrvCashAdvanceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Category table",
+      "dmf_entity": "CategoryTableEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Credit card import",
+      "dmf_entity": "TrvCreditCardImportEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Credit card types",
+      "dmf_entity": "TrvCreditCardTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Display fields",
+      "dmf_entity": "TrvDispFieldsEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Expense category",
+      "dmf_entity": "TrvExpenseCategoryEntity",
+      "odata_entity": "ExpenseCategories",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Expense management parameters",
+      "dmf_entity": "TrvParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Expense payment method",
+      "dmf_entity": "TrvPayMethodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Expense purpose",
+      "dmf_entity": "TrvExpensePurposeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Expense subcategory",
+      "dmf_entity": "TrvExpenseSubCategoryEntity",
+      "odata_entity": "ExpenseSubCategories",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Merchants",
+      "dmf_entity": "TrvMerchantEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Mileage rate tiers",
+      "dmf_entity": "TrvMileageRateTierEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Per diem locations",
+      "dmf_entity": "TrvPerDiemLocationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Per diem rate",
+      "dmf_entity": "TrvPerDiemRateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Shared category",
+      "dmf_entity": "SharedCategoryEntity",
+      "odata_entity": "SharedCategories",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Statistics group",
+      "dmf_entity": "TrvStatisticsGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Tax recovery configuration",
+      "dmf_entity": "TrvTaxRecoveryConfigEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Travel locations",
+      "dmf_entity": "TrvTravelLocationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Valid payment methods per expense category",
+      "dmf_entity": "TrvValidPaymentMethodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Category credit card codes",
+      "dmf_entity": "TrvCreditCardCategoryCodeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Category group",
+      "dmf_entity": "CategoryGroupEntity",
+      "odata_entity": "ProjCategoryGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Expense delegation",
+      "dmf_entity": "TrvExpenseDelegationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\Fixed Assets Management\\FixedAssets.md": [
+    {
+      "display_name": "Fixed asset acquisition method",
+      "dmf_entity": "AssetAcquisitionMethodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Fixed asset activity codes",
+      "dmf_entity": "AssetActivityCodeEntity",
+      "odata_entity": "AssetActivityCodes",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset condition",
+      "dmf_entity": "AssetConditionEntity",
+      "odata_entity": "AssetConditions",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset locations",
+      "dmf_entity": "AssetLocationEntity",
+      "odata_entity": "AssetLocations",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset major type",
+      "dmf_entity": "AssetMajorTypeEntity",
+      "odata_entity": "AssetMajorTypes",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset properties",
+      "dmf_entity": "AssetSortingEntity",
+      "odata_entity": "AssetSortings",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset property groups",
+      "dmf_entity": "AssetPropertyGroupEntity",
+      "odata_entity": "AssetPropertyGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset provision types",
+      "dmf_entity": "AssetProvisionTypeEntity",
+      "odata_entity": "AssetProvisionTypes",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset consumption factors",
+      "dmf_entity": "AssetConsumptionFactorEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Fixed asset consumption units",
+      "dmf_entity": "AssetConsumptionUnitEntity",
+      "odata_entity": "AssetConsumptionUnits",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset special depreciation allowance setup",
+      "dmf_entity": "AssetSpecialDepreciationAllowanceEntity",
+      "odata_entity": "AssetSpecialDepreciationAllowances",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset depreciation profiles",
+      "dmf_entity": "AssetDepreciationProfileEntity",
+      "odata_entity": "DepreciationProfiles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset inventory to fixed asset transfer journal names",
+      "dmf_entity": "AssetInventoryFixedAssetTransferJournalNameEntity",
+      "odata_entity": "InventoryFixedAssetTransferJournalNames",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset groups",
+      "dmf_entity": "AssetGroupEntity",
+      "odata_entity": "FixedAssetGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset posting profile disposal",
+      "dmf_entity": "AssetPostingProfileDisposalEntity",
+      "odata_entity": "FixedAssetPostingProfileDisposals",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset book setup",
+      "dmf_entity": "AssetValueModelSetupEntity",
+      "odata_entity": "ValueModelSetups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset group/book special depreciation allowance",
+      "dmf_entity": "AssetGroupBookSpecialDepreciationAllowanceEntity",
+      "odata_entity": "FixedAssetGroupBookSpecialDepreciationAllowances",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed assets",
+      "dmf_entity": "AssetFixedAssetEntity",
+      "odata_entity": "FixedAssets",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset depreciation profile manual schedules",
+      "dmf_entity": "AssetDepreciationProfileManualScheduleEntity",
+      "odata_entity": "DepreciationProfileManualSchedules",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset posting profile",
+      "dmf_entity": "AssetPostingProfileEntity",
+      "odata_entity": "FixedAssetPostingProfiles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset book setup derived book",
+      "dmf_entity": "AssetValueModelSetupDerivedValueModelEntity",
+      "odata_entity": "FixedAssetValueModelSetupDerivedValueModels",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset group book setup",
+      "dmf_entity": "AssetGroupValueModelSetupEntity",
+      "odata_entity": "FixedAssetGroupValueModelSetups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fixed asset parameters",
+      "dmf_entity": "AssetParametersEntity",
+      "odata_entity": "AssetParameters",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Fixed asset proposal journal names",
+      "dmf_entity": "AssetParametersProposalJournalNamesEntity",
+      "odata_entity": "AssetParametersProposalJournalNames",
+      "match_method": "auto-exact"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\General Ledger\\General Ledger.md": [
+    {
+      "display_name": "Chart of accounts",
+      "dmf_entity": "LedgerChartOfAccountsEntity",
+      "odata_entity": "ChartOfAccounts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Financial dimensions",
+      "dmf_entity": "DimensionAttributeEntity",
+      "odata_entity": "DimensionAttributes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fiscal calendar",
+      "dmf_entity": "FiscalYearEntity",
+      "odata_entity": "FiscalYears",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Main account categories",
+      "dmf_entity": "MainAccountCategoryEntity",
+      "odata_entity": "MainAccountCategories",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Dimension attribute activation",
+      "dmf_entity": "DimensionAttributeActivationEntity",
+      "odata_entity": "DimensionAttributeActivations",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Financial dimension format",
+      "dmf_entity": "DimensionIntegrationFormatEntity",
+      "odata_entity": "DimensionIntegrationFormats",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Financial dimension translations",
+      "dmf_entity": "DimensionAttributeTranslationEntity",
+      "odata_entity": "DimensionAttributeTranslations",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Fiscal calendar period",
+      "dmf_entity": "FiscalPeriodEntity",
+      "odata_entity": "FiscalPeriods",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Main account",
+      "dmf_entity": "MainAccountEntity",
+      "odata_entity": "MainAccounts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Advanced rule structures active group",
+      "dmf_entity": "LedgerAdvancedRuleStructureActiveOnlyGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Consolidation groups and accounts",
+      "dmf_entity": "LedgerConsolidateAccountGroupEntity",
+      "odata_entity": "LedgerConsolidateAccountGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Financial dimension sets",
+      "dmf_entity": "FinancialDimensionSetEntity",
+      "odata_entity": "FinancialDimensionSets",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Financial dimension value translations",
+      "dmf_entity": "FinancialDimensionValueTranslationEntity",
+      "odata_entity": "FinancialDimensionValueTranslations",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Financial dimension values",
+      "dmf_entity": "FinancialDimensionValueEntity",
+      "odata_entity": "FinancialDimensionValues",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Account structures active group",
+      "dmf_entity": "LedgerAccountStructureActiveOnlyGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Number sequence code",
+      "dmf_entity": "NumberSequenceTableEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Number sequence group",
+      "dmf_entity": "NumberSequenceGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Number sequence references",
+      "dmf_entity": "NumberSequencesReferenceEntity",
+      "odata_entity": "NumberSequencesReferences",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Calendar",
+      "dmf_entity": "WorkCalendarEntity",
+      "odata_entity": "WorkCalendars",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Date intervals",
+      "dmf_entity": "LedgerDateIntervalEntity",
+      "odata_entity": "LedgerDateIntervals",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Default descriptions",
+      "dmf_entity": "LedgerDefaultDescriptionsEntity",
+      "odata_entity": "LedgerJournalDescriptions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Dimension parameters",
+      "dmf_entity": "DimensionParametersEntity",
+      "odata_entity": "DimensionParameters",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Financial reasons",
+      "dmf_entity": "LedgerFinancialReasonEntity",
+      "odata_entity": "LedgerFinancialReasons",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Journal descriptions",
+      "dmf_entity": "LedgerJournalDescriptionsEntity",
+      "odata_entity": "LedgerJournalDescriptions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Ledger",
+      "dmf_entity": "LedgerEntity",
+      "odata_entity": "Ledgers",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Document types",
+      "dmf_entity": "DocuTypeEntity",
+      "odata_entity": "DocumentTypes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Organization email template",
+      "dmf_entity": "EmailTemplateOrganizationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger parameters",
+      "dmf_entity": "LedgerParametersEntity",
+      "odata_entity": "LedgerParameters",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Subledger journal transfer rule",
+      "dmf_entity": "SubledgerJournalTransferRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Organization email template message",
+      "dmf_entity": "EmailTemplateMessageOrganizationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger fiscal calendar year",
+      "dmf_entity": "LedgerFiscalYearEntity",
+      "odata_entity": "LedgerFiscalYears",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Journal names",
+      "dmf_entity": "LedgerJournalNameEntity",
+      "odata_entity": "JournalNames",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Ledger account alias",
+      "dmf_entity": "DimensionAliasEntity",
+      "odata_entity": "DimensionAliases",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Balance control accounts",
+      "dmf_entity": "LedgerBalanceControlEntity",
+      "odata_entity": "BalanceControls",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Working times",
+      "dmf_entity": "WorkCalendarDayEntity",
+      "odata_entity": "WorkCalendarDays",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Ledger fiscal calendar period",
+      "dmf_entity": "LedgerFiscalPeriodEntity",
+      "odata_entity": "LedgerFiscalPeriodsV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Main account legal entity overrides",
+      "dmf_entity": "MainAccountLegalEntityOverrideEntity",
+      "odata_entity": "MainAccountLegalEntities",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Financial dimension value legal entity overrides",
+      "dmf_entity": "FinancialDimensionValueLegalEntityOverrideEntity",
+      "odata_entity": "FinancialDimensionValueLegalEntityOverridesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Workflow organization parameters",
+      "dmf_entity": "WorkflowParametersOrganizationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Accounts for automatic transactions",
+      "dmf_entity": "LedgerAutomaticTransactionAccountEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger allocation rule",
+      "dmf_entity": "LedgerAllocationRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger allocation basis",
+      "dmf_entity": "LedgerAllocationBasisRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger allocation basis source",
+      "dmf_entity": "LedgerAllocationBasisRuleSourceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger allocation rule destination",
+      "dmf_entity": "LedgerAllocationRuleDestinationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger allocation rule source",
+      "dmf_entity": "LedgerAllocationRuleSourceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Finance\\Tax\\Tax.md": [
+    {
+      "display_name": "Sales tax authorities",
+      "dmf_entity": "TaxAuthorityEntity",
+      "odata_entity": "TaxAuthorities",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax exempt code",
+      "dmf_entity": "TaxExemptCodeEntity",
+      "odata_entity": "TaxExemptCodes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax exempt numbers",
+      "dmf_entity": "TaxVATNumTableEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales tax groups",
+      "dmf_entity": "TaxGroupEntity",
+      "odata_entity": "TaxGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax parameters preset entity",
+      "dmf_entity": "TaxParametersPresetEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales tax reporting codes",
+      "dmf_entity": "TaxReportingCodeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Transaction codes",
+      "dmf_entity": "IntrastatTransactionCodeEntity",
+      "odata_entity": "IntrastatTransactionCodes",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Withholding tax codes",
+      "dmf_entity": "TaxWithholdingTaxCodeEntity",
+      "odata_entity": "WithholdingTaxCodes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Withholding tax groups",
+      "dmf_entity": "TaxWithholdingGroupEntity",
+      "odata_entity": "TaxWithholdingGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Withholding tax limits",
+      "dmf_entity": "TaxWithholdingTaxCodeLimitEntity",
+      "odata_entity": "WithholdingTaxCodeLimits",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Withholding tax code values",
+      "dmf_entity": "TaxWithholdingTaxCodeValueEntity",
+      "odata_entity": "WithholdingTaxCodeValues",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax period setup",
+      "dmf_entity": "TaxPeriodEntity",
+      "odata_entity": "TaxPeriodHeads",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Withholding tax group details",
+      "dmf_entity": "TaxWithholdingGroupDataEntity",
+      "odata_entity": "TaxWithholdingGroupDetails",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax codes",
+      "dmf_entity": "TaxCodeEntity",
+      "odata_entity": "TaxCodes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax item groups",
+      "dmf_entity": "TaxItemGroupEntity",
+      "odata_entity": "TaxItemGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax group details",
+      "dmf_entity": "TaxGroupDataEntity",
+      "odata_entity": "TaxGroupDatas",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Sales tax code limits",
+      "dmf_entity": "TaxCodeLimitEntity",
+      "odata_entity": "TaxCodeLimits",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax code values",
+      "dmf_entity": "TaxCodeValueEntity",
+      "odata_entity": "TaxCodeValuesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales tax parameters",
+      "dmf_entity": "TaxParametersEntity",
+      "odata_entity": "TaxParameters",
+      "match_method": "auto-exact"
+    }
+  ],
+  "Modules\\Dynamics 365 Project Operations\\Project Accounting & Invoicing\\Project Accounting.md": [
+    {
+      "display_name": "Category groups",
+      "dmf_entity": "ProjCategoryGroupEntity",
+      "odata_entity": "ProjCategoryGroups",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Cost template",
+      "dmf_entity": "ProjCostTemplateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Forecast models",
+      "dmf_entity": "ForecastModelEntity",
+      "odata_entity": "ForecastModels",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Indirect cost component",
+      "dmf_entity": "ProjIndirectCostComponentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Indirect cost component group",
+      "dmf_entity": "ProjIndirectCostComponentGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Journal names",
+      "dmf_entity": "ProjJournalNameEntity",
+      "odata_entity": "ProjectJournalNames",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Line properties",
+      "dmf_entity": "ProjLinePropertyEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Period types",
+      "dmf_entity": "ProjPeriodTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Project categories",
+      "dmf_entity": "ProjCategoryEntity",
+      "odata_entity": "ProjectCategoryEntities",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Project contract",
+      "dmf_entity": "ProjContractEntity",
+      "odata_entity": "ProjectContracts",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Project groups",
+      "dmf_entity": "ProjGroupEntity",
+      "odata_entity": "ProjectGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Project parameters",
+      "dmf_entity": "ProjParametersEntity",
+      "odata_entity": "ProjectParameterV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Project stages",
+      "dmf_entity": "ProjStageEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Resource roles",
+      "dmf_entity": "ResourceRoleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Resource role price",
+      "dmf_entity": "ResourceRolePriceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Timesheet weekly periods",
+      "dmf_entity": "TsTimesheetWeeklyPeriodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Validation connection types",
+      "dmf_entity": "ProjValConnectionTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Validation groups",
+      "dmf_entity": "ProjValGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "WBS templates",
+      "dmf_entity": "ProjWBSTemplateEntity",
+      "odata_entity": "ProjWBSTemplateTasks",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Funding rules",
+      "dmf_entity": "ProjFundingRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Funding sources",
+      "dmf_entity": "ProjFundingSourceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Intercompany parameters",
+      "dmf_entity": "ProjIntercompanyParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger posting definitions",
+      "dmf_entity": "ProjLedgerPostingDefinitionEntity",
+      "odata_entity": "ProjectLedgerPostingDefinitions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Project contract billing rules",
+      "dmf_entity": "ProjContractBillingRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Project contract line items",
+      "dmf_entity": "ProjContractLineItemEntity",
+      "odata_entity": "ProjectContractLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Projects",
+      "dmf_entity": "ProjProjectEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Project stage rules",
+      "dmf_entity": "ProjStageRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Validation group assignments",
+      "dmf_entity": "ProjValGroupAssignmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer retention terms",
+      "dmf_entity": "ProjCustomerRetentionTermEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor retention terms",
+      "dmf_entity": "ProjVendorRetentionTermEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "WBS draft",
+      "dmf_entity": "ProjWBSDraftEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "WBS estimates",
+      "dmf_entity": "ProjWBSEstimateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Cost Management\\Cost Management.md": [
+    {
+      "display_name": "Reconciliation parameters",
+      "dmf_entity": "CostReconciliationParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Calculation groups",
+      "dmf_entity": "CostCalculationGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Cost groups",
+      "dmf_entity": "CostGroupEntity",
+      "odata_entity": "CostGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Costing sheet node",
+      "dmf_entity": "CostSheetNodeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Costing sheet node absorption basis",
+      "dmf_entity": "CostSheetNodeAbsorptionBasisEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Cost flow assumption policies",
+      "dmf_entity": "CostFlowAssumptionPolicyEntity",
+      "odata_entity": "CostFlowAssumptionPolicies",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Cost group profit percentages",
+      "dmf_entity": "CostGroupProfitPercentageEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Costing sheet node calculation factors",
+      "dmf_entity": "CostSheetNodeCalculationFactorEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Costing versions",
+      "dmf_entity": "CostingVersionEntity",
+      "odata_entity": "CostingVersions",
+      "match_method": "verified"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Inventory Management\\Inventory Management.md": [
+    {
+      "display_name": "BOM journal names",
+      "dmf_entity": "InventJournalNameBOMEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Counting journal names",
+      "dmf_entity": "InventJournalNameCountEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Counting groups",
+      "dmf_entity": "InventCountingGroupEntity",
+      "odata_entity": "InventoryCountingGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Inventory adjustment journal names",
+      "dmf_entity": "InventJournalNameAdjustmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Inventory movement journal names",
+      "dmf_entity": "InventJournalNameMovementEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Inventory transfer journal names",
+      "dmf_entity": "InventJournalNameTransferEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item arrival journal names",
+      "dmf_entity": "InventJournalNameItemArrivalEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item groups",
+      "dmf_entity": "InventItemGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item model groups",
+      "dmf_entity": "InventModelGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Inventory status",
+      "dmf_entity": "InventInventoryStatusEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Packing material allocation",
+      "dmf_entity": "InventPackingMaterialEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Packing material groups",
+      "dmf_entity": "InventPackingMaterialGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product categories",
+      "dmf_entity": "EcoResProductCategoryEntity",
+      "odata_entity": "ProductCategories",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product category hierarchies",
+      "dmf_entity": "EcoResProductCategoryHierarchyEntity",
+      "odata_entity": "ProductCategoryHierarchies",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product groups",
+      "dmf_entity": "InventProductGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Production input journal names",
+      "dmf_entity": "InventJournalNameProductionInputEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sites",
+      "dmf_entity": "InventSiteEntity",
+      "odata_entity": "InventorySites",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Tag counting journal names",
+      "dmf_entity": "InventJournalNameTagCountEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Tracking number groups",
+      "dmf_entity": "InventTrackingNumberGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Inventory dimensions parameters",
+      "dmf_entity": "InventDimensionsParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Customer price groups",
+      "dmf_entity": "CustPriceGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor price groups",
+      "dmf_entity": "VendPriceGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Warehouses",
+      "dmf_entity": "InventWarehouseEntity",
+      "odata_entity": "Warehouses",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Warehouse locations",
+      "dmf_entity": "InventLocationEntity",
+      "odata_entity": "Warehouses",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Warehouse aisles",
+      "dmf_entity": "InventAisleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Warehouse zones",
+      "dmf_entity": "InventZoneEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger posting definitions - Inventory",
+      "dmf_entity": "InventPostingInventoryEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger posting definitions - Procurement",
+      "dmf_entity": "InventPostingProcurementEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger posting definitions - Production",
+      "dmf_entity": "InventPostingProductionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger posting definitions - Sales",
+      "dmf_entity": "InventPostingSalesEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Ledger posting definitions - Standard cost variance",
+      "dmf_entity": "InventPostingStdCostVarianceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Inventory parameters",
+      "dmf_entity": "InventParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "BOM parameters",
+      "dmf_entity": "BOMParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product parameters",
+      "dmf_entity": "ProductParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Master Planning & Demand Planning\\Master Planning.md": [
+    {
+      "display_name": "Forecast models",
+      "dmf_entity": "ForecastModelEntity",
+      "odata_entity": "ForecastModels",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Forecast sub models",
+      "dmf_entity": "ForecastSubModelEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Working time templates",
+      "dmf_entity": "WorkingTimeTemplateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Calendars",
+      "dmf_entity": "CalendarEntity",
+      "odata_entity": "WorkCalendars",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Period templates",
+      "dmf_entity": "PeriodTemplateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Period template lines",
+      "dmf_entity": "PeriodTemplateLineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Time transactions",
+      "dmf_entity": "TimeTransactionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Master plans",
+      "dmf_entity": "MasterPlanEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Forecast plans",
+      "dmf_entity": "ForecastPlanEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Master planning parameters",
+      "dmf_entity": "MasterPlanningParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item coverage groups",
+      "dmf_entity": "ItemCoverageGroupEntity",
+      "odata_entity": "ItemCoverageGroups",
+      "match_method": "manual-unverified"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Process Manufacturing\\Process Manufacturing.md": [
+    {
+      "display_name": "Bulk item conversions",
+      "dmf_entity": "BulkItemConversionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Batch attributes",
+      "dmf_entity": "PdsBatchAttributeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item batch attribute groups",
+      "dmf_entity": "PdsItemBatchAttributeGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item batch attribute group assignments",
+      "dmf_entity": "PdsItemBatchAttributeGroupAssignmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Formula substitution groups",
+      "dmf_entity": "FormulaSubstitutionGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product specific batch attributes",
+      "dmf_entity": "PdsProductSpecificBatchAttributeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Formula headers",
+      "dmf_entity": "FormulaHeaderEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Formula versions V2",
+      "dmf_entity": "FormulaVersionV2Entity",
+      "odata_entity": "FormulaVersionsV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Formula lines V2",
+      "dmf_entity": "FormulaLineV2Entity",
+      "odata_entity": "FormulaLinesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Formula by-products V2",
+      "dmf_entity": "FormulaByProductV2Entity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Formula co-products V2",
+      "dmf_entity": "FormulaCoProductV2Entity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Formula version document attachments",
+      "dmf_entity": "FormulaVersionDocumentAttachmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Formula line consumption intervals",
+      "dmf_entity": "FormulaLineConsumptionIntervalEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Procurement & Sourcing\\Procurement & Sourcing.md": [
+    {
+      "display_name": "Trade agreement journal names",
+      "dmf_entity": "TradeAgreementJournalNameEntity",
+      "odata_entity": "TradeAgreementJournalNames",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Purchase agreement classifications",
+      "dmf_entity": "PurchAgreementClassificationEntity",
+      "odata_entity": "PurchaseAgreementClassifications",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Request for quotation scoring method",
+      "dmf_entity": "RFQScoringMethodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Request for quotation solicitation types",
+      "dmf_entity": "RFQSolicitationTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor evaluation criteria",
+      "dmf_entity": "VendEvaluationCriteriaEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor evaluation criteria groups",
+      "dmf_entity": "VendEvaluationCriteriaGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor rebate groups",
+      "dmf_entity": "VendRebateGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Vendor rebate parameters",
+      "dmf_entity": "VendRebateParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Modes of delivery",
+      "dmf_entity": "ModesOfDeliveryEntity",
+      "odata_entity": "DeliveryModesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Discount groups - Customer line",
+      "dmf_entity": "DiscountGroupCustomerLineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Discount groups - Customer multiline",
+      "dmf_entity": "DiscountGroupCustomerMultilineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Discount groups - Vendor line",
+      "dmf_entity": "DiscountGroupVendorLineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Discount groups - Vendor multiline",
+      "dmf_entity": "DiscountGroupVendorMultilineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Procurement document default values",
+      "dmf_entity": "ProcurementDocumentDefaultEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Procurement document policy rules",
+      "dmf_entity": "ProcurementDocumentPolicyRuleEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Form printing configurations",
+      "dmf_entity": "FormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Approved vendor lists",
+      "dmf_entity": "ApprovedVendorListEntity",
+      "odata_entity": "ProductApprovedVendors",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Price tolerances",
+      "dmf_entity": "PriceToleranceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Invoice tolerances",
+      "dmf_entity": "InvoiceToleranceEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Product Configuration Models\\Product Configuration Models.md": [
+    {
+      "display_name": "Product configuration models V2",
+      "dmf_entity": "PCProductConfigurationModelV2Entity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product configuration model versions",
+      "dmf_entity": "PCProductConfigurationModelVersionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Constraint-based product configuration model parameters",
+      "dmf_entity": "PCConstraintBasedProductConfigModelParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Product Information Management\\Product Information Management.md": [
+    {
+      "display_name": "Product attributes",
+      "dmf_entity": "EcoResProductAttributeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product attribute groups",
+      "dmf_entity": "EcoResProductAttributeGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product attribute translations",
+      "dmf_entity": "EcoResProductAttributeTranslationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product dimension groups",
+      "dmf_entity": "EcoResProductDimensionGroupEntity",
+      "odata_entity": "ProductDimensionGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Storage dimension groups",
+      "dmf_entity": "EcoResStorageDimensionGroupEntity",
+      "odata_entity": "ProductStorageDimensionGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Tracking dimension groups",
+      "dmf_entity": "EcoResTrackingDimensionGroupEntity",
+      "odata_entity": "ProductTrackingDimensionGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Color groups",
+      "dmf_entity": "EcoResProductColorGroupEntity",
+      "odata_entity": "ProductColorGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Color group lines",
+      "dmf_entity": "EcoResProductColorGroupLineEntity",
+      "odata_entity": "ProductColorGroupLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Size groups",
+      "dmf_entity": "EcoResProductSizeGroupEntity",
+      "odata_entity": "ProductSizeGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Size group lines",
+      "dmf_entity": "EcoResProductSizeGroupLineEntity",
+      "odata_entity": "ProductSizeGroupLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Style groups",
+      "dmf_entity": "EcoResProductStyleGroupEntity",
+      "odata_entity": "ProductStyleGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Style group lines",
+      "dmf_entity": "EcoResProductStyleGroupLineEntity",
+      "odata_entity": "ProductStyleGroupLines",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product lifecycle states",
+      "dmf_entity": "EcoResProductLifecycleStateEntity",
+      "odata_entity": "ProductLifecycleStates",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Reservation hierarchies",
+      "dmf_entity": "WHSReservationHierarchyEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Reduction keys",
+      "dmf_entity": "ReductionKeyEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Catch weight item conversions",
+      "dmf_entity": "CatchWeightItemConversionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Products V2",
+      "dmf_entity": "EcoResProductV2Entity",
+      "odata_entity": "ReleasedProductsV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product masters",
+      "dmf_entity": "EcoResProductMasterEntity",
+      "odata_entity": "ProductMasters",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product master colors",
+      "dmf_entity": "EcoResProductMasterColorEntity",
+      "odata_entity": "ProductMasterColors",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product master sizes",
+      "dmf_entity": "EcoResProductMasterSizeEntity",
+      "odata_entity": "ProductMasterSizes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Product master styles",
+      "dmf_entity": "EcoResProductMasterStyleEntity",
+      "odata_entity": "ProductMasterStyles",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Released products V2",
+      "dmf_entity": "EcoResReleasedProductV2Entity",
+      "odata_entity": "ReleasedProductsV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Released product variants",
+      "dmf_entity": "EcoResReleasedProductVariantEntity",
+      "odata_entity": "ProductNumberIdentifiedReleasedProductVariants",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Item coverage",
+      "dmf_entity": "ReqItemCoverageEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item barcodes",
+      "dmf_entity": "InventItemBarcodesEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item batches",
+      "dmf_entity": "InventBatchEntity",
+      "odata_entity": "ItemBatches",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Item serial numbers",
+      "dmf_entity": "InventSerialNumberEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Product default order settings",
+      "dmf_entity": "InventProductDefaultOrderSettingsEntity",
+      "odata_entity": "ProductDefaultOrderSettingsV2",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Catch weight policies",
+      "dmf_entity": "CatchWeightItemPolicyEntity",
+      "odata_entity": "CatchWeightItemHandlingPoliciesV2",
+      "match_method": "verified"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Production Control\\Production Control.md": [
+    {
+      "display_name": "Working time templates",
+      "dmf_entity": "WorkingTimeTemplateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Calendars",
+      "dmf_entity": "CalendarEntity",
+      "odata_entity": "WorkCalendars",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Working times",
+      "dmf_entity": "WorkingTimeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Capabilities",
+      "dmf_entity": "ResourceCapabilityEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Operations",
+      "dmf_entity": "OperationEntity",
+      "odata_entity": "Operations",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Route groups",
+      "dmf_entity": "RouteGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Production journal names",
+      "dmf_entity": "ProdJournalNameEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Time and attendance groups",
+      "dmf_entity": "TimeAttendanceGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Operations resources",
+      "dmf_entity": "OperationsResourceEntity",
+      "odata_entity": "OperationsResources",
+      "match_method": "auto-exact"
+    },
+    {
+      "display_name": "Operations resource groups",
+      "dmf_entity": "OperationsResourceGroupEntity",
+      "odata_entity": "OperationsResourceGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Operations resource capabilities",
+      "dmf_entity": "OperationsResourceCapabilityEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Route headers",
+      "dmf_entity": "RouteHeaderEntity",
+      "odata_entity": "RouteHeaders",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Route operations",
+      "dmf_entity": "RouteOperationEntity",
+      "odata_entity": "RouteOperations",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Route versions",
+      "dmf_entity": "RouteVersionEntity",
+      "odata_entity": "RouteVersions",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "BOM headers",
+      "dmf_entity": "BOMHeaderEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "BOM lines",
+      "dmf_entity": "BOMLineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "BOM versions",
+      "dmf_entity": "BOMVersionEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Job card terminal configurations",
+      "dmf_entity": "JmgJobCardTerminalConfigEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Job card device configurations",
+      "dmf_entity": "JmgJobCardDeviceConfigEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Production control parameters",
+      "dmf_entity": "ProdParametersEntity",
+      "odata_entity": "ProdParameters",
+      "match_method": "manual-unverified"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Quality Management\\Quality Management.md": [
+    {
+      "display_name": "Diagnostic types",
+      "dmf_entity": "QualityDiagnosticTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item quality groups",
+      "dmf_entity": "QualityItemQualityGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Item sampling",
+      "dmf_entity": "QualityItemSamplingEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Nonconformance charge types",
+      "dmf_entity": "QualityNonConformanceChargeTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Nonconformance operation categories",
+      "dmf_entity": "QualityNonConformanceOperationCategoryEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Quality groups",
+      "dmf_entity": "QualityGroupEntity",
+      "odata_entity": "QualityTestGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Quality problem types",
+      "dmf_entity": "QualityProblemTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Quality test instruments",
+      "dmf_entity": "QualityTestInstrumentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Quality test variables",
+      "dmf_entity": "QualityTestVariableEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Quality test variable outcomes",
+      "dmf_entity": "QualityTestVariableOutcomeEntity",
+      "odata_entity": "QualityTestVariableOutcomes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Quality tests",
+      "dmf_entity": "QualityTestEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Quarantine zones",
+      "dmf_entity": "QualityQuarantineZoneEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Test groups",
+      "dmf_entity": "QualityTestGroupEntity",
+      "odata_entity": "QualityTestGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Test group assignments",
+      "dmf_entity": "QualityTestGroupAssignmentEntity",
+      "odata_entity": "QualityGroupItemAssignments",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Quality order creation policies V2",
+      "dmf_entity": "QualityOrderCreationPolicyV2Entity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Sales & Marketing\\Sales & Marketing.md": [
+    {
+      "display_name": "Business classifications",
+      "dmf_entity": "SalesBusinessClassificationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Business segments",
+      "dmf_entity": "SalesBusinessSegmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Commission sales groups",
+      "dmf_entity": "SalesCommissionGroupEntity",
+      "odata_entity": "SalesCommissionGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Commission customer groups",
+      "dmf_entity": "CommissionCustomerGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Commission item groups",
+      "dmf_entity": "CommissionItemGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Lead management scoring models",
+      "dmf_entity": "LeadScoringModelEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Opportunity classifications",
+      "dmf_entity": "OpportunityClassificationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Activity types",
+      "dmf_entity": "ActivityTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales order origins",
+      "dmf_entity": "SalesOrderOriginEntity",
+      "odata_entity": "SalesOrderOriginCodes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales order pools",
+      "dmf_entity": "SalesOrderPoolEntity",
+      "odata_entity": "SalesOrderPools",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Sales order hold codes",
+      "dmf_entity": "SalesOrderHoldCodeEntity",
+      "odata_entity": "SalesOrderHoldCodes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Discount groups - Customer line",
+      "dmf_entity": "DiscountGroupCustomerLineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Discount groups - Customer multiline",
+      "dmf_entity": "DiscountGroupCustomerMultilineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Rebate parameters",
+      "dmf_entity": "RebateParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales agreement classifications",
+      "dmf_entity": "SalesAgreementClassificationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Modes of delivery",
+      "dmf_entity": "ModesOfDeliveryEntity",
+      "odata_entity": "DeliveryModesV2",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Delivery terms",
+      "dmf_entity": "DeliveryTermsEntity",
+      "odata_entity": "DeliveryTerms",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Quotation template groups",
+      "dmf_entity": "QuotationTemplateGroupEntity",
+      "odata_entity": "SalesQuotationTemplateGroups",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Commission calculation setup",
+      "dmf_entity": "CommissionCalculationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Quotation templates",
+      "dmf_entity": "QuotationTemplateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales activity plans",
+      "dmf_entity": "SalesActivityPlanEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Campaign management",
+      "dmf_entity": "CampaignManagementEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Lead qualification models",
+      "dmf_entity": "LeadQualificationModelEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Rebate groups",
+      "dmf_entity": "RebateGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Form printing configurations",
+      "dmf_entity": "FormPrintingConfigurationEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Procurement document default values",
+      "dmf_entity": "ProcurementDocumentDefaultEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Sales and marketing parameters",
+      "dmf_entity": "SalesAndMarketingParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Transportation Management\\Transportation Management.md": [
+    {
+      "display_name": "Transportation modes",
+      "dmf_entity": "TransportationModeEntity",
+      "odata_entity": "TransportationModes",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Transportation methods",
+      "dmf_entity": "TransportationMethodEntity",
+      "odata_entity": "TransportationMethods",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Shipping carriers",
+      "dmf_entity": "ShippingCarrierEntity",
+      "odata_entity": "ShippingCarriers",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Shipping carrier services",
+      "dmf_entity": "ShippingCarrierServiceEntity",
+      "odata_entity": "ShippingCarrierServices",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Shipping carrier groups",
+      "dmf_entity": "ShippingCarrierGroupEntity",
+      "odata_entity": "ShippingCarrierGroups",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Hub types",
+      "dmf_entity": "TMSHubTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Hubs",
+      "dmf_entity": "TMSHubEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Freight bill types",
+      "dmf_entity": "FreightBillTypeEntity",
+      "odata_entity": "FreightBillTypes",
+      "match_method": "manual-unverified"
+    },
+    {
+      "display_name": "Load templates",
+      "dmf_entity": "LoadTemplateEntity",
+      "odata_entity": "LoadTemplates",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Accessorial charge groups",
+      "dmf_entity": "AccessorialChargeGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Rate master headers",
+      "dmf_entity": "RateMasterHeaderEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Rate engines",
+      "dmf_entity": "RateEngineEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Rate bases",
+      "dmf_entity": "RateBaseEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Rate breaks",
+      "dmf_entity": "RateBreakEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Route plans",
+      "dmf_entity": "RoutePlanEntity",
+      "odata_entity": "TransportationRoutePlans",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Route segments",
+      "dmf_entity": "RouteSegmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Carrier service assignments",
+      "dmf_entity": "CarrierServiceAssignmentEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Accessorial charges",
+      "dmf_entity": "AccessorialChargeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Freight bill matching",
+      "dmf_entity": "FreightBillMatchingEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Rating metadata",
+      "dmf_entity": "RatingMetadataEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Transportation management parameters",
+      "dmf_entity": "TMSParametersEntity",
+      "odata_entity": "TransportationParameters",
+      "match_method": "manual-unverified"
+    }
+  ],
+  "Modules\\Dynamics 365 Supply Chain Management\\Warehouse Management\\Warehouse Management.md": [
+    {
+      "display_name": "Wave templates",
+      "dmf_entity": "WHSWaveTemplateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Wave attributes",
+      "dmf_entity": "WHSWaveAttributeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Wave process methods",
+      "dmf_entity": "WHSWaveProcessMethodEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Location profiles",
+      "dmf_entity": "WHSLocationProfileEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Location formats",
+      "dmf_entity": "WHSLocationFormatEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Location types",
+      "dmf_entity": "WHSLocationTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Work classes",
+      "dmf_entity": "WHSWorkClassEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Work pool",
+      "dmf_entity": "WHSWorkPoolEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Container types",
+      "dmf_entity": "WHSContainerTypeEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Container groups",
+      "dmf_entity": "WHSContainerGroupEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Mobile device menu items",
+      "dmf_entity": "WHSMobileDeviceMenuItemEntity",
+      "odata_entity": "WHSMobileWorkMenuItems",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Mobile device menu",
+      "dmf_entity": "WHSMobileDeviceMenuEntity",
+      "odata_entity": "WHSMobileWorkMenus",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Cluster profiles",
+      "dmf_entity": "WHSClusterProfileEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Cycle counting plans",
+      "dmf_entity": "WHSCycleCountPlanEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Cycle counting thresholds",
+      "dmf_entity": "WHSCycleCountThresholdEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Document routing",
+      "dmf_entity": "WHSDocumentRoutingEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Work templates",
+      "dmf_entity": "WHSWorkTemplateEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Work policies",
+      "dmf_entity": "WHSWorkPolicyEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Location directives",
+      "dmf_entity": "WHSLocationDirectiveEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Wave template details",
+      "dmf_entity": "WHSWaveTemplateDetailEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Replenishment templates",
+      "dmf_entity": "WHSReplenishmentTemplateEntity",
+      "odata_entity": "WarehouseReplenishmentTemplates",
+      "match_method": "verified"
+    },
+    {
+      "display_name": "Mobile device users",
+      "dmf_entity": "WHSMobileDeviceUserEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    },
+    {
+      "display_name": "Warehouse management parameters",
+      "dmf_entity": "WHSParametersEntity",
+      "odata_entity": null,
+      "match_method": "no-odata-endpoint"
+    }
+  ]
+}

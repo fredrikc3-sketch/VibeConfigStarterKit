@@ -1,0 +1,8 @@
+## Visualization Prompts
+
+### Vis-Network Graph Prompt
+
+"Build a single-file HTML page using the vis-network library (CDN) that renders an interactive force-directed network graph. Nodes should be grouped into 3 categories with distinct shapes (dot/box/diamond) and colors. Edges should be directed, labeled, color-coded by flow type, with varying widths and dashed/solid styles. Include a sidebar with a color legend, category filter buttons, and a click-to-show detail panel. Add floating control buttons for resetting view, toggling physics, and highlighting specific flow types. Use a dark theme with glassmorphism styling. Include a stats summary bar at the bottom."
+
+### World map with Leaflet.js Prompt
+"Build a single-file HTML page using Leaflet.js (CDN) and the leaflet-ant-path plugin that renders an interactive dark-themed world map (CARTO dark tiles). Plot locations as SVG circle markers in 3 color-coded categories with pulsing ring animations and click popups. Draw animated curved supply chain routes between locations using quadratic Bézier arcs with marching-ant-dash animation, in two tiers (different colors). Include a collapsible sidebar with a supply chain flow description, layer toggle buttons, and region fly-to buttons. Add a floating stats bar (top-right) and a legend panel (bottom-right). Use a dark navy + teal/cyan color scheme with glassmorphism styling and the Inter font."

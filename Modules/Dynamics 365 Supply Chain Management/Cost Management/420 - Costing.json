@@ -1,0 +1,110 @@
+{
+    "Description": "Costing",
+    "SourceEntityList": [
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "10",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "30",
+            "QueryData": null,
+            "SourceEntityName": "Reconciliation parameters",
+            "TargetEntity": "CostLedgerReconciliationPolicyEntity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "10",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "30",
+            "QueryData": null,
+            "SourceEntityName": "Calculation groups",
+            "TargetEntity": "CostCalculationGroupEntity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "10",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "30",
+            "QueryData": null,
+            "SourceEntityName": "Cost groups",
+            "TargetEntity": "CostGroupEntity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "10",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "420",
+            "QueryData": null,
+            "SourceEntityName": "Costing sheet nodes and absorption basis",
+            "TargetEntity": "CostSheetNodeEntity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "20",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "30",
+            "QueryData": null,
+            "SourceEntityName": "Cost flow assumption policies",
+            "TargetEntity": "InventCostFlowAssumptionPolicyEntity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "20",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "30",
+            "QueryData": null,
+            "SourceEntityName": "Cost group profit percentages",
+            "TargetEntity": "CostGroupProfitSettingEntity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "20",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "420",
+            "QueryData": null,
+            "SourceEntityName": "Costing sheet node calculation factors V2",
+            "TargetEntity": "CostSheetNodeCalculationFactorV2Entity",
+            "TemplateExclusionFields": null
+        },
+        {
+            "DependencyList": null,
+            "Description": "",
+            "EntitySequence": "50",
+            "ExecutionUnit": "1",
+            "FailExecutionUnitOnError": "0",
+            "FailLevelOnError": "0",
+            "LevelInExecutionUnit": "300",
+            "QueryData": null,
+            "SourceEntityName": "Costing versions",
+            "TargetEntity": "CostingVersionEntity",
+            "TemplateExclusionFields": null
+        }
+    ],
+    "TemplateId": "420 - Costing"
+}
