@@ -174,7 +174,26 @@ ON FAILURE:
 
 ---
 
-## 10 · Quick-Reference Card
+## 10 · Dry-Run Mode
+
+> Mandatory before the first live mutation of any new module on a new environment, and on demand whenever the user asks for a "dry run" or "plan only".
+
+When the orchestrator (or user) sets `mode = dry-run`:
+
+1. **Read-only tools execute normally** — `data_find_*`, `data_get_entity_metadata`, `form_find_menu_item`, `api_find_actions` all proceed.
+2. **Mutating tools are NOT called.** Instead, the agent records the *planned* call to `Documentation/_status/<phase>/<module>.dry-run.jsonl` as one JSON line per intent:
+   ```json
+   {"step":12,"tool":"data_create_entities","entitySet":"LedgerJournalHeadersV2","payloadHash":"sha1:...","payloadSummary":"1 record, fields: JournalNum,JournalName"}
+   ```
+3. The agent narrates each planned mutation in the response: "Would POST 1 record to `LedgerJournalHeadersV2` with JournalNum=USMF-001."
+4. After all planned calls are recorded, the agent asks the user to **approve** before re-running with `mode = live`.
+5. In live mode, the agent reads the dry-run file and replays the calls in order — each successful live call appends `{...,"status":"executed"}` to the same file for audit.
+
+Mutating tools that MUST be intercepted in dry-run: `data_create_entities`, `data_update_entities`, `data_delete_entities`, `form_click_control` (when control is Save/Post/Activate/Confirm), `form_save_form`, `api_invoke_action`.
+
+---
+
+## 11 · Quick-Reference Card
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐

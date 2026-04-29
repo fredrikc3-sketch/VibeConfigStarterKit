@@ -3,7 +3,7 @@ name: phase-orchestrator
 description: Top-level dispatcher for the D365 F&O implementation lifecycle. Use FIRST on any new user request — it classifies the request (Phase 1 analysis, Phase 1 config, Phase 2 deployment, Phase 2 testing, Phase 3 docs, troubleshooting), checks prerequisite gates (e.g. Phase 1 approval before Phase 2), picks the right phase skill, and manages hand-offs between phases. Drives the `module-fanout` skill when a phase needs per-module parallelism. Keeps the main agent's context lean by delegating heavy work to sub-agents instead of loading everything inline.
 ---
 
-# Phase Orchestrator (Layer 0/1)
+# Phase Orchestrator (Layer 0)
 
 > The brain that decides **which phase skill to run, in what order, with what gates**. It does not execute the work itself — it dispatches.
 
@@ -32,7 +32,7 @@ description: Top-level dispatcher for the D365 F&O implementation lifecycle. Use
                                     testing   tion
         │         │         │         │
         │         ▼         ▼         ▼
-        │     module-fanout (Layer 1) → spawns Layer 3 workers
+        │     module-fanout (Layer 2) → spawns Layer 3 workers
 ```
 
 ---

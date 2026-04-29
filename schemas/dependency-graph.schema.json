@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/dependency-graph.schema.json",
+  "title": "DMF Module Dependency Graph — single source of truth",
+  "description": "Authoritative dependency graph for DMF modules. Consumed by d365-deployment, module-fanout, and d365-config-builder. Wave numbers and parallelism rules MUST be derived from this file — never hard-coded in skill prose.",
+  "type": "object",
+  "required": ["schema_version", "modules", "waves"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dmfSeq", "module", "dependsOn"],
+        "properties": {
+          "dmfSeq":      { "type": "string", "pattern": "^[0-9]{3}$" },
+          "module":      { "type": "string" },
+          "modulePath":  { "type": "string", "description": "Path to module's .md knowledge file" },
+          "dmfTemplate": { "type": "string", "description": "Path to NNN - Name.json template" },
+          "product":     { "type": "string", "enum": ["Administration", "Finance", "SCM", "HR", "Commerce", "ProjectOps"] },
+          "dependsOn":   { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{3}$" } },
+          "executionUnit": { "type": "string", "pattern": "^[0-9]+$" },
+          "parallelSafe": { "type": "boolean", "description": "False when the module touches shared state (e.g. number sequences) that would race with siblings." }
+        }
+      }
+    },
+    "waves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["waveId", "modules"],
+        "properties": {
+          "waveId":        { "type": "integer", "minimum": 1 },
+          "executionMode": { "enum": ["parallel", "sequential"] },
+          "modules":       { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{3}$" } },
+          "rationale":     { "type": "string" }
+        }
+      }
+    }
+  }
+}

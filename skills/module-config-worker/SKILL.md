@@ -1,6 +1,6 @@
 ---
 name: module-config-worker
-description: Sub-agent skill that builds ALL configuration artefacts for ONE D365 F&O module during Phase 1.2. Invoked by `module-fanout` from `d365-config-builder`. The worker reads the assigned module's `.md` knowledge file and existing DMF template, derives field values from its scoped requirements, produces the updated DMF JSON, per-entity CSV data files, parameter-settings markdown, and a per-module config summary — then returns the standard fan-out output contract. Stays in its OWN context window so the orchestrator never sees module-level detail.
+description: ⚠️ SUB-AGENT ONLY — never invoke from main context. Invoked by `module-fanout` from `d365-config-builder`. Builds ALL configuration artefacts for ONE D365 F&O module during Phase 1.2. The worker reads the assigned module's `.md` knowledge file and existing DMF template, derives field values from its scoped requirements, produces the updated DMF JSON, per-entity CSV data files, parameter-settings markdown, and a per-module config summary — then returns the standard fan-out output contract (see `schemas/fan-out-contract.schema.json`). Stays in its OWN context window so the orchestrator never sees module-level detail.
 ---
 
 # Module Config Worker (Layer 3)
@@ -20,8 +20,9 @@ description: Sub-agent skill that builds ALL configuration artefacts for ONE D36
 | Updated DMF template JSON | `<dmfTemplate>` (overwrite) |
 | Per-entity data CSVs | `Modules/{path}/Data/{seq}_{entity}.csv` |
 | Per-module config summary | `Documentation/config-{module}.md` |
-| Parameter-settings entries (append) | `Documentation/parameter-settings.md` |
-| Issues + journal entries | via `reinforcement-learning` skill |
+| **Per-module parameter rows** | `Documentation/_status/1.2/{module}.parameters.md` (NOT shared `parameter-settings.md` — orchestrator merges) |
+| **Per-worker status file** | `Documentation/_status/1.2/{module}.json` |
+| Issues + journal inbox entries | `ChallengeJournal/_inbox/<runId>/<module>-CJ-*.json` (orchestrator merges) |
 
 ---
 
@@ -87,7 +88,9 @@ Return the standard fan-out contract:
 
 ## Rules
 - **You only touch your assigned module's files.** Do not modify other modules' DMF templates, CSVs, or summaries — even if a cross-module dependency is obvious. Surface the dependency in `nextSteps` instead.
+- **Never write to shared files.** `parameter-settings.md`, `phase1-status.md`, and `challenge_journal.json` are orchestrator-merged from your per-worker outputs. Writing directly causes concurrent-write corruption.
 - **Source files are authoritative.** Write them; never inline "TODO" placeholders that won't deploy.
 - **No live environment access.** Phase 1 is offline. Do not call `data_*` / `form_*` / `api_*` tools.
+- **Idempotent re-run.** Compute `desiredStateHash` from your inputs; if a previous `deployedStateHash` matches, return `skipped-idempotent`.
 - **Module knowledge first.** When something is ambiguous, the module `.md` is the answer.
 - **Stay in your context window.** Do not load other modules' knowledge — that's the orchestrator's job.

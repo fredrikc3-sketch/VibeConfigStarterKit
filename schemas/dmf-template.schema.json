@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/dmf-template.schema.json",
+  "title": "DMF Template — schema for Modules/**/NNN - <Name>.json",
+  "description": "Matches the real DMF export shape used in this repo. Fields validated descriptively; unknown fields are allowed.",
+  "type": "object",
+  "required": ["Description", "SourceEntityList"],
+  "properties": {
+    "Name":         { "type": ["string", "null"] },
+    "Description":  { "type": "string" },
+    "Module":       { "type": ["string", "null"] },
+    "TemplateNumber": { "type": ["string", "null"], "pattern": "^[0-9]{3}$" },
+    "SourceEntityList": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceEntity" }
+    }
+  },
+  "$defs": {
+    "sourceEntity": {
+      "type": "object",
+      "required": ["TargetEntity", "EntitySequence", "ExecutionUnit"],
+      "properties": {
+        "TargetEntity":     { "type": "string" },
+        "SourceEntityName": { "type": ["string", "null"] },
+        "EntityCategory":   { "type": ["string", "null"] },
+        "EntitySequence":   { "type": "string", "pattern": "^[0-9]+$" },
+        "ExecutionUnit":    { "type": "string", "pattern": "^[0-9]+$" },
+        "LevelInExecutionUnit": { "type": ["string", "null"], "pattern": "^[0-9]+$" },
+        "Level":            { "type": ["string", "null"], "pattern": "^[0-9]+$" },
+        "Description":      { "type": ["string", "null"] },
+        "DependencyList":   {},
+        "QueryData":        { "type": ["string", "null"] },
+        "FailExecutionUnitOnError": { "type": ["string", "null"] },
+        "FailLevelOnError":         { "type": ["string", "null"] },
+        "TemplateExclusionFields":  {},
+        "RequirementSource": { "type": ["string", "null"] },
+        "OdataEntity":       { "type": ["string", "null"] }
+      }
+    }
+  }
+}

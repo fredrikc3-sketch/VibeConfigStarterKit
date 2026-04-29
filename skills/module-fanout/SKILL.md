@@ -3,9 +3,13 @@ name: module-fanout
 description: Use whenever a phase skill needs to perform repetitive per-module work across multiple D365 F&O modules (config building in Phase 1.2, deployment in Phase 2.1, validation in Phase 2.2). Defines the sub-agent dispatch pattern, the input/output contract every worker must honour, the parallelization rules (parallel within DMF `ExecutionUnit`, sequential across), the wave/batch sequencing for DMF order (010 → 650), result aggregation, and failure-handling/retry semantics. Pairs each module-level call with the appropriate worker skill (`module-config-worker`, `module-deployment-worker`, `module-validation-worker`).
 ---
 
-# Module Fan-Out Pattern (Layer 1)
+# Module Fan-Out Pattern (Layer 2)
 
 > Spawns one sub-agent per module. Each sub-agent runs in its **own context window** and brings its own module knowledge. The main agent only sees structured results.
+
+> **Source of truth for waves**: `Modules/dependency-graph.json`. Never hand-roll the wave list — read it from JSON.
+
+> **Output contract schema**: `schemas/fan-out-contract.schema.json`. Every worker MUST conform.
 
 ---
 
@@ -23,7 +27,7 @@ A phase skill calls `module-fanout` whenever it has a list of modules to process
 
 ## Input contract
 
-The caller produces a **dispatch table** before calling fan-out:
+The caller derives a **dispatch table** by **reading `Modules/dependency-graph.json`** (do not duplicate wave numbers in skill prose). For partial-redeploy / fix-loop, pass an explicit `moduleFilter` to restrict to specific `dmfSeq`s.
 
 ```json
 {
@@ -87,30 +91,52 @@ Output contract: return JSON matching the schema below.
 
 ## Output contract (every worker must return)
 
+Workers MUST conform to `schemas/fan-out-contract.schema.json`. The orchestrator validates each return value against that schema before merging.
+
 ```json
 {
   "module": "General Ledger",
+  "projectId": "acme-uat",
+  "runId": "RUN-2026-04-29-001",
   "phase": "2.1",
-  "status": "complete | partial | failed",
+  "status": "complete",
   "artefactPaths": [
     "Modules/Dynamics 365 Finance/General Ledger/Data/10_LedgerChartOfAccounts.csv",
-    "Documentation/config-general-ledger.md"
+    "Documentation/_status/2.1/General Ledger.json"
   ],
-  "metrics": {
-    "entitiesProcessed": 28,
-    "entitiesSucceeded": 28,
-    "formStepsCompleted": 3,
-    "actionsInvoked": 1
-  },
-  "issues": [
-    { "severity": "warning", "summary": "Posting profile X used default", "detail": "..." }
-  ],
+  "perWorkerStatusFile": "Documentation/_status/2.1/General Ledger.json",
+  "desiredStateHash": "sha1:7c1c…",
+  "deployedStateHash": "sha1:7c1c…",
+  "metrics": { "entitiesProcessed": 28, "entitiesSucceeded": 28, "formStepsCompleted": 3, "actionsInvoked": 1 },
+  "issues": [ { "severity": "warning", "summary": "Posting profile X used default" } ],
   "journalEntries": [ "CJ-2026-0007" ],
   "nextSteps": [ "Re-run validation step 4 after fix" ]
 }
 ```
 
-The orchestrator aggregates these into the phase-level status table. Workers MUST NOT mutate orchestrator state directly — they only write source files, journal entries, and return the contract.
+The orchestrator aggregates these into the phase-level status table.
+
+### Concurrency-safe writes (cardinal rule)
+
+- Workers **never** append to shared files (`deployment-log.md`, `parameter-settings.md`, `e2e-test-results.md`, `challenge_journal.json`).
+- Workers write **only** to per-module paths:
+  - `Documentation/_status/<phase>/<module>.json` (machine-readable)
+  - `Documentation/_status/<phase>/<module>.md` (optional human report)
+  - `ChallengeJournal/_inbox/<runId>/<workerId>-CJ-*.json` (one file per challenge)
+- The **orchestrator merges** these into the canonical aggregate after `wait-all`:
+  - `Documentation/<phase>-status.md` is rewritten (not appended) from the per-module status files.
+  - Inbox journal entries are merged into `challenge_journal.json` with deduplication (see `reinforcement-learning`).
+
+This eliminates last-write-wins corruption when multiple workers run in parallel.
+
+### Idempotency
+
+Each worker computes a **`desiredStateHash`** from its source artefacts (DMF JSON, CSVs, parameter rows). On retry:
+
+1. If the previous `deployedStateHash == desiredStateHash`, return `status: "skipped-idempotent"` immediately.
+2. Otherwise read current state, diff vs desired, apply only the delta.
+
+This makes wave re-dispatch safe and removes the "double-post" failure mode on retry.
 
 ---
 
@@ -126,8 +152,11 @@ FOR each wave in waves (in order):
      wait for it to return
      verify its status before dispatching the next
   aggregate results into the phase status table
-  IF any module returned status != "complete" AND wave.executionMode == "sequential":
-     STOP — surface to user, do not start next wave
+  IF any module returned status == "failed":
+     STOP — surface failing module + journal entries; do NOT start next wave (regardless of executionMode)
+  IF any module returned status == "partial":
+     Inspect issues[]; orchestrator decides whether to continue with degraded state OR remediate
+  status == "skipped-idempotent" is treated as success
 ```
 
 Concurrency hints:
@@ -157,9 +186,9 @@ Workers ALWAYS log challenges to `ChallengeJournal/challenge_journal.json` via t
 
 ---
 
-## Aggregation
+## Aggregation (orchestrator-only step)
 
-After every wave, append to `Documentation/<phase>-status.md`:
+After every wave, the orchestrator (NOT the workers) **rewrites** `Documentation/<phase>-status.md` from the per-worker status files in `Documentation/_status/<phase>/`:
 
 ```markdown
 ## Wave 2 — ExecutionUnit 1
@@ -168,3 +197,5 @@ After every wave, append to `Documentation/<phase>-status.md`:
 | General Ledger | 020 | ✅ complete | 28/28 | 0 | — |
 | Workflow | 022 | ⚠️ partial | 5/6 | 1 | CJ-2026-0008 |
 ```
+
+The orchestrator also updates `Documentation/run-state.json` (`schemas/run-state.schema.json`) with the wave's outcome — `modulesComplete`, `modulesFailed`, `currentWave`. This file is what enables crash-resume across sessions.

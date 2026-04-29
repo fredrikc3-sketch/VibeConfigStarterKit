@@ -39,20 +39,23 @@ Always try Priority 1 first. See `fo-mcp-server/SKILL.md` for the full rule set.
 > Per-module deployment is dispatched as sub-agents running the `module-deployment-worker` skill. The deployment orchestrator (this skill) stays in the main context and only sees the structured fan-out contract returned by each worker.
 
 ### Build the deployment dispatch table
-1. Read `rollout-plan.md`. Group modules into **waves** matching their DMF dependency level:
-   - Wave 1: 010 (no dependencies)
-   - Wave 2: 020, 022 (depend on 010)
-   - Wave 3: 025
-   - Wave 4: 100, 120, 130, 140, 150, 160 (depend on 025) — **parallel within wave**
-   - Wave 5: 300 (depends on 025)
-   - Wave 6: 310, 320, 330, 395 (depend on 300) — **parallel within wave**
-   - Wave 7: 400, 405, 410, 412, 418, 420, 430 (depend on 300+) — **parallel within wave**
-   - Wave 8: 500 (depends on 300+ and 100+)
-   - Wave 9: 600 (depends on 025)
-   - Wave 10: 650 (depends on 025)
-2. Within each wave, mark `executionMode = parallel` unless modules share a critical resource (e.g., number sequences) — when in doubt, sequential.
+1. **Read `Modules/dependency-graph.json`** — this is the single source of truth for waves. The `waves[]` array enumerates modules grouped by dependency level. **Do not hard-code waves in this skill — derive them from the graph.**
+2. For each wave, mark `executionMode = parallel` unless the graph declares `serialize: true` (e.g., when modules share a critical resource like number sequences).
 3. **Invoke `module-fanout`** with `worker = module-deployment-worker`. Each sub-agent runs §Per-module loop below in its own context.
-4. **Wait for the wave to return** before dispatching the next wave. If any module returns `failed`, STOP — do not start the next wave.
+4. **Wait for the wave to return** before dispatching the next wave. If any module returns `failed`, STOP — do not start the next wave. Update `Documentation/run-state.json` after each wave.
+
+### Run-State (resumable deployment)
+- The orchestrator maintains `Documentation/run-state.json` (`schemas/run-state.schema.json`).
+- On every wave boundary it writes `currentWave`, `modulesComplete[]`, `modulesFailed[]`, and the `environment.fingerprint` (URL + tenant + LCS env id).
+- On resume, the orchestrator reads run-state, validates fingerprint matches the connected MCP server (refuse to continue against a different env), and re-dispatches only modules whose `desiredStateHash` differs from the recorded `deployedStateHash`.
+
+### Partial-Redeploy Mode
+Triggered by the validation fix-loop or by the user passing an explicit module list.
+
+1. Skip the wave dispatch entirely; build a flat dispatch list from the supplied modules.
+2. Each worker still reads `Modules/dependency-graph.json` to verify upstream dependencies are `complete` before applying changes — if not, return `failed` with the missing prerequisite.
+3. Run idempotency check: skip any module whose `desiredStateHash == deployedStateHash`.
+4. Update `run-state.json` for the touched modules only.
 
 ---
 

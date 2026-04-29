@@ -11,7 +11,7 @@ An AI-driven workspace for configuring, deploying, and documenting Dynamics 365 
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.1-blue" alt="Version 2.1">
+  <img src="https://img.shields.io/badge/version-2.2-blue" alt="Version 2.2">
   <img src="https://img.shields.io/badge/architecture-Skills%20%2B%20Sub--Agents-7c3aed" alt="Skills + sub-agents">
   <img src="https://img.shields.io/badge/skills-13-2563eb" alt="13 skills">
   <img src="https://img.shields.io/badge/layers-4-2563eb" alt="4 layers">
@@ -36,6 +36,15 @@ Traditional copilot instruction files dump everything into the always-loaded bas
 ## Architecture: 4-Layer Orchestration
 
 The big change in v2.1 is **multi-layer orchestration with sub-agent delegation**. Per-module work — config building, deployment, validation — is dispatched to sub-agents that load only their own module's knowledge. The main agent's context stays small even on a project with 25+ modules.
+
+**v2.2 council-driven hardening** layers on top:
+
+- **Canonical JSON Schemas** in [`schemas/`](schemas/) for journal entries, DMF templates, run-state, dependency graph and the fan-out worker contract — enforced by `tools/validate_repo.py` and a CI quality gate.
+- **Single-source-of-truth dependency graph** at [`Modules/dependency-graph.json`](Modules/dependency-graph.json). Skills derive waves from this file, no more hand-rolled wave lists.
+- **Concurrent-write safety**: workers write per-module artefacts under `Documentation/_status/<phase>/<module>.json`; the orchestrator merges into shared MD files after each wave.
+- **Resumable runs** via `Documentation/run-state.json` — environment fingerprint check prevents wrong-env disasters; `desiredStateHash` enables idempotent retries and partial-redeploy.
+- **Sub-agent guards** on all worker descriptions plus an explicit dry-run mode in [`fo-mcp-server`](skills/fo-mcp-server/SKILL.md).
+- **Smarter RL loop**: dedup hashes, supersede chains, prevention KPIs and project-id namespacing.
 
 ```
 Layer 0  phase-orchestrator           classify request, check gates, pick phase
@@ -194,4 +203,4 @@ See [`skills/fo-mcp-server/prerequisites.md`](skills/fo-mcp-server/prerequisites
 
 ---
 
-<p align="center"><sub>Dynamics 365 Finance & Operations Implementation Accelerator · Version 2.1 (Skills + Sub-Agents)<br>Built from 13 skills across 4 layers, 47 module knowledge files, 24 DMF templates, and 5,767 business process items.<br>MCP guidance sourced from the <a href="https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp">official Microsoft Learn article</a>.</sub></p>
+<p align="center"><sub>Dynamics 365 Finance & Operations Implementation Accelerator · Version 2.2 (Skills + Sub-Agents + Schemas + CI)<br>Built from 13 skills across 4 layers, 47 module knowledge files, 24 DMF templates, 7 canonical schemas, and 5,767 business process items.<br>MCP guidance sourced from the <a href="https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp">official Microsoft Learn article</a>.</sub></p>

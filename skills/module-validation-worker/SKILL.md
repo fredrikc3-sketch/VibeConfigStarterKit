@@ -1,6 +1,6 @@
 ---
 name: module-validation-worker
-description: Sub-agent skill that executes the E2E test scenarios touching ONE module's process slice during Phase 2.2. Invoked by `module-fanout` from `d365-validation-testing`. Drives every assigned scenario through the D365 F&O MCP server start-to-finish, captures pass/fail per step, runs the localized fix-loop (fix source → request re-deploy via orchestrator → re-test), logs failures, and returns the standard fan-out output contract. Pairs MANDATORILY with `fo-mcp-server` and `reinforcement-learning`.
+description: ⚠️ SUB-AGENT ONLY — never invoke from main context. Invoked by `module-fanout` from `d365-validation-testing`. Executes the E2E test scenarios touching ONE module's process slice during Phase 2.2. Drives every assigned scenario through the D365 F&O MCP server start-to-finish, captures pass/fail per step, runs the localized fix-loop (fix source → request re-deploy via orchestrator → re-test), logs failures, and returns the standard fan-out output contract (see `schemas/fan-out-contract.schema.json`). Pairs MANDATORILY with `fo-mcp-server` and `reinforcement-learning`.
 ---
 
 # Module Validation Worker (Layer 3)
@@ -17,11 +17,11 @@ description: Sub-agent skill that executes the E2E test scenarios touching ONE m
 - `Documentation/test-data-requirements.md` rows scoped to this module
 
 ## You must produce
-- A row per executed scenario in `Documentation/e2e-test-results.md`.
+- **Per-worker results file**: `Documentation/_status/2.2/<module>.json` (orchestrator merges into `e2e-test-results.md`).
 - Source-file fixes if any test exposed a config error.
-- Re-deployment requests routed back to the orchestrator (do NOT re-deploy yourself — that's the orchestrator's job).
-- Journal entries for every failure.
-- Standard fan-out output contract.
+- Re-deployment requests routed back to the orchestrator via `redeployRequests[]` in the output contract (do NOT re-deploy yourself).
+- Journal **inbox** entries for every failure.
+- Standard fan-out output contract per `schemas/fan-out-contract.schema.json`.
 
 ---
 
@@ -95,6 +95,7 @@ Output contract additions specific to this worker:
 
 ## Rules
 - **Never test fragments.** Every scenario starts from its documented entry point and runs to its terminal step.
+- **Never write to shared files.** `e2e-test-results.md` and `challenge_journal.json` are orchestrator-merged from per-worker outputs.
 - **Never patch the live environment without updating the source.** Source files are authoritative.
 - **Never re-deploy yourself.** Surface `redeployRequests` to the orchestrator. Re-deployment crosses module boundaries.
 - **Coverage discipline**: every scenario in your slice must end in ✅, ❌, or ⏸ (pending re-deploy). No scenario left unexecuted.

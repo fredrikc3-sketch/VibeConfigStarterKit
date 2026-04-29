@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/run-state.schema.json",
+  "title": "Run State — schema for Documentation/run-state.json",
+  "description": "Resumable, idempotent run-state for a Phase 2 deployment. Persists across sessions so a crash mid-wave can be resumed and so that an environment fingerprint mismatch can prevent wrong-env deploys.",
+  "type": "object",
+  "required": ["runId", "projectId", "createdAt", "lastUpdated", "environment", "currentPhase"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "runId":     { "type": "string", "pattern": "^RUN-[A-Za-z0-9_-]+$" },
+    "projectId": { "type": "string" },
+    "createdAt":   { "type": "string", "format": "date-time" },
+    "lastUpdated": { "type": "string", "format": "date-time" },
+
+    "environment": {
+      "type": "object",
+      "required": ["url", "fingerprint"],
+      "properties": {
+        "url":         { "type": "string", "format": "uri" },
+        "tier":        { "type": "string", "enum": ["Tier1-Dev", "Tier2-UAT", "Tier3-PreProd", "Tier4-Prod", "Sandbox", "Other"] },
+        "company":     { "type": "string", "description": "DataAreaId" },
+        "version":     { "type": "string", "description": "F&O build, e.g. 10.0.48" },
+        "fingerprint": { "type": "string", "description": "SHA-1 of {url|tier|company|version}. Mismatch on resume aborts the run." }
+      }
+    },
+
+    "currentPhase": { "enum": ["1.1", "1.2", "1.3", "1.4", "1.5", "2.1", "2.2", "3"] },
+    "currentWave":  { "type": ["integer", "null"], "minimum": 1 },
+
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["module", "dmfSeq", "status"],
+        "properties": {
+          "module":     { "type": "string" },
+          "dmfSeq":     { "type": "string", "pattern": "^[0-9]{3}$" },
+          "wave":       { "type": "integer", "minimum": 1 },
+          "status":     { "enum": ["pending", "in-progress", "complete", "partial", "failed", "skipped"] },
+          "startedAt":  { "type": "string", "format": "date-time" },
+          "completedAt":{ "type": "string", "format": "date-time" },
+          "subAgentId": { "type": "string" },
+          "desiredStateHash": { "type": "string", "description": "SHA-1 of source artefacts. Re-run is no-op when matched." },
+          "deployedStateHash": { "type": "string", "description": "SHA-1 of read-back state. Diff vs desiredStateHash drives idempotent re-runs." },
+          "perWorkerArtefacts": {
+            "type": "array",
+            "items": { "type": "string", "description": "Path to per-worker file the orchestrator will merge." }
+          },
+          "journalEntries": { "type": "array", "items": { "type": "string", "pattern": "^CJ-[0-9]{4}-[0-9]{4}$" } }
+        }
+      }
+    },
+
+    "modulesInFlight":  { "type": "array", "items": { "type": "string" } },
+    "modulesComplete":  { "type": "array", "items": { "type": "string" } },
+    "modulesFailed":    { "type": "array", "items": { "type": "string" } }
+  }
+}

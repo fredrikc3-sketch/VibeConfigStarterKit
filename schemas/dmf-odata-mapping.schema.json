@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/dmf-odata-mapping.schema.json",
+  "title": "DMF ↔ OData Entity Mapping — schema for Modules/dmf_odata_mapping.json",
+  "description": "Map from module knowledge-file path to an array of entity mappings. Each value is an array of {display_name, dmf_entity, odata_entity, match_method} records.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "required": ["display_name", "match_method"],
+      "properties": {
+        "display_name":  { "type": "string" },
+        "dmf_entity":    { "type": ["string", "null"] },
+        "odata_entity":  { "type": ["string", "null"] },
+        "match_method":  { "enum": ["verified", "auto-exact", "auto-derived", "manual-unverified", "no-odata-endpoint", "missing", "unmatched"] },
+        "notes":         { "type": ["string", "null"] },
+        "lastVerified":  { "type": ["string", "null"], "format": "date-time" }
+      }
+    }
+  }
+}

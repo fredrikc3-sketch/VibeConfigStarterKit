@@ -1,16 +1,22 @@
 {
   "_metadata": {
-    "schema_version": "1.0",
+    "schema_version": "2.0",
     "description": "D365 Finance & Operations Implementation Challenge Journal — Running log of problems encountered, resolutions applied, and knowledge updates made during project configuration and rollout.",
     "last_updated": null,
+    "projectId": null,
     "total_entries": 0,
     "stats": {
       "open": 0,
       "investigating": 0,
       "resolved": 0,
+      "superseded": 0,
       "archived": 0
     },
-    "usage": "See ChallengeJournal/JOURNAL_SCHEMA.md for the schema. See skills/reinforcement-learning/SKILL.md for the feedback loop mechanics, and skills/reinforcement-learning/journal-entry.schema.json for the per-entry JSON schema."
+    "kpi": {
+      "preventedRecurrences": 0,
+      "averageTimeToResolveMinutes": 0
+    },
+    "usage": "Canonical schema: schemas/challenge-journal.schema.json (v2.0, flat shape). Feedback-loop mechanics: skills/reinforcement-learning/SKILL.md."
   },
   "entries": []
 }

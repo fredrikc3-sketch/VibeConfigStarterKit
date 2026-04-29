@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/fan-out-contract.schema.json",
+  "title": "Module Fan-Out Worker Output Contract",
+  "description": "Authoritative shape every module-*-worker MUST return. Captures status + per-worker artefact paths so the orchestrator can merge concurrency-safe per-module files into the phase-level aggregate.",
+  "type": "object",
+  "required": ["module", "phase", "status", "artefactPaths", "metrics"],
+  "properties": {
+    "module":     { "type": "string" },
+    "projectId":  { "type": ["string", "null"] },
+    "runId":      { "type": ["string", "null"], "pattern": "^RUN-[A-Za-z0-9_-]+$" },
+    "phase":      { "enum": ["1.2", "2.1", "2.2"] },
+    "status":     { "enum": ["complete", "partial", "failed", "skipped-idempotent"] },
+
+    "artefactPaths": {
+      "type": "array",
+      "description": "Files the worker wrote. MUST include the per-worker status file under Documentation/_status/<phase>/<module>.json so the orchestrator can merge.",
+      "items": { "type": "string" }
+    },
+
+    "perWorkerStatusFile": {
+      "type": "string",
+      "description": "Path to the canonical per-worker status JSON. Format: Documentation/_status/<phase>/<module>.json"
+    },
+
+    "desiredStateHash":  { "type": "string", "description": "Hash of source artefacts at time of run. Drives idempotency." },
+    "deployedStateHash": { "type": "string", "description": "Hash of read-back deployed state." },
+
+    "metrics": {
+      "type": "object",
+      "description": "Phase-specific counters. Use the appropriate sub-schema.",
+      "oneOf": [
+        { "$ref": "#/$defs/metricsConfig" },
+        { "$ref": "#/$defs/metricsDeployment" },
+        { "$ref": "#/$defs/metricsValidation" }
+      ]
+    },
+
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "summary"],
+        "properties": {
+          "severity": { "enum": ["info", "warning", "error"] },
+          "summary":  { "type": "string" },
+          "detail":   { "type": "string" }
+        }
+      }
+    },
+    "journalEntries": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^CJ-[0-9]{4}-[0-9]{4}$" }
+    },
+    "redeployRequests": {
+      "type": "array",
+      "description": "Returned by validation worker when a fix needs the orchestrator to re-deploy a module.",
+      "items": {
+        "type": "object",
+        "required": ["module", "reason"],
+        "properties": {
+          "module": { "type": "string" },
+          "reason": { "type": "string" },
+          "sourceFilesUpdated": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "nextSteps": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "metricsConfig": {
+      "type": "object",
+      "required": ["requirementsAddressed", "entitiesConfigured"],
+      "properties": {
+        "requirementsAddressed": { "type": "integer", "minimum": 0 },
+        "entitiesConfigured":    { "type": "integer", "minimum": 0 },
+        "csvsWritten":           { "type": "integer", "minimum": 0 },
+        "formSettingsLogged":    { "type": "integer", "minimum": 0 }
+      }
+    },
+    "metricsDeployment": {
+      "type": "object",
+      "required": ["entitiesProcessed", "entitiesSucceeded"],
+      "properties": {
+        "entitiesProcessed":  { "type": "integer", "minimum": 0 },
+        "entitiesSucceeded":  { "type": "integer", "minimum": 0 },
+        "formStepsCompleted": { "type": "integer", "minimum": 0 },
+        "actionsInvoked":     { "type": "integer", "minimum": 0 }
+      }
+    },
+    "metricsValidation": {
+      "type": "object",
+      "required": ["scenariosAssigned", "scenariosPassed", "scenariosFailed"],
+      "properties": {
+        "scenariosAssigned":        { "type": "integer", "minimum": 0 },
+        "scenariosPassed":          { "type": "integer", "minimum": 0 },
+        "scenariosFailed":          { "type": "integer", "minimum": 0 },
+        "scenariosPendingRedeploy": { "type": "integer", "minimum": 0 },
+        "stepsExecuted":            { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

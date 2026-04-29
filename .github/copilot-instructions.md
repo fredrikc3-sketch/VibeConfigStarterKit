@@ -72,6 +72,12 @@ Layer 4 — leaf skills                  fo-mcp-server, reinforcement-learning, 
 5. **Feed back every discovery.** Use the `reinforcement-learning` skill — every challenge becomes a future shortcut.
 6. **Respect dependency order.** DMF template numbers (010 → 650) encode load order — never skip ahead.
 7. **Never guess entity names.** Verify against `Modules/dmf_odata_mapping.json` or the module knowledge file.
+8. **Project-ID namespacing for multi-tenant work.** When operating under a `projectId` (set in `Documentation/run-state.json`), scope all writes under `<projectId>/` prefixes:
+   - `Documentation/<projectId>/...` for project artefacts (config summaries, plans, results)
+   - `ChallengeJournal/<projectId>/challenge_journal.json` for project-scoped journal
+   - `Modules/.discoveries/<projectId>/<module>.md` for project-specific learnings — **never mutate canonical module `.md` files** in `Modules/` themselves
+   - Pre-flight journal lookup: prefer `projectId` match, fall back to global (`projectId = null`).
+   - Without an active project, behave globally as before.
 
 ---
 

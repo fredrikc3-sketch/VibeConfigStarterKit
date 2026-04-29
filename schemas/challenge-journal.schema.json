@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/challenge-journal.schema.json",
+  "title": "Challenge Journal — canonical root schema",
+  "description": "Single source of truth for the structure of ChallengeJournal/challenge_journal.json. Replaces the divergent definitions previously in JOURNAL_SCHEMA.md and skills/reinforcement-learning/journal-entry.schema.json.",
+  "type": "object",
+  "required": ["_metadata", "entries"],
+  "properties": {
+    "_metadata": {
+      "type": "object",
+      "required": ["schema_version", "total_entries", "stats"],
+      "properties": {
+        "schema_version": { "const": "2.0" },
+        "description": { "type": "string" },
+        "projectId": { "type": ["string", "null"], "description": "Optional project namespace for multi-tenant repos." },
+        "last_updated": { "type": ["string", "null"], "format": "date-time" },
+        "total_entries": { "type": "integer", "minimum": 0 },
+        "stats": {
+          "type": "object",
+          "required": ["open", "investigating", "resolved", "archived"],
+          "properties": {
+            "open":          { "type": "integer", "minimum": 0 },
+            "investigating": { "type": "integer", "minimum": 0 },
+            "resolved":      { "type": "integer", "minimum": 0 },
+            "archived":      { "type": "integer", "minimum": 0 },
+            "wontfix":       { "type": "integer", "minimum": 0 },
+            "superseded":    { "type": "integer", "minimum": 0 }
+          }
+        },
+        "kpi": {
+          "type": "object",
+          "description": "Aggregated reinforcement-learning effectiveness counters.",
+          "properties": {
+            "preventedRecurrences": { "type": "integer", "minimum": 0 },
+            "averageTimeToResolveMinutes": { "type": "number", "minimum": 0 }
+          }
+        },
+        "usage": { "type": "string" }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": ["id", "timestamp", "module", "phase", "category", "severity", "symptom", "rootCause", "resolution", "status"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^CJ-[0-9]{4}-[0-9]{4}$", "description": "CJ-YYYY-NNNN" },
+        "projectId": { "type": ["string", "null"], "description": "Optional project namespace." },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "lastUpdated": { "type": "string", "format": "date-time" },
+
+        "module": { "type": "string", "description": "Sub-module name from skills/d365-knowledge-routing/module-index.md" },
+        "subModule": { "type": "string" },
+        "phase": {
+          "enum": ["Phase 1.1", "Phase 1.2", "Phase 1.3", "Phase 1.4", "Phase 1.5", "Phase 2.1", "Phase 2.2", "Phase 3"]
+        },
+        "dmfTemplate": { "type": "string", "description": "e.g. 025 - General ledger.json" },
+        "category": {
+          "enum": ["Rule", "Discovery", "Gap", "Sequence", "Naming", "Permission", "Data", "ConfigDependency", "EntitySequence", "Workaround", "ProcessGap", "Performance", "DocumentationGap", "Integration", "Other"]
+        },
+        "severity": { "enum": ["critical", "high", "medium", "low"] },
+
+        "symptom": {
+          "type": "object",
+          "required": ["operation", "errorMessage"],
+          "properties": {
+            "operation":     { "type": "string", "description": "What was being attempted" },
+            "tool":          { "type": "string", "description": "MCP tool used, if applicable" },
+            "menuPath":      { "type": "string" },
+            "entityAffected":{ "type": "string" },
+            "errorMessage":  { "type": "string" },
+            "expected":      { "type": "string" },
+            "actual":        { "type": "string" },
+            "context":       { "type": "string" }
+          }
+        },
+        "rootCause": { "type": "string", "description": "Plain-language explanation of why it happened." },
+
+        "resolution": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["open", "investigating", "resolved", "wontfix", "archived", "superseded"] },
+            "steps":      { "type": "array", "items": { "type": "string" } },
+            "prevention": { "type": "string", "description": "How to avoid the issue next time." },
+            "timeToResolveMinutes": { "type": "integer", "minimum": 0 }
+          }
+        },
+
+        "sourceFilesUpdated": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "knowledgeUpdates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["target", "section", "action"],
+            "properties": {
+              "target":  { "type": "string", "description": "File path that was updated" },
+              "section": { "type": "string" },
+              "action":  { "enum": ["added", "modified", "removed"] },
+              "summary": { "type": "string" }
+            }
+          }
+        },
+
+        "dedupHash": {
+          "type": "string",
+          "description": "SHA-1 of normalized {module|category|symptom.operation|rootCause}. Used to collapse duplicate observations into a single entry's recurrenceCount."
+        },
+        "recurrenceCount": { "type": "integer", "minimum": 1, "default": 1 },
+        "supersedes": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^CJ-[0-9]{4}-[0-9]{4}$" },
+          "description": "Older entries this entry replaces (their resolution.status should be set to 'superseded')."
+        },
+        "supersededBy": { "type": ["string", "null"], "pattern": "^CJ-[0-9]{4}-[0-9]{4}$" },
+
+        "preventionEffective": {
+          "type": "object",
+          "description": "Closed-loop KPI — how often the documented prevention actually prevented a recurrence after this entry.",
+          "properties": {
+            "verifiedBy":      { "type": "array", "items": { "type": "string" }, "description": "Run IDs / dates where the issue was avoided thanks to this rule." },
+            "preventedCount":  { "type": "integer", "minimum": 0 },
+            "lastVerified":    { "type": "string", "format": "date-time" }
+          }
+        },
+
+        "status": { "enum": ["open", "investigating", "resolved", "wontfix", "archived", "superseded"] },
+        "isRecurring":  { "type": "boolean" },
+        "relatedEntries": { "type": "array", "items": { "type": "string", "pattern": "^CJ-[0-9]{4}-[0-9]{4}$" } },
+        "platformLimitation": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "verifiedBy": { "type": "string", "description": "Re-run operation that confirmed the fix" }
+      }
+    }
+  }
+}
