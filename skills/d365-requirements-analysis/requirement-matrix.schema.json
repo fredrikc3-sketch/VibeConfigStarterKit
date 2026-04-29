@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "D365 F&O Requirement Matrix",
+  "type": "object",
+  "required": ["projectName", "version", "requirements"],
+  "properties": {
+    "projectName": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "category", "module", "status"],
+        "properties": {
+          "id": { "type": "string", "description": "Stable requirement ID e.g. REQ-001" },
+          "description": { "type": "string" },
+          "category": {
+            "enum": ["StandardConfig", "DataMigration", "ParameterSetting", "Workflow", "Integration", "Gap", "Clarification"]
+          },
+          "module": { "type": "string", "description": "Sub-module name from d365-knowledge-routing" },
+          "entity": { "type": "string", "description": "OData entity / DMF target entity / form name" },
+          "dmfTemplate": { "type": "string", "description": "e.g. '120 - Accounts payable.json'" },
+          "sourceDocument": { "type": "string" },
+          "sourceSection": { "type": "string" },
+          "deploymentMethod": {
+            "enum": ["DataEntity", "Form", "Action", "Manual"],
+            "description": "Preferred MCP path"
+          },
+          "gapResolution": { "type": "string", "description": "Required if category=Gap" },
+          "status": {
+            "enum": ["Open", "Mapped", "Confirmed", "Deferred", "Rejected"]
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Challenge Journal Entry",
+  "type": "object",
+  "required": ["id", "date", "module", "phase", "category", "symptom", "rootCause", "resolution", "status"],
+  "properties": {
+    "id": { "type": "string", "description": "e.g. CJ-2026-0001" },
+    "date": { "type": "string", "format": "date" },
+    "module": { "type": "string", "description": "Sub-module name from d365-knowledge-routing" },
+    "phase": {
+      "enum": ["Phase 1.1", "Phase 1.2", "Phase 1.3", "Phase 1.4", "Phase 1.5", "Phase 2.1", "Phase 2.2", "Phase 3"]
+    },
+    "category": {
+      "enum": ["Rule", "Discovery", "Gap", "Sequence", "Naming", "Permission", "Data", "Other"]
+    },
+    "symptom": {
+      "type": "object",
+      "required": ["operation", "errorMessage"],
+      "properties": {
+        "operation": { "type": "string", "description": "What was being attempted" },
+        "tool": { "type": "string", "description": "MCP tool used, if applicable" },
+        "errorMessage": { "type": "string" },
+        "context": { "type": "string" }
+      }
+    },
+    "rootCause": { "type": "string" },
+    "resolution": { "type": "string" },
+    "preventiveMeasure": { "type": "string", "description": "What to do next time to avoid this" },
+    "sourceFilesUpdated": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "knowledgeUpdates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["file", "section"],
+        "properties": {
+          "file": { "type": "string" },
+          "section": { "type": "string" },
+          "summary": { "type": "string" }
+        }
+      }
+    },
+    "status": {
+      "enum": ["open", "investigating", "resolved", "wontfix"]
+    },
+    "verifiedBy": { "type": "string", "description": "Re-run operation that confirmed the fix" }
+  }
+}

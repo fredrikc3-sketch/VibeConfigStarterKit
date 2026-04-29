@@ -1,24 +1,27 @@
-# Knowledge Routing Index
+---
+name: d365-knowledge-routing
+description: Use to look up which module knowledge file (`.md`), DMF template (`.json`), or supporting artefact to read for a given Dynamics 365 F&O concept. Provides the full module → file path index for all 47 sub-modules across Finance, SCM, HR, Commerce and Project Operations, the DMF template load order (010 → 650), the keyword router for free-text routing, and the end-to-end business-process → module matrix. Load FIRST on any task that touches a specific module, entity, or process.
+---
 
-> **Purpose**: Complete routing table mapping every module, sub-module, and cross-cutting concern to its knowledge file, DMF template, and OData entities. Load this file at the start of any task to determine which files to read.
+# D365 F&O Knowledge Routing
+
+> The single source of truth for "which file holds the answer".
 
 ---
 
-## 1 · Quick-Lookup: Module → File Path
+## 1 · Module → File Path
 
 ### Administration
-
-| Sub-Module | Knowledge Source | DMF Templates |
-|-----------|-----------------|---------------|
+| Sub-Module | Knowledge | DMF Templates |
+|---|---|---|
 | Organization Administration | `Modules/Administration/Organization Administration/Organization Administration.md` | `010 - System Setup.json`, `022 - Workflow.json` |
 | Role-Based Security | `Modules/Administration/Role-Based Security/Role-Based Security.md` | — |
 | Lifecycle Services | `Modules/Administration/Lifecycle Services/Lifecycle Services.md` | — |
 | Cloud & On-Premises Deployment | `Modules/Administration/Cloud & On-Premises Deployment/Cloud & On-Premises Deployment.md` | — |
 
 ### Dynamics 365 Finance
-
-| Sub-Module | Knowledge Source | DMF Templates |
-|-----------|-----------------|---------------|
+| Sub-Module | Knowledge | DMF Templates |
+|---|---|---|
 | General Ledger | `Modules/Dynamics 365 Finance/General Ledger/General Ledger.md` | `020 - GL Shared.json`, `025 - General ledger.json` |
 | Cash & Bank Management | `Modules/Dynamics 365 Finance/Cash & Bank Management/Cash & Bank Management.md` | `100 - Bank.json` |
 | Accounts Payable | `Modules/Dynamics 365 Finance/Accounts Payable/Accounts Payable.md` | `120 - Accounts payable.json` |
@@ -33,9 +36,8 @@
 | Compliance & Audit | `Modules/Dynamics 365 Finance/Compliance & Audit/Compliance & Audit.md` | — |
 
 ### Dynamics 365 Supply Chain Management
-
-| Sub-Module | Knowledge Source | DMF Templates |
-|-----------|-----------------|---------------|
+| Sub-Module | Knowledge | DMF Templates |
+|---|---|---|
 | Inventory Management | `Modules/Dynamics 365 Supply Chain Management/Inventory Management/Inventory Management.md` | `300 - Inventory.json` |
 | Product Information Mgmt | `Modules/Dynamics 365 Supply Chain Management/Product Information Management/Product Information Management.md` | `310 - Product information management.json` |
 | Procurement & Sourcing | `Modules/Dynamics 365 Supply Chain Management/Procurement & Sourcing/Procurement & Sourcing.md` | `320 - Procurement and sourcing.json` |
@@ -55,9 +57,8 @@
 | Service Management | `Modules/Dynamics 365 Supply Chain Management/Service Management/Service Management.md` | — |
 
 ### Dynamics 365 Human Resources
-
-| Sub-Module | Knowledge Source | DMF Templates |
-|-----------|-----------------|---------------|
+| Sub-Module | Knowledge | DMF Templates |
+|---|---|---|
 | Personnel Management | `Modules/Dynamics 365 Human Resources/Personnel Management/Personnel Management.md` | — |
 | Employee Self Service | `Modules/Dynamics 365 Human Resources/Employee Self Service/Employee Self Service.md` | — |
 | Leave & Absence Management | `Modules/Dynamics 365 Human Resources/Leave & Absence Management/Leave & Absence Management.md` | — |
@@ -68,9 +69,8 @@
 | Organization Management | `Modules/Dynamics 365 Human Resources/Organization Management/Organization Management.md` | — |
 
 ### Dynamics 365 Commerce
-
-| Sub-Module | Knowledge Source | DMF Templates |
-|-----------|-----------------|---------------|
+| Sub-Module | Knowledge | DMF Templates |
+|---|---|---|
 | Multi-Channel / Retail | `Modules/Dynamics 365 Commerce/Multi-Channel Setup Retail E-Commerce DTC/Retail.md` | `500 - Retail.json` |
 | Call Center Operations | `Modules/Dynamics 365 Commerce/Call Center Operations/Call Center Operations.md` | — |
 | Customer Engagement | `Modules/Dynamics 365 Commerce/Customer Engagement & Personalization/Customer Engagement & Personalization.md` | — |
@@ -78,9 +78,8 @@
 | Omnichannel Fulfillment | `Modules/Dynamics 365 Commerce/Omnichannel Fulfillment/Omnichannel Fulfillment.md` | — |
 
 ### Dynamics 365 Project Operations
-
-| Sub-Module | Knowledge Source | DMF Templates |
-|-----------|-----------------|---------------|
+| Sub-Module | Knowledge | DMF Templates |
+|---|---|---|
 | Project Accounting | `Modules/Dynamics 365 Project Operations/Project Accounting & Invoicing/Project Accounting.md` | `650 - Project accounting.json` |
 | Project Sales & Quoting | `Modules/Dynamics 365 Project Operations/Project Sales & Quoting/Project Sales & Quoting.md` | — |
 | Project Planning | `Modules/Dynamics 365 Project Operations/Project Planning & Scheduling/Project Planning & Scheduling.md` | — |
@@ -93,77 +92,69 @@
 ## 2 · Cross-Module Reference Files
 
 | File | Purpose | When to load |
-|------|---------|-------------|
-| `Modules/D365_Finance_Operations_Modules_Overview.md` | Full module list with descriptions | Initial orientation |
+|---|---|---|
+| `Modules/D365_Finance_Operations_Modules_Overview.md` | Full module list | Initial orientation |
 | `Modules/D365_Quick_Reference.md` | Compact module + capability summary | Quick lookup |
-| `Modules/dmf_odata_mapping.json` | DMF entity ↔ OData entity mapping (verified) | OData operations, integration tasks |
-| `Requirements/` | Input requirement documents (Word, PDF, Excel, etc.) | Phase 1.1 requirement analysis |
+| `Modules/dmf_odata_mapping.json` | DMF ↔ OData entity mapping (verified) | OData ops, integration |
 | `Business Process/ProcessCatalogue.json` | Hierarchical process tree (5,767 items) | Business process questions |
-| `Business Process/ProcessCatalogue_flat.json` | Flat indexed version with `parentId` links | Programmatic process lookups |
-| `Business Process/ProcessCatalogue_MindMap.json` | Visualization-ready tree | Mind map generation |
-| `ChallengeJournal/challenge_journal.json` | Running challenge + resolution log | Before risky ops, after issues |
-| `.instructions/fo-interaction.instructions.md` | F&O MCP tool interaction rules (data/form/API) | Whenever MCP tools are used |
-| `Documentation/` | All project output artefacts (profiles, plans, reports, HTML) | Throughout all phases |
-| `Documentation/requirement-profile.md` | Phase 1.1 requirement profile | Requirement mapping |
-| `Documentation/rollout-plan.md` | Phase 1.3 deployment sequence | Deployment execution |
-| `Documentation/e2e-test-plan.md` | Phase 1.3 end-to-end test plan | E2E testing |
-| `Documentation/html/rollout-report.html` | Phase 3.1 rollout narrative | Final documentation |
-| `Documentation/html/environment-config.html` | Phase 3.2 visual environment reference | Final documentation |
+| `Business Process/ProcessCatalogue_flat.json` | Flat indexed version with `parentId` | Programmatic process lookups |
+| `Business Process/ProcessCatalogue_MindMap.json` | Visualization-ready tree | Mind-map output |
+| `ChallengeJournal/challenge_journal.json` | Running challenge + resolution log | Before risky ops; after issues |
+| `Requirements/` | Source requirement docs | Phase 1.1 |
+| `Documentation/` | All project output artefacts | Throughout |
 
 ---
 
-## 3 · DMF Template Load-Order Sequence
+## 3 · DMF Template Load Order
 
-The numeric prefix on DMF JSON files encodes the cross-module import sequence. **Always respect this order** — a higher-numbered template may depend on entities loaded by a lower-numbered one.
+The numeric prefix encodes cross-module dependency. **Always respect.**
 
 ```
-010 - System Setup              (Administration / Org Admin)
-020 - GL Shared                 (Finance / General Ledger)
-022 - Workflow                  (Administration / Org Admin)
-025 - General Ledger            (Finance / General Ledger)
-100 - Bank                      (Finance / Cash & Bank)
-120 - Accounts Payable          (Finance / AP)
-130 - Tax                       (Finance / Tax)
-140 - Accounts Receivable       (Finance / AR)
-150 - Fixed Assets              (Finance / Fixed Assets)
-160 - Budgeting                 (Finance / Budgeting)
-300 - Inventory                 (SCM / Inventory)
-310 - Product Info Mgmt         (SCM / PIM)
-320 - Procurement & Sourcing    (SCM / Procurement)
-330 - Sales & Marketing         (SCM / Sales)
-395 - Quality Management        (SCM / Quality)
-400 - Warehouse Management      (SCM / Warehouse)
-405 - Transportation Mgmt       (SCM / Transportation)
-410 - Production Control        (SCM / Production)
-412 - Process Manufacturing     (SCM / Process Mfg)
-418 - Product Config Models     (SCM / Product Config)
-420 - Costing                   (SCM / Cost Mgmt)
-430 - Master Planning           (SCM / Master Planning)
-500 - Retail                    (Commerce / Multi-Channel)
-600 - Expense                   (Finance / Expense Mgmt)
-650 - Project Accounting        (Project Ops / Accounting)
+010 System Setup              → Admin / Org Admin
+020 GL Shared                 → Finance / GL
+022 Workflow                  → Admin / Org Admin
+025 General Ledger            → Finance / GL
+100 Bank                      → Finance / Cash & Bank
+120 Accounts Payable          → Finance / AP
+130 Tax                       → Finance / Tax
+140 Accounts Receivable       → Finance / AR
+150 Fixed Assets              → Finance / FA
+160 Budgeting                 → Finance / Budgeting
+300 Inventory                 → SCM / Inventory
+310 Product Info Mgmt         → SCM / PIM
+320 Procurement & Sourcing    → SCM / Procurement
+330 Sales & Marketing         → SCM / Sales
+395 Quality Management        → SCM / Quality
+400 Warehouse Management      → SCM / Warehouse
+405 Transportation Mgmt       → SCM / Transportation
+410 Production Control        → SCM / Production
+412 Process Manufacturing     → SCM / Process Mfg
+418 Product Config Models     → SCM / Product Config
+420 Costing                   → SCM / Cost Mgmt
+430 Master Planning           → SCM / Master Planning
+500 Retail                    → Commerce / Multi-Channel
+600 Expense                   → Finance / Expense Mgmt
+650 Project Accounting        → Project Ops / Accounting
 ```
 
-### Dependency Rules
-- **010** has no dependencies — always runs first
-- **020, 022** depend on 010
-- **025** depends on 020
-- **100–160** depend on 025 (GL must be configured first)
-- **300** depends on 025 (inventory needs GL posting profiles)
-- **310–330** depend on 300
-- **395–430** depend on 300+ (various SCM foundations)
-- **500** depends on 300+ and 100+ (Commerce needs both Finance and SCM)
-- **600** depends on 025
-- **650** depends on 025
+### Dependency rules
+- **010** has no dependencies — runs first.
+- **020, 022** depend on 010.
+- **025** depends on 020.
+- **100–160** depend on 025 (GL must be configured first).
+- **300** depends on 025 (Inventory needs GL posting profiles).
+- **310–330** depend on 300.
+- **395–430** depend on 300+ (SCM foundations).
+- **500** depends on 300+ and 100+ (Commerce needs both).
+- **600** depends on 025.
+- **650** depends on 025.
 
 ---
 
 ## 4 · Keyword → Module Router
 
-When the user mentions a concept, use this index to find the right module:
-
-| Keyword / Concept | Route To |
-|-------------------|----------|
+| Keyword | Route to |
+|---|---|
 | chart of accounts, financial dimensions, journal, fiscal calendar, ledger | General Ledger |
 | vendor, purchase invoice, payment proposal, vendor group | Accounts Payable |
 | customer, free text invoice, collection letter, customer group | Accounts Receivable |
@@ -174,10 +165,10 @@ When the user mentions a concept, use this index to find the right module:
 | expense report, travel requisition, per diem | Expense Management |
 | item, product, released product, item group | Product Information Management |
 | warehouse, location, wave, work template | Warehouse Management |
-| purchase order, vendor, RFQ, purchase agreement | Procurement & Sourcing |
-| sales order, quotation, customer, sales agreement | Sales & Marketing |
+| purchase order, RFQ, purchase agreement | Procurement & Sourcing |
+| sales order, quotation, sales agreement | Sales & Marketing |
 | production order, BOM, route, kanban | Production Control |
-| formula, batch order, co-product, by-product | Process Manufacturing |
+| formula, batch order, co-product | Process Manufacturing |
 | transfer order, counting journal, inventory close | Inventory Management |
 | quality order, test, nonconformance | Quality Management |
 | shipping, load, freight, carrier | Transportation Management |
@@ -194,10 +185,10 @@ When the user mentions a concept, use this index to find the right module:
 
 ---
 
-## 5 · Business Process → Module Matrix
+## 5 · End-to-End Business Process → Module Matrix
 
-| End-to-End Process | Primary Modules | Key DMF Templates |
-|-------------------|----------------|-------------------|
+| Process | Primary Modules | DMF Templates |
+|---|---|---|
 | Acquire to Dispose | Fixed Assets, GL | 150, 025 |
 | Design to Retire | PIM, Engineering Change | 310 |
 | Forecast to Plan | Master Planning, Inventory | 430, 300 |
@@ -208,8 +199,3 @@ When the user mentions a concept, use this index to find the right module:
 | Service to Deliver | Service Mgmt, Inventory | 300 |
 | Source to Pay | Procurement, AP | 320, 120 |
 | Record to Report | GL, Budgeting, Cost Acct | 025, 160 |
-
----
-
-*Last Updated: February 20, 2026*
-*Version: 1.0*

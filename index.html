@@ -3,909 +3,447 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dynamics 365 Finance & Operations — Workspace Guide</title>
+<title>Dynamics 365 Finance &amp; Operations — Implementation Accelerator</title>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <style>
   :root {
-    --primary: #0078d4;
-    --primary-dark: #005a9e;
+    --bg: #f7f8fb;
+    --card: #ffffff;
+    --border: #e3e6ee;
+    --ink: #1f2937;
+    --muted: #64748b;
+    --primary: #0d6efd;
+    --primary-dark: #0a58ca;
     --finance: #2563eb;
     --scm: #059669;
     --hr: #7c3aed;
     --commerce: #d97706;
     --projops: #dc2626;
     --admin: #475569;
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --border: #e2e8f0;
-    --text: #1e293b;
-    --text-muted: #64748b;
-    --accent-green: #16a34a;
-    --accent-amber: #d97706;
-    --accent-red: #dc2626;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.06);
+    --green: #16a34a;
+    --amber: #d97706;
+    --red: #dc2626;
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-lg: 0 12px 24px -10px rgba(0,0,0,.12);
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-  
-  /* Header */
-  .hero { background: linear-gradient(135deg, #0d3b66 0%, #0a2540 100%); color: white; padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; }
-  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--finance), var(--scm), var(--hr), var(--commerce), var(--projops)); }
-  .hero-brand { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 0.75rem; }
-  .hero-logo { width: 72px; height: 72px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); flex-shrink: 0; }
-  .hero-text { text-align: left; }
-  .hero h1 { font-size: 2.4rem; font-weight: 800; margin: 0; letter-spacing: -0.02em; line-height: 1.05; }
-  .hero-subtitle { font-size: 1.4rem; font-weight: 300; letter-spacing: 0.04em; opacity: 0.92; margin: -0.1rem 0 0 0; line-height: 1.2; }
-  .hero-doc-title { font-size: 1.6rem; font-weight: 600; letter-spacing: 0.02em; margin: 1.25rem 0 0.75rem; opacity: 0.95; }
-  .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-  .hero .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-top: 1rem; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: #eef2f7; padding: .12em .35em; border-radius: 3px; font-size: .92em; }
+  pre { background: #0f172a; color: #e2e8f0; padding: 1.1rem; border-radius: .6rem; overflow-x: auto; font-size: .88rem; line-height: 1.55; }
+  pre code { background: none; color: inherit; padding: 0; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #0d3b66 0%, #0a2540 100%); color: #fff; padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::after { content:''; position: absolute; bottom: 0; left:0; right:0; height: 4px; background: linear-gradient(90deg, var(--finance), var(--scm), var(--hr), var(--commerce), var(--projops)); }
+  .hero-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .hero-brand { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: .8rem; flex-wrap: wrap; }
+  .hero-logo { width: 72px; height: 72px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.25)); }
+  .hero h1 { font-size: 2.25rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+  .hero-sub { font-size: 1.25rem; font-weight: 300; letter-spacing: .04em; opacity: .92; margin-top: -.1rem; }
+  .hero-tag { font-size: 1rem; opacity: .9; margin-top: 1rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .badges { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.25rem; }
+  .badge { background: rgba(255,255,255,.15); padding: .25rem .7rem; border-radius: 999px; font-size: .78rem; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 
   /* Nav */
-  .nav { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
-  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; padding: 0 1rem; }
-  .nav a { padding: 0.75rem 1rem; text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
-  .nav a:hover, .nav a.active { color: var(--primary); border-bottom-color: var(--primary); }
+  nav.tabs { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow); }
+  nav.tabs .inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; padding: 0 1rem; }
+  nav.tabs a { padding: .85rem 1rem; color: var(--muted); font-size: .85rem; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; }
+  nav.tabs a:hover, nav.tabs a.active { color: var(--primary); border-bottom-color: var(--primary); text-decoration: none; }
 
-  /* Layout */
-  .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
-  section { margin-bottom: 3rem; }
-  h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary); display: flex; align-items: center; gap: 0.5rem; }
-  h3 { font-size: 1.15rem; font-weight: 600; color: var(--text); margin: 1.5rem 0 0.75rem; }
-  h4 { font-size: 1rem; font-weight: 600; margin: 1rem 0 0.5rem; }
-  p { margin-bottom: 0.75rem; }
+  main { max-width: 1100px; margin: 0 auto; padding: 2.25rem 1.5rem 4rem; }
+  section { margin-bottom: 3rem; scroll-margin-top: 70px; }
+  h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 1.1rem; padding-bottom: .5rem; border-bottom: 2px solid var(--primary); display: flex; align-items: center; gap: .5rem; }
+  h3 { font-size: 1.12rem; font-weight: 700; margin: 1.6rem 0 .65rem; }
+  p { margin-bottom: .8rem; }
+  ul, ol { margin: .25rem 0 1rem 1.4rem; }
+  li { margin-bottom: .3rem; }
 
-  /* Cards */
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-  .card-sm { padding: 1rem; }
-  .card h4 { margin-top: 0; }
-  .card .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600; margin-right: 0.25rem; }
-  .tag-finance { background: #dbeafe; color: var(--finance); }
-  .tag-scm { background: #d1fae5; color: var(--scm); }
-  .tag-hr { background: #ede9fe; color: var(--hr); }
-  .tag-commerce { background: #fef3c7; color: var(--commerce); }
-  .tag-projops { background: #fee2e2; color: var(--projops); }
-  .tag-admin { background: #f1f5f9; color: var(--admin); }
-  .tag-phase { background: #f0f9ff; color: var(--primary); border: 1px solid #bae6fd; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1.4rem; box-shadow: var(--shadow); }
+  .grid { display: grid; gap: 1rem; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
-  /* Stat boxes */
-  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; text-align: center; box-shadow: var(--shadow); }
-  .stat .num { font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1; }
-  .stat .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
-  .stat.finance .num { color: var(--finance); }
-  .stat.scm .num { color: var(--scm); }
-  .stat.hr .num { color: var(--hr); }
-  .stat.commerce .num { color: var(--commerce); }
-  .stat.projops .num { color: var(--projops); }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1.1rem; text-align: center; box-shadow: var(--shadow); }
+  .stat .num { font-size: 2rem; font-weight: 800; line-height: 1; color: var(--primary); }
+  .stat .lbl { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+  .stat.fin .num{color:var(--finance)} .stat.scm .num{color:var(--scm)} .stat.hr .num{color:var(--hr)} .stat.com .num{color:var(--commerce)} .stat.po .num{color:var(--projops)} .stat.adm .num{color:var(--admin)}
 
-  /* Mermaid */
-  .mermaid-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin: 1rem 0; overflow-x: auto; box-shadow: var(--shadow); }
-  .mermaid { display: flex; justify-content: center; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: #f1f5f9; font-weight: 600; color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
 
-  /* Tables */
-  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 1rem 0; }
-  th { background: #f1f5f9; font-weight: 600; text-align: left; padding: 0.6rem 0.75rem; border-bottom: 2px solid var(--border); }
-  td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
-  tr:hover td { background: #f8fafc; }
+  .pill { display: inline-block; padding: .12rem .5rem; border-radius: 4px; font-size: .72rem; font-weight: 600; }
+  .pill-l0 { background: #ede9fe; color: var(--hr); }
+  .pill-l1 { background: #dbeafe; color: var(--finance); }
+  .pill-l2 { background: #fef3c7; color: var(--commerce); }
+  .pill-l3 { background: #d1fae5; color: var(--scm); }
+  .pill-l4 { background: #f1f5f9; color: var(--admin); }
+  .pill-new { background: #dcfce7; color: #15803d; }
 
-  /* Steps */
-  .steps { list-style: none; counter-reset: step; }
-  .steps li { position: relative; padding: 1rem 1rem 1rem 3.5rem; margin-bottom: 0.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; counter-increment: step; }
-  .steps li::before { content: counter(step); position: absolute; left: 1rem; top: 1rem; width: 1.75rem; height: 1.75rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; }
-  .steps li strong { color: var(--primary-dark); }
+  details { background: var(--card); border: 1px solid var(--border); border-radius: .6rem; margin: .6rem 0; padding: .75rem 1rem; box-shadow: var(--shadow); }
+  details[open] { box-shadow: var(--shadow-lg); }
+  summary { font-weight: 600; cursor: pointer; padding: .25rem 0; }
+  summary::marker { color: var(--primary); }
 
-  /* Collapsible */
-  details { background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; margin-bottom: 0.5rem; }
-  details summary { padding: 0.75rem 1rem; cursor: pointer; font-weight: 600; -webkit-user-select: none; user-select: none; }
-  details summary:hover { background: #f1f5f9; }
-  details[open] summary { border-bottom: 1px solid var(--border); }
-  details .content { padding: 1rem; }
+  .mermaid { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1.25rem; box-shadow: var(--shadow); margin: 1rem 0; text-align: center; }
 
-  /* Benefit cards */
-  .benefit { border-left: 4px solid var(--primary); padding-left: 1rem; margin-bottom: 1rem; }
-  .benefit.green { border-left-color: var(--accent-green); }
-  .benefit.amber { border-left-color: var(--accent-amber); }
+  .callout { border-left: 4px solid var(--primary); background: #eff6ff; padding: .9rem 1.1rem; border-radius: 0 .5rem .5rem 0; margin: 1rem 0; }
+  .callout.warn { border-color: var(--amber); background: #fffbeb; }
+  .callout.ok { border-color: var(--green); background: #f0fdf4; }
 
-  /* Card description text */
-  .card-sm p { font-size: 0.9rem; color: var(--text-muted); }
-  .card-sm ul { font-size: 0.85rem; padding-left: 1.25rem; }
-
-  /* Phase cards */
-  .card-phase1 { border-left: 4px solid var(--finance); }
-  .card-phase2 { border-left: 4px solid var(--scm); }
-  .card-phase3 { border-left: 4px solid var(--commerce); }
-  .card-prereqs { border-left: 4px solid var(--accent-green); margin-top: 1.5rem; }
-  .card-principles { border-left: 4px solid var(--primary); margin-top: 1rem; }
-  .card-principles .card-grid { margin-top: 0.75rem; }
-
-  /* Footer */
-  .footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
-
-  /* File tree */
-  .file-tree { font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: 0.82rem; background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; line-height: 1.7; }
-  .file-tree .dir { color: #60a5fa; }
-  .file-tree .file { color: #a5b4fc; }
-  .file-tree .comment { color: #94a3b8; }
-  .file-tree .highlight { color: #fbbf24; font-weight: 600; }
-
-  /* Tooltip */
-  .tip { display: inline-block; background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; margin: 0.5rem 0; }
-  .tip::before { content: '💡 '; }
-  .tip.warn { background: #fffbeb; border-color: #fde68a; }
-  .tip.warn::before { content: '⚠️ '; }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .hero h1 { font-size: 1.6rem; }
-    .stat-grid { grid-template-columns: repeat(2, 1fr); }
-    .card-grid { grid-template-columns: 1fr; }
-  }
-  @media print {
-    .nav { display: none; }
-    .hero { padding: 1.5rem; }
-    details[open] summary ~ * { display: block !important; }
-  }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 2rem 1rem 1rem; border-top: 1px solid var(--border); margin-top: 3rem; }
 </style>
 </head>
 <body>
 
-<!-- ============ HERO ============ -->
-<div class="hero">
-  <div class="hero-brand">
-    <img src="Media/FinanceOperations_scalable.svg" alt="Dynamics 365 Finance & Operations" class="hero-logo">
-    <div class="hero-text">
-      <h1>Dynamics 365</h1>
-      <div class="hero-subtitle">Finance &amp; Operations</div>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-brand">
+      <img src="Media/FinanceOperations_scalable.svg" alt="" class="hero-logo">
+      <div style="text-align:left">
+        <h1>Dynamics 365</h1>
+        <div class="hero-sub">Finance &amp; Operations</div>
+      </div>
+    </div>
+    <p class="hero-tag"><strong>Implementation Accelerator</strong> — an AI-driven workspace for configuring, deploying, and documenting D365 F&amp;O environments. Built on the <strong>Anthropic Skills</strong> architecture with <strong>multi-layer sub-agent orchestration</strong>.</p>
+    <div class="badges">
+      <span class="badge">Version 2.1</span>
+      <span class="badge">13 skills · 4 layers</span>
+      <span class="badge">47 modules</span>
+      <span class="badge">24 DMF templates</span>
+      <span class="badge">5,767 business processes</span>
     </div>
   </div>
-  <div class="hero-doc-title">Implementation Accelerator Template</div>
-  <p>An AI-driven workspace for configuring, deploying, and documenting Dynamics 365 Finance &amp; Operations environments — powered by structured knowledge, automated MCP tooling, and a self-improving reinforcement learning loop.</p>
-  <span class="badge">Version 1.0 &middot; February 2026</span>
-</div>
+</header>
 
-<!-- ============ NAV ============ -->
-<div class="nav">
-  <div class="nav-inner">
-    <a href="#benefits">Benefits</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#architecture">Architecture</a>
-    <a href="#phases">3 Phases</a>
-    <a href="#modules">Module Knowledge</a>
-    <a href="#mcp-tools">MCP Tools</a>
-    <a href="#rl-loop">Learning Loop</a>
-    <a href="#workspace">Workspace Map</a>
-    <a href="#getting-started">Get Started</a>
-  </div>
-</div>
+<nav class="tabs"><div class="inner">
+  <a href="#why">Why</a>
+  <a href="#architecture">Architecture</a>
+  <a href="#skills">Skills</a>
+  <a href="#phases">Phases</a>
+  <a href="#mcp">MCP Server</a>
+  <a href="#modules">Modules</a>
+  <a href="#workspace">Workspace</a>
+  <a href="#start">Get Started</a>
+</div></nav>
 
-<div class="container">
+<main>
 
-<!-- ============ BENEFITS ============ -->
-<section id="benefits">
-  <h2>🎯 Why This Baseline?</h2>
-  <p>Traditional D365 F&O implementations rely on consultant memory, scattered spreadsheets, and tribal knowledge. This workspace replaces all of that with a <strong>structured, AI-readable knowledge base</strong> that makes every implementation faster, more consistent, and self-improving.</p>
-
-  <div class="card-grid">
-    <div class="card card-sm">
-      <h4>🧠 Structured Knowledge</h4>
-      <p>47 module knowledge articles, 24 DMF templates, 5,767 business processes — all organized and instantly accessible to the AI agent.</p>
-    </div>
-    <div class="card card-sm">
-      <h4>🤖 Autonomous Deployment</h4>
-      <p>The agent deploys configuration directly to D365 F&O via MCP tools — data entities first, form navigation as fallback, API actions for activation.</p>
-    </div>
-    <div class="card card-sm">
-      <h4>🔄 Self-Improving</h4>
-      <p>Every challenge encountered is logged to the Challenge Journal and fed back into module knowledge. The system gets smarter with every project.</p>
-    </div>
-    <div class="card card-sm">
-      <h4>📋 Source-of-Truth Files</h4>
-      <p>Configuration files are always authoritative. If the environment drifts, fix the source files first, then re-deploy. No ad-hoc changes.</p>
-    </div>
-    <div class="card card-sm">
-      <h4>🧪 End-to-End Testing</h4>
-      <p>Tests follow complete business processes from start to finish — Source-to-Pay, Order-to-Cash, Record-to-Report — never fragments.</p>
-    </div>
-    <div class="card card-sm">
-      <h4>📖 Auto-Generated Docs</h4>
-      <p>Phase 3 produces HTML documentation of the rollout narrative and environment configuration — visual, interactive, single-file deliverables.</p>
-    </div>
-  </div>
-
-  <div class="stat-grid">
-    <div class="stat"><div class="num">47</div><div class="label">Module Knowledge Articles</div></div>
-    <div class="stat finance"><div class="num">24</div><div class="label">DMF Import Templates</div></div>
-    <div class="stat scm"><div class="num">5,767</div><div class="label">Business Process Items</div></div>
-    <div class="stat hr"><div class="num">5</div><div class="label">Core Products</div></div>
-    <div class="stat commerce"><div class="num">10</div><div class="label">E2E Process Chains</div></div>
-    <div class="stat projops"><div class="num">6</div><div class="label">Instruction Files</div></div>
+<section id="why">
+  <h2>🎯 Why this baseline?</h2>
+  <p>Traditional D365 F&amp;O implementations rely on consultant memory and scattered spreadsheets. This workspace replaces all of that with a structured, AI-readable knowledge base where every capability is a <strong>Skill</strong> — loaded only when needed — and per-module work is delegated to <strong>sub-agents</strong> running in their own context windows.</p>
+  <div class="grid grid-2" style="margin-top:1rem">
+    <div class="card"><h3>🧠 Progressive disclosure</h3><p>Each skill's <code>description</code> is the only always-loaded text. The full body loads on demand. The main agent's context stays small even on a 25-module project.</p></div>
+    <div class="card"><h3>🤖 Sub-agent fan-out</h3><p>Per-module work — config building, deployment, validation — runs in parallel sub-agents. Each loads only one module's knowledge. The orchestrator never sees module-level detail.</p></div>
+    <div class="card"><h3>🔄 Self-improving</h3><p>Every challenge is logged to the Challenge Journal and fed back into the relevant skill or module knowledge file. The next implementation gets a head start.</p></div>
+    <div class="card"><h3>📋 Source-of-truth files</h3><p>Configuration files in <code>Modules/</code> and <code>Documentation/</code> are authoritative. If the environment ever drifts, fix the source first, then re-deploy.</p></div>
+    <div class="card"><h3>🔌 Live MCP integration</h3><p>The <code>fo-mcp-server</code> skill teaches the agent the <strong>Dynamics 365 ERP MCP server</strong> — data tools, form tools, action tools. Built from the official Microsoft Learn article.</p></div>
+    <div class="card"><h3>🧪 End-to-end testing</h3><p>Tests follow complete business processes (Source-to-Pay, Order-to-Cash, Record-to-Report) start to finish — never fragments.</p></div>
   </div>
 </section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section id="how-it-works">
-  <h2>⚙️ How It Works</h2>
-  <p>The workspace operates as a layered knowledge system. The <strong>master orchestrator</strong> (.github/copilot-instructions.md) is automatically loaded by GitHub Copilot and routes every task to the right instruction files and module knowledge.</p>
-
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
-flowchart TB
-    subgraph User["👤 User Request"]
-        REQ["Task / Question / Requirement"]
-    end
-
-    subgraph Orchestrator["🎛️ Master Orchestrator"]
-        direction TB
-        CLASSIFY["Step 1: Classify Request"]
-        LOAD["Step 2: Load Instructions + Module Knowledge"]
-        EXEC["Step 3: Execute with Guardrails"]
-        DEPS["Step 4: Resolve Cross-Module Dependencies"]
-    end
-
-    subgraph Instructions["📋 Instruction Files"]
-        direction TB
-        KR["knowledge-routing.md\n(Module → File Router)"]
-        PC["project-configuration.md\n(Phase 1 Playbook)"]
-        PR["project-rollout.md\n(Phase 2+3 Playbook)"]
-        FO["fo-interaction.md\n(MCP Tool Rules)"]
-        RL["reinforcement-learning.md\n(Learning Loop)"]
-    end
-
-    subgraph Knowledge["📚 Module Knowledge"]
-        direction TB
-        MOD[".md Knowledge Files\n(47 modules)"]
-        DMF[".json DMF Templates\n(24 templates)"]
-        ODATA["dmf_odata_mapping.json"]
-        PROC["ProcessCatalogue.json\n(5,767 items)"]
-    end
-
-    subgraph Environment["☁️ D365 F&O Environment"]
-        direction TB
-        DATA["Data Entities\n(OData)"]
-        FORMS["Forms\n(UI Navigation)"]
-        API["API Actions\n(X++ Logic)"]
-    end
-
-    subgraph Feedback["🔄 Reinforcement Learning"]
-        JOURNAL["Challenge Journal"]
-        UPDATE["Update Module Knowledge"]
-    end
-
-    REQ --> CLASSIFY
-    CLASSIFY --> LOAD
-    LOAD --> KR
-    LOAD --> PC
-    LOAD --> PR
-    LOAD --> FO
-    LOAD --> RL
-    KR --> MOD
-    KR --> DMF
-    LOAD --> EXEC
-    EXEC --> DEPS
-    EXEC --> DATA
-    EXEC --> FORMS
-    EXEC --> API
-    DATA -.->|"challenge"| JOURNAL
-    FORMS -.->|"challenge"| JOURNAL
-    JOURNAL --> UPDATE
-    UPDATE --> MOD
-
-    style User fill:#eff6ff,stroke:#2563eb
-    style Orchestrator fill:#f0fdf4,stroke:#16a34a
-    style Instructions fill:#fefce8,stroke:#ca8a04
-    style Knowledge fill:#faf5ff,stroke:#7c3aed
-    style Environment fill:#fff1f2,stroke:#dc2626
-    style Feedback fill:#ecfdf5,stroke:#059669
-    </pre>
-  </div>
-</section>
-
-<!-- ============ ARCHITECTURE ============ -->
 <section id="architecture">
-  <h2>🏗️ System Architecture</h2>
-  <p>The instruction files form a hierarchy. The master orchestrator loads the right files based on the task mode, and each instruction file references the module knowledge layer below it.</p>
+  <h2>🏗️ Architecture</h2>
+  <p>Four layers, 13 skills. The orchestrator at the top, leaf skills at the bottom; per-module work is fanned out to sub-agents in the middle.</p>
 
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
-graph TD
-    A["🏠 .github/copilot-instructions.md<br/><b>Master Orchestrator</b><br/><i>Auto-loaded by Copilot</i>"] --> B
-    A --> C
-    A --> D
-    A --> E
-    A --> F
-
-    B["📋 knowledge-routing.md<br/><i>Module → File Router</i><br/><i>Always loaded first</i>"]
-    C["📋 project-configuration.md<br/><i>Phase 1: Analysis</i>"]
-    D["📋 project-rollout.md<br/><i>Phase 2: Deploy + Phase 3: Docs</i>"]
-    E["📋 fo-interaction.md<br/><i>MCP Tool Rules</i>"]
-    F["📋 reinforcement-learning.md<br/><i>Learning Loop</i>"]
-
-    B --> G["📚 47 Module .md Files"]
-    B --> H["📦 24 DMF .json Templates"]
-    B --> I["🗺️ dmf_odata_mapping.json"]
-
-    D --> J["☁️ D365 F&O via MCP Server"]
-    E --> J
-
-    F --> K["📓 Challenge Journal"]
-    K --> G
-
-    C --> L["📝 Requirements/ Folder"]
-    C --> M["📄 Documentation/ Outputs"]
-    D --> M
-
-    style A fill:#0078d4,color:#fff,stroke:#005a9e
-    style B fill:#f59e0b,color:#fff,stroke:#d97706
-    style C fill:#2563eb,color:#fff,stroke:#1d4ed8
-    style D fill:#059669,color:#fff,stroke:#047857
-    style E fill:#dc2626,color:#fff,stroke:#b91c1c
-    style F fill:#7c3aed,color:#fff,stroke:#6d28d9
-    style J fill:#fef2f2,stroke:#dc2626
-    style K fill:#ecfdf5,stroke:#059669
-    </pre>
-  </div>
-
-  <h3>Instruction Loading Order</h3>
-  <p>When multiple files need loading, follow this priority sequence:</p>
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
-flowchart LR
-    A["1️⃣ knowledge-routing.md"] --> B["2️⃣ fo-interaction.md"] --> C["3️⃣ Mode Playbook"] --> D["4️⃣ reinforcement-learning.md"] --> E["5️⃣ Module .md files"] --> F["6️⃣ Challenge Journal"]
-    
-    style A fill:#f59e0b,color:#fff
-    style B fill:#dc2626,color:#fff
-    style C fill:#2563eb,color:#fff
-    style D fill:#7c3aed,color:#fff
-    style E fill:#059669,color:#fff
-    style F fill:#475569,color:#fff
-    </pre>
-  </div>
-
-  <table>
-    <thead><tr><th>Mode</th><th>Trigger</th><th>Instruction Files Loaded</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Mode A</strong> — Phase 1</td><td>New project / requirements change</td><td>knowledge-routing + project-configuration + fo-interaction (if exploring)</td></tr>
-      <tr><td><strong>Mode B</strong> — Phase 2</td><td>Phase 1 approval passes</td><td>knowledge-routing + fo-interaction <strong>(mandatory)</strong> + project-rollout + reinforcement-learning</td></tr>
-      <tr><td><strong>Mode C</strong> — Phase 3</td><td>Phase 2 validation complete</td><td>knowledge-routing + project-rollout §4–§5</td></tr>
-      <tr><td><strong>Mode D</strong> — Troubleshooting</td><td>Error / unexpected behavior</td><td>knowledge-routing + reinforcement-learning + fo-interaction (if MCP issue)</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- ============ PHASES ============ -->
-<section id="phases">
-  <h2>📐 The 3-Phase Process</h2>
-  <p>Every project follows a strict three-phase lifecycle. No phase begins until the previous one is complete.</p>
-
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
-flowchart LR
-    subgraph Phase1["Phase 1 — Analysis & Preparation"]
-        direction TB
-        A1["1.1 Analyse Requirements"]
-        A2["1.2 Build Config Files"]
-        A3["1.3 Build Rollout + Test Plan"]
-        A4["1.4 Validate & Fill Gaps"]
-        A5["1.5 Approval Gate ✅"]
-        A1 --> A2 --> A3 --> A4 --> A5
-    end
-
-    subgraph Phase2["Phase 2 — Deployment & Validation"]
-        direction TB
-        B1["2.1 Deploy via MCP Server"]
-        B2["2.2 Validate + E2E Testing"]
-        B3{"Issues?"}
-        B4["Fix Source → Re-deploy → Re-test"]
-        B1 --> B2 --> B3
-        B3 -->|Yes| B4 --> B1
-        B3 -->|No| B5["Exit ✅"]
-    end
-
-    subgraph Phase3["Phase 3 — Documentation"]
-        direction TB
-        C1["3.1 rollout-report.html"]
-        C2["3.2 environment-config.html"]
-        C1 --> C2
-    end
-
-    Phase1 --> Phase2 --> Phase3
-
-    style Phase1 fill:#eff6ff,stroke:#2563eb
-    style Phase2 fill:#f0fdf4,stroke:#059669
-    style Phase3 fill:#fefce8,stroke:#ca8a04
-    </pre>
-  </div>
-
-  <!-- Phase 1 -->
-  <div class="card card-phase1">
-    <h3><span class="tag tag-phase">Phase 1</span> Analysis & Preparation</h3>
-    <p>Think first, act later. No deployment happens until every artefact is complete.</p>
-    <details>
-      <summary>Step 1.1 — Analyse Requirements</summary>
-      <div class="content">
-        <p>Read all documents in <code>Requirements/</code>. Extract every functional requirement. Map each to D365 modules and classify as:</p>
-        <table>
-          <tr><td>✅ Standard Config</td><td>D365 supports out of the box</td></tr>
-          <tr><td>📦 Data Migration</td><td>Requires data loading via DMF</td></tr>
-          <tr><td>⚙️ Parameter Setting</td><td>Module parameter toggle or value</td></tr>
-          <tr><td>🔄 Workflow</td><td>Needs workflow or business rule</td></tr>
-          <tr><td>🔌 Integration</td><td>External connection needed</td></tr>
-          <tr><td>⚠️ Gap</td><td>No standard D365 capability</td></tr>
-          <tr><td>❓ Clarification</td><td>Requirement is ambiguous</td></tr>
-        </table>
-        <p><strong>Output:</strong> Documentation/requirement-profile.md + requirement-matrix.json</p>
-      </div>
-    </details>
-    <details>
-      <summary>Step 1.2 — Build Configuration Files</summary>
-      <div class="content">
-        <p>For each in-scope module (in dependency order), create DMF template JSON, data CSV files, and parameter settings documents. Cross-verify posting profiles, dimension sets, number sequences, and tax setup across modules.</p>
-        <p><strong>Output:</strong> Updated DMF templates, data files, config-{module}.md, parameter-settings.md</p>
-      </div>
-    </details>
-    <details>
-      <summary>Step 1.3 — Build Rollout Plan + E2E Test Plan</summary>
-      <div class="content">
-        <p>Sequence all modules by DMF template number (010→650). For each entity, decide: data entity, form navigation, or API action. Build test scenarios that trace complete business processes from start to finish.</p>
-        <p><strong>Output:</strong> rollout-plan.md, e2e-test-plan.md, test-scenarios.json, test-data-requirements.md</p>
-      </div>
-    </details>
-    <details>
-      <summary>Step 1.4 — Validate & Fill Gaps</summary>
-      <div class="content">
-        <p>Cross-check every requirement against config files, deployment steps, and test scenarios. No requirement may be unaccounted for. Close all ❓ and ⚠️ items.</p>
-        <p><strong>Output:</strong> validation-report.md, gap-resolutions.md</p>
-      </div>
-    </details>
-    <details>
-      <summary>Step 1.5 — Approval Gate</summary>
-      <div class="content">
-        <p>9-point checklist verifying everything is complete: requirement profile, gaps resolved, config files exist, DMF templates sequenced, data files created, rollout plan covers all modules, E2E test plan covers all processes, validation report clean, Challenge Journal reviewed.</p>
-      </div>
-    </details>
-  </div>
-
-  <!-- Phase 2 -->
-  <div class="card card-phase2">
-    <h3><span class="tag tag-phase">Phase 2</span> Deployment & Validation</h3>
-    <p>Push configuration to D365 F&O via the MCP server, then validate with end-to-end testing.</p>
-    <details>
-      <summary>Step 2.1 — Deploy via F&O MCP Server</summary>
-      <div class="content">
-        <p>For each module in sequence (010→650), execute 5 sub-steps:</p>
-        <ol>
-          <li><strong>Pre-deployment check</strong> — verify upstream, read module knowledge, check Challenge Journal</li>
-          <li><strong>Deploy data entities</strong> — find entity type, get metadata, check existing data, create/update via OData</li>
-          <li><strong>Deploy form-based config</strong> — open forms, navigate tabs, set control values, save</li>
-          <li><strong>Execute actions</strong> — activate, publish, generate via API or form buttons</li>
-          <li><strong>Module validation</strong> — query entities, inspect forms, compare against config files</li>
-        </ol>
-      </div>
-    </details>
-    <details>
-      <summary>Step 2.2 — Validate + E2E Testing</summary>
-      <div class="content">
-        <p>Run every test scenario from start to finish. On failure: fix source files → re-deploy → re-test (the fix loop). Continue until all scenarios pass.</p>
-        <p>Verifications include: configuration spot-checks, posting profile verification, number sequence verification, and cross-module link verification.</p>
-      </div>
-    </details>
-  </div>
-
-  <!-- Phase 3 -->
-  <div class="card card-phase3">
-    <h3><span class="tag tag-phase">Phase 3</span> Documentation</h3>
-    <p>Generate two single-file HTML deliverables — narrative and reference.</p>
-    <details>
-      <summary>Step 3.1 — rollout-report.html</summary>
-      <div class="content">
-        <p>Full narrative covering: project overview, requirements analysis, configuration design, deployment execution, testing & validation, challenges & learnings, appendices. Visual elements include timelines, pie charts, pass/fail matrices.</p>
-      </div>
-    </details>
-    <details>
-      <summary>Step 3.2 — environment-config.html</summary>
-      <div class="content">
-        <p>Visual environment reference: org hierarchy, chart of accounts, site/warehouse structure, module reference cards, integration map, security model. Colour-coded by module area with interactive elements.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- ============ MODULES ============ -->
-<section id="modules">
-  <h2>📚 Module Knowledge Base</h2>
-  <p>The workspace contains structured knowledge for <strong>5 core D365 products</strong> spanning <strong>47 sub-modules</strong>. Each sub-module has a dedicated .md knowledge file covering overview, configuration phases, critical rules, and implementation discoveries.</p>
-
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
-mindmap
-  root((D365 F&O))
-    Administration
-      Organization Admin
-      Role-Based Security
-      Lifecycle Services
-      Cloud Deployment
-    Finance
-      General Ledger
-      Cash & Bank
-      Accounts Payable
-      Tax
-      Accounts Receivable
-      Fixed Assets
-      Budgeting
-      Expense Management
-      Cost Accounting
-      Project Accounting
-      Public Sector
-      Compliance & Audit
-    Supply Chain
-      Inventory
-      PIM
-      Procurement
-      Sales & Marketing
-      Quality
-      Warehouse
-      Transportation
-      Production
-      Process Mfg
-      Product Config
-      Cost Management
-      Master Planning
-      Asset Management
-      Engineering Change
-      Landed Cost
-      Rebate Management
-      Service Management
-    Human Resources
-      Personnel
-      Leave & Absence
-      Benefits
-      Performance
-      Learning
-      Employee Self Service
-      US Payroll
-      Organization Mgmt
-    Commerce
-      Multi-Channel
-      Call Center
-      Customer Engagement
-      POS
-      Omnichannel
-    Project Operations
-      Project Accounting
-      Sales & Quoting
-      Planning
-      Delivery
-      Resource Mgmt
-      Analytics
-    </pre>
-  </div>
-
-  <h3>DMF Template Load Order</h3>
-  <p>The numeric prefix on DMF templates encodes the mandatory cross-module import sequence. Higher numbers depend on lower-numbered templates.</p>
-
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
+  <div class="mermaid">
 flowchart TD
-    A010["010 System Setup<br/>Administration"] --> A020["020 GL Shared"]
-    A010 --> A022["022 Workflow"]
-    A020 --> A025["025 General Ledger"]
-    A025 --> A100["100 Bank"]
-    A025 --> A120["120 Accounts Payable"]
-    A025 --> A130["130 Tax"]
-    A025 --> A140["140 Accounts Receivable"]
-    A025 --> A150["150 Fixed Assets"]
-    A025 --> A160["160 Budgeting"]
-    A025 --> A300["300 Inventory"]
-    A025 --> A600["600 Expense"]
-    A025 --> A650["650 Project Accounting"]
-    A300 --> A310["310 Product Info Mgmt"]
-    A300 --> A320["320 Procurement"]
-    A300 --> A330["330 Sales & Marketing"]
-    A300 --> A395["395 Quality"]
-    A300 --> A400["400 Warehouse"]
-    A300 --> A405["405 Transportation"]
-    A300 --> A410["410 Production"]
-    A300 --> A412["412 Process Mfg"]
-    A300 --> A418["418 Product Config"]
-    A300 --> A420["420 Costing"]
-    A300 --> A430["430 Master Planning"]
-    A300 --> A500["500 Retail"]
-    A100 --> A500
-
-    style A010 fill:#475569,color:#fff
-    style A020 fill:#2563eb,color:#fff
-    style A022 fill:#475569,color:#fff
-    style A025 fill:#2563eb,color:#fff
-    style A100 fill:#2563eb,color:#fff
-    style A120 fill:#2563eb,color:#fff
-    style A130 fill:#2563eb,color:#fff
-    style A140 fill:#2563eb,color:#fff
-    style A150 fill:#2563eb,color:#fff
-    style A160 fill:#2563eb,color:#fff
-    style A300 fill:#059669,color:#fff
-    style A310 fill:#059669,color:#fff
-    style A320 fill:#059669,color:#fff
-    style A330 fill:#059669,color:#fff
-    style A395 fill:#059669,color:#fff
-    style A400 fill:#059669,color:#fff
-    style A405 fill:#059669,color:#fff
-    style A410 fill:#059669,color:#fff
-    style A412 fill:#059669,color:#fff
-    style A418 fill:#059669,color:#fff
-    style A420 fill:#059669,color:#fff
-    style A430 fill:#059669,color:#fff
-    style A500 fill:#d97706,color:#fff
-    style A600 fill:#2563eb,color:#fff
-    style A650 fill:#dc2626,color:#fff
-    </pre>
-  </div>
-
-  <h3>10 End-to-End Business Processes</h3>
-  <table>
-    <thead><tr><th>E2E Process</th><th>Primary Modules</th><th>DMF Templates</th></tr></thead>
-    <tbody>
-      <tr><td>Acquire to Dispose</td><td><span class="tag tag-finance">Fixed Assets</span> <span class="tag tag-finance">GL</span></td><td>150, 025</td></tr>
-      <tr><td>Design to Retire</td><td><span class="tag tag-scm">PIM</span> <span class="tag tag-scm">Engineering Change</span></td><td>310</td></tr>
-      <tr><td>Forecast to Plan</td><td><span class="tag tag-scm">Master Planning</span> <span class="tag tag-scm">Inventory</span></td><td>430, 300</td></tr>
-      <tr><td>Inventory to Deliver</td><td><span class="tag tag-scm">Inventory</span> <span class="tag tag-scm">Warehouse</span> <span class="tag tag-scm">Sales</span></td><td>300, 400, 330</td></tr>
-      <tr><td>Order to Cash</td><td><span class="tag tag-scm">Sales</span> <span class="tag tag-finance">AR</span> <span class="tag tag-scm">Inventory</span></td><td>330, 140, 300</td></tr>
-      <tr><td>Plan to Produce</td><td><span class="tag tag-scm">Production</span> <span class="tag tag-scm">Master Planning</span></td><td>410, 430</td></tr>
-      <tr><td>Project to Profit</td><td><span class="tag tag-projops">Project Ops</span> <span class="tag tag-finance">GL</span></td><td>650, 025</td></tr>
-      <tr><td>Service to Deliver</td><td><span class="tag tag-scm">Service Mgmt</span> <span class="tag tag-scm">Inventory</span></td><td>300</td></tr>
-      <tr><td>Source to Pay</td><td><span class="tag tag-scm">Procurement</span> <span class="tag tag-finance">AP</span></td><td>320, 120</td></tr>
-      <tr><td>Record to Report</td><td><span class="tag tag-finance">GL</span> <span class="tag tag-finance">Budgeting</span> <span class="tag tag-finance">Cost Acct</span></td><td>025, 160</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- ============ MCP TOOLS ============ -->
-<section id="mcp-tools">
-  <h2>🔧 MCP Tool Interaction</h2>
-  <p>The agent interacts with D365 F&O through <strong>three types of MCP tools</strong>, following a strict priority hierarchy. Rules are defined in <code>fo-interaction.instructions.md</code>.</p>
-
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
-flowchart LR
-    subgraph Priority["Tool Selection Hierarchy"]
-        direction TB
-        P1["🥇 Priority 1: Data Tools<br/><code>mcp_finance_opera_data_*</code><br/>OData CRUD — fastest, bulk-capable"]
-        P2["🥈 Priority 2: Form Tools<br/><code>mcp_finance_opera_form_*</code><br/>UI navigation — for params/settings"]
-        P3["🥉 Priority 3: API Tools<br/><code>mcp_finance_opera_api_*</code><br/>X++ actions — activate/publish/post"]
-        P1 -->|"Not available"| P2 -->|"Action needed"| P3
+    U([User Request]) --> L0
+    subgraph L0["🟪 Layer 0 — Top-Level"]
+      O1[phase-orchestrator]
     end
-
-    style P1 fill:#059669,color:#fff
-    style P2 fill:#2563eb,color:#fff
-    style P3 fill:#d97706,color:#fff
-    </pre>
+    L0 --> L1
+    subgraph L1["🟦 Layer 1 — Phase Skills"]
+      P1[d365-requirements-analysis]
+      P2[d365-config-builder]
+      P3[d365-deployment]
+      P4[d365-validation-testing]
+      P5[d365-documentation]
+    end
+    L1 --> L2
+    subgraph L2["🟨 Layer 2 — Fan-Out"]
+      F1[module-fanout]
+    end
+    L2 --> L3
+    subgraph L3["🟩 Layer 3 — Workers (Sub-Agents)"]
+      W1[module-config-worker]
+      W2[module-deployment-worker]
+      W3[module-validation-worker]
+    end
+    L3 --> L4
+    subgraph L4["⬜ Layer 4 — Leaf Skills"]
+      X1[d365-knowledge-routing]
+      X2[fo-mcp-server]
+      X3[reinforcement-learning]
+    end
+    L4 --> ENV[(D365 F&amp;O Environment via MCP)]
   </div>
 
-  <div class="card-grid">
-    <div class="card card-sm">
-      <h4>Data Tools — Key Rules</h4>
-      <ul>
-        <li>Get entity type + metadata <strong>before</strong> any CRUD</li>
-        <li>Entity names must be <strong>plural</strong> (SalesOrderHeaders)</li>
-        <li>V2+ entities: plural <strong>before</strong> V (HeadersV2)</li>
-        <li>No deep insert — parent then child</li>
-        <li>Enums: <code>$filter=X has Namespace.Pattern'Value'</code></li>
-      </ul>
-    </div>
-    <div class="card card-sm">
-      <h4>Form Tools — Key Rules</h4>
-      <ul>
-        <li>Use internal <strong>names</strong>, never display labels</li>
-        <li>Menu items, controls, tabs, columns — all by name</li>
-        <li>Never ask for menu item types</li>
-        <li>Max 25 rows per form query</li>
-        <li>Flow: find → open → click New → set values → save</li>
-      </ul>
-    </div>
-    <div class="card card-sm">
-      <h4>Reasoning Protocol</h4>
-      <ul>
-        <li><strong>Before</strong> tool call: plan + check knowledge + check journal</li>
-        <li><strong>After</strong> tool call: reflect + check objective + next step</li>
-        <li>Never stop early, never substitute on failure</li>
-        <li>Never rely on general knowledge — always query live system</li>
-      </ul>
-    </div>
+  <div class="callout">
+    <strong>Why aren't modules promoted to skills?</strong> Skills are <em>capabilities</em>; modules are <em>reference knowledge</em>. Promoting all 47 modules would add 47 always-loaded <code>description</code> blocks to every turn — pure context bloat. Instead, <code>d365-knowledge-routing</code> is the lookup index, and sub-agents load each module's knowledge only when actually needed.
   </div>
 </section>
 
-<!-- ============ RL LOOP ============ -->
-<section id="rl-loop">
-  <h2>🔄 Reinforcement Learning Loop</h2>
-  <p>The workspace implements a <strong>self-improving feedback loop</strong>. Every challenge encountered during configuration or deployment is captured, analyzed, and routed back into the knowledge base — so the same mistake is never made twice.</p>
-
-  <div class="mermaid-wrap">
-    <pre class="mermaid">
-flowchart LR
-    A["🔍 DETECT\nProblem"] --> B["📓 JOURNAL\nLog Entry"]
-    B --> C["🔬 ANALYZE\nPattern?"]
-    C --> D["🗂️ ROUTE\nWhere to store?"]
-    D --> E["📝 UPDATE\nKnowledge Store"]
-    E --> F["✅ VERIFY\nChange works"]
-    F -.->|"Future ops benefit"| A
-
-    style A fill:#dc2626,color:#fff
-    style B fill:#d97706,color:#fff
-    style C fill:#7c3aed,color:#fff
-    style D fill:#2563eb,color:#fff
-    style E fill:#059669,color:#fff
-    style F fill:#16a34a,color:#fff
-    </pre>
-  </div>
-
-  <h3>Where Knowledge Gets Routed</h3>
+<section id="skills">
+  <h2>📚 The 13 skills</h2>
   <table>
-    <thead><tr><th>Trigger</th><th>Destination</th><th>Section Updated</th></tr></thead>
+    <thead><tr><th>Layer</th><th>Skill</th><th>Purpose</th></tr></thead>
     <tbody>
-      <tr><td>New error encountered</td><td>ChallengeJournal/challenge_journal.json</td><td>New structured JSON entry</td></tr>
-      <tr><td>Config dependency discovered</td><td>Module .md file</td><td>Critical Configuration Rules</td></tr>
-      <tr><td>Workaround found</td><td>Module .md file</td><td>Implementation Discoveries</td></tr>
-      <tr><td>Entity sequence issue</td><td>DMF template .json</td><td>EntitySequence reorder</td></tr>
-      <tr><td>Process gap identified</td><td>Module .md file</td><td>Business Process Reference</td></tr>
-      <tr><td>Cross-module dependency</td><td>knowledge-routing.instructions.md</td><td>Dependency Rules</td></tr>
+      <tr><td><span class="pill pill-l0">L0</span></td><td><code>phase-orchestrator</code></td><td>Classify request, check prerequisite gates, dispatch to the right phase skill</td></tr>
+      <tr><td><span class="pill pill-l2">L2</span></td><td><code>module-fanout</code></td><td>Pattern + contract for spawning per-module sub-agents (parallel within DMF wave, sequential across)</td></tr>
+      <tr><td><span class="pill pill-l1">L1</span></td><td><code>d365-requirements-analysis</code></td><td>Phase 1.1 — ingest <code>Requirements/</code>, classify, build profile + matrix</td></tr>
+      <tr><td><span class="pill pill-l1">L1</span></td><td><code>d365-config-builder</code></td><td>Phase 1.2–1.5 — config files, rollout plan, test plan, approval gate</td></tr>
+      <tr><td><span class="pill pill-l1">L1</span></td><td><code>d365-deployment</code></td><td>Phase 2.1 — deploy to F&amp;O via MCP server (data → form → action)</td></tr>
+      <tr><td><span class="pill pill-l1">L1</span></td><td><code>d365-validation-testing</code></td><td>Phase 2.2 — E2E business-process testing + fix loop</td></tr>
+      <tr><td><span class="pill pill-l1">L1</span></td><td><code>d365-documentation</code></td><td>Phase 3 — single-file HTML deliverables</td></tr>
+      <tr><td><span class="pill pill-l3">L3</span></td><td><code>module-config-worker</code></td><td>Sub-agent: build all config artefacts for ONE module</td></tr>
+      <tr><td><span class="pill pill-l3">L3</span></td><td><code>module-deployment-worker</code></td><td>Sub-agent: deploy ONE module to F&amp;O via MCP</td></tr>
+      <tr><td><span class="pill pill-l3">L3</span></td><td><code>module-validation-worker</code></td><td>Sub-agent: run scenario slice for ONE module's process</td></tr>
+      <tr><td><span class="pill pill-l4">L4</span></td><td><code>d365-knowledge-routing</code></td><td>Module → file path index, DMF load order, keyword router, process matrix</td></tr>
+      <tr><td><span class="pill pill-l4">L4</span> <span class="pill pill-new">MCP</span></td><td><code>fo-mcp-server</code></td><td>Dynamics 365 ERP MCP server interaction — data/form/action tools, naming, prerequisites</td></tr>
+      <tr><td><span class="pill pill-l4">L4</span></td><td><code>reinforcement-learning</code></td><td>Challenge journal + knowledge feedback loop</td></tr>
     </tbody>
   </table>
-
-  <div class="tip">Before any risky operation, the agent checks the Challenge Journal first: <em>"Has this module + operation failed before?"</em> If yes, preventive measures from the journal are applied proactively.</div>
 </section>
 
-<!-- ============ WORKSPACE ============ -->
-<section id="workspace">
-  <h2>🗂️ Workspace Map</h2>
+<section id="phases">
+  <h2>📐 The 3-phase lifecycle</h2>
+  <p>Every project follows the same three phases. No phase begins until the previous one has passed its gate.</p>
 
-  <h3>Knowledge Base (pre-built reference data)</h3>
-  <details>
-    <summary>Business Process, Media, Modules, SourceFiles</summary>
-    <div class="content">
-      <div class="file-tree">
-<span class="dir">Business Process/</span>               <span class="comment">← 5,767-item APQC process catalogue</span>
-├── <span class="file">ProcessCatalogue.json</span>            <span class="comment">← Hierarchical process tree</span>
-├── <span class="file">ProcessCatalogue_flat.json</span>       <span class="comment">← Flat indexed version</span>
-└── <span class="file">ProcessCatalogue_MindMap.json</span>    <span class="comment">← Visualization tree</span>
+  <div class="mermaid">
+flowchart LR
+    A1([Requirements/]) --> P11[Phase 1.1<br/>Requirements Analysis]
+    P11 --> P12[Phase 1.2<br/>Config Building<br/><i>fan-out</i>]
+    P12 --> P13[Phase 1.3<br/>Rollout + Test Plan]
+    P13 --> P14[Phase 1.4<br/>Validate + Gaps]
+    P14 --> G1{Approval<br/>Gate}
+    G1 --> P21[Phase 2.1<br/>Deployment<br/><i>fan-out</i>]
+    P21 --> P22[Phase 2.2<br/>E2E Testing<br/><i>fan-out</i>]
+    P22 --> P3[Phase 3<br/>HTML Docs]
+    P3 --> A2([Final Deliverables])
+  </div>
 
-<span class="dir">Media/</span>                              <span class="comment">← Branding &amp; visual assets</span>
-└── <span class="file">FinanceOperations_scalable.svg</span>   <span class="comment">← Product logo</span>
-
-<span class="dir">Modules/</span>                            <span class="comment">← 47 module knowledge articles + 24 DMF templates</span>
-├── <span class="file">D365_Finance_Operations_Modules_Overview.md</span>
-├── <span class="file">D365_Quick_Reference.md</span>
-├── <span class="file">dmf_odata_mapping.json</span>           <span class="comment">← DMF ↔ OData entity map</span>
-├── <span class="dir">Administration/</span>          <span class="comment">← 4 sub-modules</span>
-├── <span class="dir">Dynamics 365 Finance/</span>    <span class="comment">← 12 sub-modules</span>
-├── <span class="dir">Dynamics 365 Supply Chain Management/</span> <span class="comment">← 17 sub-modules</span>
-├── <span class="dir">Dynamics 365 Human Resources/</span>     <span class="comment">← 8 sub-modules</span>
-├── <span class="dir">Dynamics 365 Commerce/</span>            <span class="comment">← 5 sub-modules</span>
-└── <span class="dir">Dynamics 365 Project Operations/</span>  <span class="comment">← 6 sub-modules</span>
-
-<span class="dir">SourceFiles/</span>                        <span class="comment">← Raw reference data</span>
-├── <span class="file">odata.xml</span>                        <span class="comment">← Raw OData metadata</span>
-└── <span class="file">Prompts.md</span>                       <span class="comment">← Visualization prompts</span>
-      </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>Phase 1 — Analysis &amp; Preparation</h3>
+      <p style="font-size:.9rem;color:var(--muted)">Think first, act later. No deployment until everything is documented.</p>
+      <ul style="font-size:.92rem">
+        <li>1.1 — Requirement profile + matrix</li>
+        <li>1.2 — DMF templates + CSVs + parameter settings <em>(per-module fan-out)</em></li>
+        <li>1.3 — Rollout plan + E2E test plan</li>
+        <li>1.4 — Validation report + gap resolutions</li>
+        <li>1.5 — 9-point approval gate</li>
+      </ul>
     </div>
-  </details>
-
-  <h3>Working Folders (project-specific files)</h3>
-  <div class="file-tree">
-<span class="dir">ProcessBaseline/</span>
-├── <span class="dir">.github/</span>
-│   └── <span class="highlight">copilot-instructions.md</span>          <span class="comment">← Master orchestrator (auto-loaded)</span>
-├── <span class="dir">.instructions/</span>
-│   ├── <span class="file">project-configuration.instructions.md</span>  <span class="comment">← Phase 1 playbook</span>
-│   ├── <span class="file">project-rollout.instructions.md</span>        <span class="comment">← Phase 2 + Phase 3 playbook</span>
-│   ├── <span class="file">fo-interaction.instructions.md</span>         <span class="comment">← MCP tool rules (all phases)</span>
-│   ├── <span class="file">knowledge-routing.instructions.md</span>      <span class="comment">← Module → file router</span>
-│   └── <span class="file">reinforcement-learning.instructions.md</span> <span class="comment">← Learning loop mechanics</span>
-├── <span class="dir">ChallengeJournal/</span>
-│   ├── <span class="file">challenge_journal.json</span>           <span class="comment">← Running issue + resolution log</span>
-│   └── <span class="file">JOURNAL_SCHEMA.md</span>               <span class="comment">← Schema documentation</span>
-├── <span class="dir">Requirements/</span>                        <span class="comment">← Drop your requirement docs here</span>
-├── <span class="dir">Documentation/</span>
-│   ├── <span class="file">requirement-profile.md</span>           <span class="comment">← Phase 1.1 analysis</span>
-│   ├── <span class="file">requirement-matrix.json</span>          <span class="comment">← Structured requirements</span>
-│   ├── <span class="file">config-{module}.md</span>               <span class="comment">← Per-module config summaries</span>
-│   ├── <span class="file">parameter-settings.md</span>            <span class="comment">← Form-based settings</span>
-│   ├── <span class="file">rollout-plan.md</span>                  <span class="comment">← Deployment sequence</span>
-│   ├── <span class="file">e2e-test-plan.md</span>                 <span class="comment">← End-to-end test plan</span>
-│   ├── <span class="file">test-scenarios.json</span>              <span class="comment">← Structured test cases</span>
-│   ├── <span class="file">validation-report.md</span>             <span class="comment">← Cross-check results</span>
-│   ├── <span class="file">gap-resolutions.md</span>               <span class="comment">← Gap closure log</span>
-│   ├── <span class="file">e2e-test-results.md</span>              <span class="comment">← Phase 2.2 test results</span>
-│   └── <span class="dir">html/</span>
-│       ├── <span class="file">rollout-report.html</span>          <span class="comment">← Phase 3 narrative</span>
-│       ├── <span class="file">environment-config.html</span>      <span class="comment">← Phase 3 visual reference</span>
-│       └── <span class="highlight">workspace-guide.html</span>        <span class="comment">← This file!</span>
+    <div class="card">
+      <h3>Phase 2 — Deployment &amp; Validation</h3>
+      <p style="font-size:.9rem;color:var(--muted)">Push via MCP. Test end-to-end. Fix-loop on failures.</p>
+      <ul style="font-size:.92rem">
+        <li>2.1 — Deployment in DMF dependency waves <em>(per-module fan-out)</em></li>
+        <li>2.2 — E2E scenarios start-to-finish <em>(per-scenario-slice fan-out)</em></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Phase 3 — Documentation</h3>
+      <p style="font-size:.9rem;color:var(--muted)">Two single-file HTML deliverables.</p>
+      <ul style="font-size:.92rem">
+        <li>3.1 — <code>rollout-report.html</code> (project narrative)</li>
+        <li>3.2 — <code>environment-config.html</code> (visual reference)</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- ============ GETTING STARTED ============ -->
-<section id="getting-started">
-  <h2>🚀 Getting Started</h2>
+<section id="mcp">
+  <h2>🔧 The Dynamics 365 ERP MCP Server</h2>
+  <p>The <code>fo-mcp-server</code> skill is built directly from the <a href="https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp" target="_blank">official Microsoft Learn article</a>. It teaches the agent the new <strong>dynamic</strong> Dynamics 365 ERP MCP server (replacing the retiring legacy 13-tool static server).</p>
 
-  <ol class="steps">
-    <li>
-      <strong>Open the workspace in VS Code</strong><br>
-      Open the <code>ProcessBaseline</code> folder with GitHub Copilot enabled. The master orchestrator (<code>.github/copilot-instructions.md</code>) loads automatically — no manual setup needed.
-    </li>
-    <li>
-      <strong>Drop your requirement documents into <code>Requirements/</code></strong><br>
-      Place Word docs, PDFs, Excel files, or any text-based requirements into the <code>Requirements/</code> folder. The agent will read all files in this folder during Phase 1.1 analysis.
-    </li>
-    <li>
-      <strong>Ask Copilot to start Phase 1</strong><br>
-      Tell the agent: <em>"Analyse the requirements in the Requirements folder and build the requirement profile."</em> The agent will classify, load the right module knowledge, and begin mapping requirements to D365 capabilities.
-    </li>
-    <li>
-      <strong>Review and iterate through Phase 1</strong><br>
-      The agent will produce configuration files, a rollout plan, and an E2E test plan. Review each artefact. Ask for changes. All work is saved to the <code>Documentation/</code> folder continuously.
-    </li>
-    <li>
-      <strong>Approve and deploy</strong><br>
-      Once the Approval Gate passes, instruct: <em>"Deploy the configuration following the rollout plan."</em> The agent will push everything to D365 F&O via MCP tools, validate, and run E2E tests.
-    </li>
-    <li>
-      <strong>Generate documentation</strong><br>
-      After deployment validation: <em>"Generate the rollout report and environment configuration HTML."</em> Two single-file HTML deliverables are produced in <code>Documentation/html/</code>.
-    </li>
+  <div class="grid grid-3" style="margin-top:1rem">
+    <div class="card">
+      <h3>🥇 Data tools</h3>
+      <p style="font-size:.9rem;color:var(--muted)">Priority 1 — CRUD via OData / SQL</p>
+      <ul style="font-size:.88rem">
+        <li><code>data_find_entity_type</code></li>
+        <li><code>data_get_entity_metadata</code></li>
+        <li><code>data_create_entities</code></li>
+        <li><code>data_update_entities</code></li>
+        <li><code>data_delete_entities</code></li>
+        <li><code>data_find_entities</code></li>
+        <li><code>data_find_entities_sql</code> <span class="pill pill-new">10.0.48+</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🥈 Form tools</h3>
+      <p style="font-size:.9rem;color:var(--muted)">Priority 2 — server-side form navigation</p>
+      <ul style="font-size:.88rem">
+        <li><code>form_find_menu_item</code></li>
+        <li><code>form_open_menu_item</code></li>
+        <li><code>form_set_control_values</code></li>
+        <li><code>form_open_lookup</code></li>
+        <li><code>form_click_control</code></li>
+        <li><code>form_filter_form / _grid</code></li>
+        <li><code>form_select_grid_row</code></li>
+        <li><code>form_save_form</code> + 4 more</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🥉 Action tools</h3>
+      <p style="font-size:.9rem;color:var(--muted)">Priority 3 — X++ <code>ICustomAPI</code> classes</p>
+      <ul style="font-size:.88rem">
+        <li><code>api_find_actions</code></li>
+        <li><code>api_invoke_action</code></li>
+      </ul>
+      <p style="font-size:.85rem;margin-top:.6rem"><strong>Use for:</strong> Activate, Publish, Generate, Post, custom business logic.</p>
+    </div>
+  </div>
+
+  <details style="margin-top:1rem">
+    <summary>Prerequisites</summary>
+    <ul style="margin-top:.6rem">
+      <li>F&amp;O version ≥ <strong>10.0.47</strong></li>
+      <li>Feature flag: <strong>"Dynamics 365 ERP Model Context Protocol server"</strong> enabled</li>
+      <li>Environment tier: <strong>Tier 2 or above</strong>, or a Unified Developer Environment (CHE not supported)</li>
+      <li>Agent platform added to <strong>Allowed MCP Clients</strong> form (defaults: Microsoft Copilot Studio, VS Code)</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Cardinal MCP rules</summary>
+    <ul style="margin-top:.6rem">
+      <li><strong>Pre-flight every data op</strong>: <code>data_find_entity_type</code> → <code>data_get_entity_metadata</code></li>
+      <li><strong>Plural entity sets</strong>: <code>SalesOrderHeaders</code>, V2+ uses <code>HeadersV2</code> not <code>HeaderV2s</code></li>
+      <li><strong>No deep insert</strong> — create parent, then children, in separate calls</li>
+      <li><strong>Enum syntax</strong>: <code>$filter=Style has Namespace.Pattern'Yellow'</code></li>
+      <li><strong>Forms use internal names</strong> — never display labels</li>
+      <li><strong>25-row response cap</strong> — assume truncated, narrow the filter</li>
+    </ul>
+  </details>
+</section>
+
+<section id="modules">
+  <h2>📦 Module knowledge base</h2>
+  <p>47 sub-modules across 5 D365 products plus Administration. Each has a <code>.md</code> knowledge file in <code>Modules/</code>. The <code>d365-knowledge-routing</code> skill is the lookup index; sub-agents load the per-module file in their own context.</p>
+
+  <div class="grid grid-3">
+    <div class="stat fin"><div class="num">12</div><div class="lbl">Finance</div></div>
+    <div class="stat scm"><div class="num">17</div><div class="lbl">Supply Chain Management</div></div>
+    <div class="stat hr"><div class="num">8</div><div class="lbl">Human Resources</div></div>
+    <div class="stat com"><div class="num">5</div><div class="lbl">Commerce</div></div>
+    <div class="stat po"><div class="num">6</div><div class="lbl">Project Operations</div></div>
+    <div class="stat adm"><div class="num">4</div><div class="lbl">Administration</div></div>
+  </div>
+
+  <h3 style="margin-top:1.5rem">DMF template load order</h3>
+  <p>Numeric prefixes encode the cross-module dependency chain. Always respect 010 → 650.</p>
+  <pre><code>010 System Setup            (Admin)
+ ├─ 020 GL Shared            (Finance)
+ │   └─ 025 General Ledger
+ │       ├─ 100 Bank │ 120 AP │ 130 Tax │ 140 AR │ 150 Fixed Assets │ 160 Budgeting
+ │       ├─ 600 Expense │ 650 Project Accounting
+ │       └─ 300 Inventory     (SCM)
+ │           ├─ 310 PIM │ 320 Procurement │ 330 Sales │ 395 Quality
+ │           ├─ 400 Warehouse │ 405 Transportation │ 410 Production │ 412 Process Mfg
+ │           ├─ 418 Product Config │ 420 Costing │ 430 Master Planning
+ │           └─ 500 Retail   (Commerce)
+ └─ 022 Workflow              (Admin)</code></pre>
+
+  <h3>End-to-end business processes</h3>
+  <table>
+    <thead><tr><th>Process</th><th>Primary modules</th><th>DMF templates</th></tr></thead>
+    <tbody>
+      <tr><td>Source-to-Pay</td><td>Procurement, AP</td><td>320, 120</td></tr>
+      <tr><td>Order-to-Cash</td><td>Sales, AR, Inventory</td><td>330, 140, 300</td></tr>
+      <tr><td>Record-to-Report</td><td>GL, Budgeting, Cost Acct</td><td>025, 160</td></tr>
+      <tr><td>Plan-to-Produce</td><td>Production, Master Planning</td><td>410, 430</td></tr>
+      <tr><td>Inventory-to-Deliver</td><td>Inventory, Warehouse, Sales</td><td>300, 400, 330</td></tr>
+      <tr><td>Project-to-Profit</td><td>Project Ops, GL</td><td>650, 025</td></tr>
+      <tr><td>Forecast-to-Plan</td><td>Master Planning, Inventory</td><td>430, 300</td></tr>
+      <tr><td>Acquire-to-Dispose</td><td>Fixed Assets, GL</td><td>150, 025</td></tr>
+      <tr><td>Service-to-Deliver</td><td>Service Mgmt, Inventory</td><td>300</td></tr>
+      <tr><td>Design-to-Retire</td><td>PIM, Engineering Change</td><td>310</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="workspace">
+  <h2>🗂️ Workspace layout</h2>
+<pre><code>ProcessBaseline/
+├── .github/
+│   └── copilot-instructions.md     ← thin orchestrator (skills index + cardinal rules)
+├── skills/                         ← 13 skills, 4 layers
+│   ├── phase-orchestrator/         L0
+│   ├── module-fanout/              L2
+│   ├── d365-requirements-analysis/ ┐
+│   ├── d365-config-builder/        │
+│   ├── d365-deployment/            │ L1 — phase skills
+│   ├── d365-validation-testing/    │
+│   ├── d365-documentation/         ┘
+│   ├── module-config-worker/       ┐
+│   ├── module-deployment-worker/   │ L3 — sub-agent workers
+│   ├── module-validation-worker/   ┘
+│   ├── d365-knowledge-routing/     ┐
+│   ├── fo-mcp-server/              │ L4 — leaf skills
+│   └── reinforcement-learning/     ┘
+├── Modules/                        ← 47 module knowledge files + 24 DMF templates
+├── Business Process/               ← 5,767-item APQC process catalogue
+├── ChallengeJournal/               ← challenge_journal.json + JOURNAL_SCHEMA.md
+├── Requirements/                   ← drop input requirement docs here
+├── Documentation/                  ← all project output artefacts
+├── Media/                          ← branding assets
+├── SourceFiles/                    ← raw OData metadata + prompt templates
+├── README.md
+└── index.html                      ← this guide</code></pre>
+</section>
+
+<section id="start">
+  <h2>🚀 Getting started</h2>
+  <ol>
+    <li>Open the workspace in any Skills-aware AI host (Claude, VS Code Copilot Chat with Skills, etc.).</li>
+    <li>Drop your requirement documents into <code>Requirements/</code>.</li>
+    <li>Ask the agent: <em>"Analyse the requirements"</em> — <code>phase-orchestrator</code> classifies, then <code>d365-requirements-analysis</code> activates.</li>
+    <li>Review <code>Documentation/requirement-profile.md</code>, iterate.</li>
+    <li><em>"Build the configuration files"</em> — <code>d365-config-builder</code> activates and fans out per-module sub-agents.</li>
+    <li>Pass the 9-point approval gate, then <em>"Deploy"</em> — <code>d365-deployment</code> + <code>fo-mcp-server</code> activate.</li>
+    <li><em>"Run end-to-end tests"</em> — <code>d365-validation-testing</code> activates with the fix-loop.</li>
+    <li><em>"Generate the rollout HTML"</em> — <code>d365-documentation</code> produces the final deliverables.</li>
   </ol>
 
-  <div class="card card-prereqs">
-    <h4>Prerequisites</h4>
-    <table>
-      <tr><td><strong>VS Code</strong></td><td>With GitHub Copilot extension enabled</td></tr>
-      <tr><td><strong>D365 F&O MCP Server</strong></td><td>Configured in <code>.vscode/mcp.json</code> for D365 environment access</td></tr>
-      <tr><td><strong>Requirement Documents</strong></td><td>Placed in the <code>Requirements/</code> folder</td></tr>
-      <tr><td><strong>Environment Access</strong></td><td>Valid credentials for the target D365 F&O environment</td></tr>
-    </table>
-  </div>
-
-  <div class="card card-principles">
-    <h4>Key Principles to Remember</h4>
-    <div class="card-grid">
-      <div class="benefit"><strong>Source files are authoritative</strong> — if the environment drifts, fix the source first, then re-deploy.</div>
-      <div class="benefit green"><strong>Document continuously</strong> — write as you go in every phase, never batch documentation.</div>
-      <div class="benefit amber"><strong>Follow processes start to finish</strong> — E2E testing must trace complete business processes, never fragments.</div>
-      <div class="benefit"><strong>Consult module knowledge first</strong> — when something doesn't work, read the module .md file before trying fixes.</div>
-      <div class="benefit green"><strong>Feed back every discovery</strong> — every challenge, workaround, and rule goes back into the knowledge base.</div>
-      <div class="benefit amber"><strong>Respect dependency order</strong> — always configure upstream modules before downstream consumers.</div>
-    </div>
+  <div class="callout ok"><strong>Cardinal rules</strong> (apply across all skills):
+    <ul style="margin-top:.4rem">
+      <li>Source files are authoritative — fix the source first, then re-deploy.</li>
+      <li>Document continuously. Never batch.</li>
+      <li>Follow processes start-to-finish. No fragment testing.</li>
+      <li>Consult module knowledge first when something is unexpected.</li>
+      <li>Feed back every discovery — every challenge becomes a future shortcut.</li>
+      <li>Respect DMF dependency order (010 → 650).</li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<div class="footer">
-  <p>Dynamics 365 Finance &amp; Operations — Workspace Guide &middot; Generated February 20, 2026 &middot; Version 1.0</p>
-  <p>Built from 6 instruction files, 47 module knowledge articles, 24 DMF templates, and 5,767 business process items.</p>
-</div>
+</main>
 
-</div><!-- /container -->
+<footer>
+  <p>Dynamics 365 Finance &amp; Operations — Implementation Accelerator · Version 2.1 (Skills + Sub-Agents)</p>
+  <p style="margin-top:.3rem">MCP guidance from the <a href="https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp">official Microsoft Learn article</a>.</p>
+</footer>
 
 <script>
-  // Initialize Mermaid
-  mermaid.initialize({ 
-    startOnLoad: true, 
-    theme: 'neutral',
-    flowchart: { curve: 'basis', padding: 15 },
-    mindmap: { padding: 20 }
-  });
+  mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
 
-  // Sticky nav active state
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  });
+  // Active tab highlight on scroll
+  const links = document.querySelectorAll('nav.tabs a');
+  const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
+  function syncNav() {
+    const y = window.scrollY + 120;
+    let activeIdx = 0;
+    sections.forEach((s, i) => { if (s && s.offsetTop <= y) activeIdx = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === activeIdx));
+  }
+  window.addEventListener('scroll', syncNav, { passive: true });
+  syncNav();
 </script>
+
 </body>
 </html>
