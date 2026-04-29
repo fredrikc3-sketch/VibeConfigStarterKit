@@ -57,6 +57,7 @@ Layer 4 — leaf skills                  fo-mcp-server, reinforcement-learning, 
 ### Leaf skills (Layer 4 — load on demand)
 | Skill | Use when |
 |---|---|
+| [`source-document-validator`](../skills/source-document-validator/SKILL.md) | **Hard gate at start of Phase 1.1.** Verifies every file in `Requirements/` is readable + extractable. Blocks the pipeline on encrypted / corrupt / OCR-required documents until remediated. |
 | [`d365-knowledge-routing`](../skills/d365-knowledge-routing/SKILL.md) | Look up the file path for any module, DMF template, or process. |
 | [`fo-mcp-server`](../skills/fo-mcp-server/SKILL.md) | **Always before any `data_*` / `form_*` / `api_*` MCP tool call.** |
 | [`reinforcement-learning`](../skills/reinforcement-learning/SKILL.md) | Before risky operations and after any failure. Challenge Journal feedback loop. |

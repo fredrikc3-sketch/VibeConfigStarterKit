@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/source-document-validation.schema.json",
+  "title": "Source Document Validation Report — Documentation/source-document-validation.json",
+  "description": "Output of the source-document-validator skill. Records the extractability, integrity, and completeness of every file in Requirements/ before any phase consumes it. Phase 1.1 MUST NOT proceed if any document has a finding with severity = 'blocker'.",
+  "type": "object",
+  "required": ["_metadata", "documents", "summary"],
+  "properties": {
+    "_metadata": {
+      "type": "object",
+      "required": ["schema_version", "generatedAt", "validatorVersion"],
+      "properties": {
+        "schema_version":   { "const": "1.0" },
+        "generatedAt":      { "type": "string", "format": "date-time" },
+        "validatorVersion": { "type": "string" },
+        "projectId":        { "type": ["string", "null"] },
+        "sourceFolder":     { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["totalDocuments", "passed", "warnings", "blockers", "gateStatus"],
+      "properties": {
+        "totalDocuments": { "type": "integer", "minimum": 0 },
+        "passed":         { "type": "integer", "minimum": 0 },
+        "warnings":       { "type": "integer", "minimum": 0 },
+        "blockers":       { "type": "integer", "minimum": 0 },
+        "gateStatus":     { "enum": ["open", "blocked"] },
+        "blockingDocuments": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/documentReport" }
+    }
+  },
+  "$defs": {
+    "documentReport": {
+      "type": "object",
+      "required": ["path", "sha256", "size", "format", "status", "checks"],
+      "properties": {
+        "path":          { "type": "string" },
+        "sha256":        { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "size":          { "type": "integer", "minimum": 0 },
+        "format":        { "enum": ["pdf", "docx", "doc", "xlsx", "xls", "txt", "md", "csv", "rtf", "pptx", "image", "html", "other", "unknown"] },
+        "status":        { "enum": ["ok", "warning", "blocker"] },
+        "extractedTextChars": { "type": "integer", "minimum": 0 },
+        "extractedTextSample": { "type": "string", "maxLength": 1024 },
+        "checks":        { "$ref": "#/$defs/checkResults" },
+        "findings":      { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+        "remediation":   { "type": ["string", "null"] }
+      }
+    },
+    "checkResults": {
+      "type": "object",
+      "required": ["readable", "extractable", "complete", "integrity", "sensitivity"],
+      "properties": {
+        "readable":    { "$ref": "#/$defs/checkOutcome" },
+        "extractable": { "$ref": "#/$defs/checkOutcome" },
+        "complete":    { "$ref": "#/$defs/checkOutcome" },
+        "integrity":   { "$ref": "#/$defs/checkOutcome" },
+        "sensitivity": { "$ref": "#/$defs/checkOutcome" }
+      }
+    },
+    "checkOutcome": {
+      "type": "object",
+      "required": ["result"],
+      "properties": {
+        "result": { "enum": ["pass", "warn", "fail", "skipped"] },
+        "detail": { "type": ["string", "null"] }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code":     { "enum": [
+          "ENCRYPTED",
+          "PASSWORD_PROTECTED",
+          "CORRUPT",
+          "EMPTY",
+          "TRUNCATED",
+          "SCANNED_IMAGE_PDF",
+          "OCR_REQUIRED",
+          "UNSUPPORTED_FORMAT",
+          "MACRO_ENABLED",
+          "EXTERNAL_REFERENCE",
+          "SUSPICIOUSLY_SHORT",
+          "BINARY_NOT_TEXT",
+          "PII_DETECTED",
+          "SECRET_DETECTED",
+          "READ_ERROR",
+          "UNKNOWN_ENCODING",
+          "OTHER"
+        ] },
+        "severity": { "enum": ["info", "warning", "blocker"] },
+        "message":  { "type": "string" },
+        "evidence": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

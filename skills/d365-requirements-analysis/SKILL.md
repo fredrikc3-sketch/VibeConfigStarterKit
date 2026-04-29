@@ -13,6 +13,14 @@ description: Use at the start of a new D365 F&O project, or when requirements ch
 - `Modules/dmf_odata_mapping.json` (entity mapping).
 - `Business Process/ProcessCatalogue.json` (5,767-item APQC tree).
 
+## Pre-flight gate (mandatory) — `source-document-validator`
+
+> Before reading **any** requirement, invoke the `source-document-validator` skill on the entire `Requirements/` folder. That skill writes `Documentation/source-document-validation.json` and `Documentation/source-document-validation.md`.
+>
+> If `summary.gateStatus == "blocked"` (any document failed extraction — encrypted PDF, password-protected docx, scanned image, corrupt file, etc.), **STOP**. Surface the blocker list with remediation tips and ask the user to re-supply readable versions. Do **not** proceed to Step 1 (Ingest) until the gate is `open`.
+>
+> This is non-negotiable. Trust in the requirement matrix depends entirely on having read the source documents fully.
+
 ## Outputs
 | Artefact | Location | Format |
 |---|---|---|
@@ -25,7 +33,7 @@ Schema reference: [`requirement-matrix.schema.json`](./requirement-matrix.schema
 ## Procedure
 
 ### 1. Ingest
-Read **every** file in `Requirements/`. Extract every functional requirement, constraint, and assumption. Identify the business processes being described.
+Read **every** file in `Requirements/` whose entry in `source-document-validation.json` shows `status` ∈ {`ok`, `warning`}. Skip any document where the user explicitly waived a blocker, but include the waiver note in the requirement profile so reviewers see the gap. Extract every functional requirement, constraint, and assumption. Identify the business processes being described.
 
 ### 2. Map to D365 capabilities
 For each requirement:
