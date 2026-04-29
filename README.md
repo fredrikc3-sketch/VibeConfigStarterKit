@@ -101,13 +101,16 @@ This keeps the orchestrator lean and parallelizes the work — large multi-modul
 ## The 3-phase lifecycle
 
 ```
-PHASE 1 — Analysis & Preparation       PHASE 2 — Deployment            PHASE 3 — Documentation
-─────────────────────────────────      ─────────────────────────       ─────────────────────────
-1.1 Requirements analysis              2.1 MCP-driven deployment       3.1 rollout-report.html
-1.2 Config building                    2.2 E2E validation + fix loop   3.2 environment-config.html
-1.3 Rollout plan + E2E test plan
-1.4 Validation
-1.5 Approval gate
+PHASE 1 — Analysis & Preparation       PHASE 2 — Deployment            PHASE 3 — Documentation (HTML suite)
+─────────────────────────────────      ─────────────────────────       ──────────────────────────────────
+1.1 Requirements analysis              2.1 MCP-driven deployment       3.1 rollout-report.html  (narrative)
+1.2 Config building                    2.2 E2E validation + fix loop   3.2 environment-config.html (visual)
+1.3 Rollout plan + E2E test plan                                       3.3 test-results.html (dashboard)
+1.4 Validation                                                         3.4 challenge-journal.html (dashboard)
+1.5 Approval gate                                                      3.5 process-catalogue.html (explorer)
+                                                                       3.6 dependency-graph.html (waves)
+                                                                       3.7 run-state.html (deployment progress)
+                                                                       3.8 index.html (landing page)
 ```
 
 No phase begins until the previous one is complete.
