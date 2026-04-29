@@ -78,13 +78,30 @@ For each blocker, populate `remediation`:
 
 | Finding | Remediation message |
 |---|---|
-| `ENCRYPTED`, `PASSWORD_PROTECTED` | "Re-supply the file without password protection, or share the password through a secure channel." |
+| `ENCRYPTED`, `PASSWORD_PROTECTED` | "Re-supply the file without password protection, or share the password through a secure channel. **If the file is IRM/sensitivity-label protected (most common cause for corporate Office docs), see §6 — auto-remediation via `PurviewInformationProtection`** before falling back to user re-supply." |
 | `SCANNED_IMAGE_PDF` / `OCR_REQUIRED` | "Re-supply a text-bearing PDF, or run OCR (Adobe / Tesseract) before re-uploading." |
 | `CORRUPT` | "File appears truncated or damaged — re-export from the source application." |
 | `EMPTY` | "File contains no extractable text — confirm it's the right document." |
 | `BINARY_NOT_TEXT` | "Convert legacy `.doc` / `.xls` to `.docx` / `.xlsx` and re-upload." |
 | `UNSUPPORTED_FORMAT` | "Convert to PDF, DOCX, XLSX, MD, TXT, or CSV." |
 | `MACRO_ENABLED` | "Strip macros before review, or convert to a non-macro format (`.docx` / `.xlsx`)." |
+
+### 6. Suggested auto-remediation for IRM-protected files
+
+In enterprise environments the **most likely cause** of an `ENCRYPTED` / `PASSWORD_PROTECTED` finding on Office files (`.docx`, `.xlsx`, `.pptx`, `.pdf`) is **Microsoft Purview Information Protection (MPIP / formerly AIP) sensitivity labels with encryption**, not a user-set password. Before asking the user to re-supply, attempt this remediation **provided the running identity has Extract / Export usage rights on the label** (Information Protection Admins, label owners, or co-authors).
+
+High-level flow:
+
+1. **Detect** IRM signals (EncryptedPackage stream, MSIPC PDF producer, OLE `\x05DRMSourceData`).
+2. **Copy** the file to a working folder (`Requirements/_decrypted/`) — never decrypt in place.
+3. **Decrypt** with `Remove-FileLabel` from the `PurviewInformationProtection` PowerShell module (auth via `Set-Authentication` for unattended runs).
+4. **Re-run** the §2 extractor against the decrypted working copy to capture text and images.
+5. **Purge** the decrypted working copy in a `try / finally` block (prefer `sdelete` if available).
+6. **Record** outcome in the per-document `notes` and Challenge Journal (tag `irm-auto-remediation`); flip the original document's status from `blocker` → `ok` if no other findings remain.
+
+If rights are insufficient, the module is unavailable, or the file is not actually IRM-protected, fall back to the standard `ENCRYPTED` remediation (request unprotected copy from the user).
+
+> **Full procedure, cmdlet syntax, failure modes, and mandatory safety rules**: see `irm-remediation.md` in this skill folder.
 
 ---
 
@@ -143,5 +160,6 @@ Resolve the 3 blockers above and re-run `source-document-validator`.
 
 ## Cross-references
 - Schema: `schemas/source-document-validation.schema.json`
+- IRM auto-remediation reference: `skills/source-document-validator/irm-remediation.md`
 - Phase 1.1 entry point: `skills/d365-requirements-analysis/SKILL.md`
 - Reinforcement-learning hooks: `skills/reinforcement-learning/SKILL.md`
