@@ -122,11 +122,19 @@ Cross-check matrix:
 
 Produce `validation-report.md` summarising coverage, plus `gap-resolutions.md` for everything classified `Gap` in the matrix.
 
+### Step 1.4.1 — Financial compliance validation (NON-NEGOTIABLE)
+
+If any Finance module (GL/AP/AR/Fixed Assets/Cash & Bank/Tax/Budgeting/Project Accounting/Expense) is in scope, **invoke `financial-compliance-guard`** with `phase = "1.4"`. The skill validates the proposed configuration against every applicable framework (US GAAP, IFRS, SOX, ASC 606, ASC 842, local GAAPs, SAF-T, GoBD, MTD-VAT, ESG/CSRD, …) captured at Phase 1.1.
+
+Outputs: `Documentation/compliance-validation.json` + `Documentation/compliance-validation.md`.
+
+If `summary.gateStatus == "blocked"`, remediate the failing checks (fix source files; never override on convenience) before proceeding to Step 1.5. Compliance failures are **defects**, not preferences.
+
 ---
 
-## Step 1.5 — Approval gate (9-point checklist)
+## Step 1.5 — Approval gate (10-point checklist)
 
-The agent must answer "yes" to all 9 before invoking `d365-deployment`:
+The agent must answer "yes" to all 10 before invoking `d365-deployment`:
 
 1. Every requirement in `requirement-matrix.json` has a status of `Mapped`, `Confirmed`, `Deferred`, or `Rejected` (no `Open`).
 2. Every in-scope module has a `config-{module}.md`.
@@ -137,5 +145,6 @@ The agent must answer "yes" to all 9 before invoking `d365-deployment`:
 7. `test-scenarios.json` mirrors the test plan.
 8. `validation-report.md` shows 100% coverage with no unresolved holes.
 9. `gap-resolutions.md` exists for every gap, with an approved approach.
+10. **`compliance-validation.json.summary.gateStatus == "open"`** when any Finance module is in scope. No `fail` + `blocker` checks remain unwaived. Waivers must carry written sign-off (`waivedBy`, `waivedAt`).
 
-When all 9 pass, hand off to the `d365-deployment` skill.
+When all 10 pass, hand off to the `d365-deployment` skill.

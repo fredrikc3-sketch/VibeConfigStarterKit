@@ -111,7 +111,7 @@
     <p class="hero-tag"><strong>Implementation Accelerator</strong> — an AI-driven workspace for configuring, deploying, and documenting D365 F&amp;O environments. Built on the <strong>Anthropic Skills</strong> architecture with <strong>multi-layer sub-agent orchestration</strong>.</p>
     <div class="badges">
       <span class="badge">Version 2.2</span>
-      <span class="badge">14 skills · 4 layers</span>
+      <span class="badge">15 skills · 4 layers</span>
       <span class="badge">47 modules</span>
       <span class="badge">24 DMF templates</span>
       <span class="badge">5,767 business processes</span>
@@ -147,7 +147,7 @@
 
 <section id="architecture">
   <h2>🏗️ Architecture</h2>
-  <p>Four layers, 14 skills. The orchestrator at the top, leaf skills at the bottom; per-module work is fanned out to sub-agents in the middle.</p>
+  <p>Four layers, 15 skills. The orchestrator at the top, leaf skills at the bottom; per-module work is fanned out to sub-agents in the middle.</p>
 
   <div class="mermaid">
 flowchart TD
@@ -188,7 +188,7 @@ flowchart TD
 </section>
 
 <section id="skills">
-  <h2>📚 The 14 skills</h2>
+  <h2>📚 The 15 skills</h2>
   <table>
     <thead><tr><th>Layer</th><th>Skill</th><th>Purpose</th></tr></thead>
     <tbody>
@@ -203,6 +203,7 @@ flowchart TD
       <tr><td><span class="pill pill-l3">L3</span></td><td><code>module-deployment-worker</code></td><td>Sub-agent: deploy ONE module to F&amp;O via MCP</td></tr>
       <tr><td><span class="pill pill-l3">L3</span></td><td><code>module-validation-worker</code></td><td>Sub-agent: run scenario slice for ONE module's process</td></tr>
       <tr><td><span class="pill pill-l4">L4</span> <span class="pill pill-new">GATE</span></td><td><code>source-document-validator</code></td><td>Hard gate before Phase 1.1 — verifies every source document is readable + extractable; blocks on encrypted / corrupt / OCR-required files</td></tr>
+      <tr><td><span class="pill pill-l4">L4</span> <span class="pill pill-new">GATE</span></td><td><code>financial-compliance-guard</code></td><td>Non-negotiable compliance gate for Finance scope — captures GAAP/IFRS/SOX/local frameworks; blocks deployment on compliance failures</td></tr>
       <tr><td><span class="pill pill-l4">L4</span></td><td><code>d365-knowledge-routing</code></td><td>Module → file path index, DMF load order, keyword router, process matrix</td></tr>
       <tr><td><span class="pill pill-l4">L4</span> <span class="pill pill-new">MCP</span></td><td><code>fo-mcp-server</code></td><td>Dynamics 365 ERP MCP server interaction — data/form/action tools, naming, prerequisites</td></tr>
       <tr><td><span class="pill pill-l4">L4</span></td><td><code>reinforcement-learning</code></td><td>Challenge journal + knowledge feedback loop</td></tr>
@@ -379,7 +380,7 @@ flowchart LR
 <pre><code>ProcessBaseline/
 ├── .github/
 │   └── copilot-instructions.md     ← thin orchestrator (skills index + cardinal rules)
-├── skills/                         ← 14 skills, 4 layers
+├── skills/                         ← 15 skills, 4 layers
 │   ├── phase-orchestrator/         L0
 │   ├── module-fanout/              L2
 │   ├── d365-requirements-analysis/ ┐
@@ -391,6 +392,7 @@ flowchart LR
 │   ├── module-deployment-worker/   │ L3 — sub-agent workers
 │   ├── module-validation-worker/   ┘
 │   ├── source-document-validator/  ┐ L4 — leaf skills
+│   ├── financial-compliance-guard/ │
 │   ├── d365-knowledge-routing/     │
 │   ├── fo-mcp-server/              │
 │   └── reinforcement-learning/     ┘

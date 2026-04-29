@@ -84,5 +84,8 @@ Before declaring Phase 2 complete:
 - Every requirement in `requirement-matrix.json` traces to at least one passing test step.
 - Every challenge logged during deployment has been verified resolved.
 
+### 6. Compliance re-validation (NON-NEGOTIABLE for Finance scope)
+If any Finance module is in scope, **invoke `financial-compliance-guard`** with `phase = "2.2"` to re-validate the **deployed environment** against the same framework checks that passed at Phase 1.4. Deployed-state evidence (entity values, posting profiles, period-close locks, audit logs, e-invoicing endpoints) must be cited per check. Phase 2 cannot complete while any blocker is unresolved.
+
 ## Hand-off
-When all scenarios pass and coverage holds, hand off to the `d365-documentation` skill (Phase 3).
+When all scenarios pass, coverage holds, and `compliance-validation.json.summary.gateStatus == "open"` for the deployed state, hand off to the `d365-documentation` skill (Phase 3).

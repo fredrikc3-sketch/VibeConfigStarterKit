@@ -13,7 +13,7 @@ An AI-driven workspace for configuring, deploying, and documenting Dynamics 365 
 <p align="center">
   <img src="https://img.shields.io/badge/version-2.2-blue" alt="Version 2.2">
   <img src="https://img.shields.io/badge/architecture-Skills%20%2B%20Sub--Agents-7c3aed" alt="Skills + sub-agents">
-  <img src="https://img.shields.io/badge/skills-14-2563eb" alt="14 skills">
+  <img src="https://img.shields.io/badge/skills-15-2563eb" alt="15 skills">
   <img src="https://img.shields.io/badge/layers-4-2563eb" alt="4 layers">
   <img src="https://img.shields.io/badge/modules-47-059669" alt="47 modules">
   <img src="https://img.shields.io/badge/DMF_templates-24-059669" alt="24 DMF templates">
@@ -55,7 +55,7 @@ Layer 2  module-fanout                spawns one sub-agent per module
             │ parallel within DMF ExecutionUnit, sequential across
 Layer 3  worker skill (sub-agent)     module-config-worker │ module-deployment-worker │ module-validation-worker
             │ each loads ONLY its assigned module's knowledge
-Layer 4  leaf skills                  source-document-validator │ fo-mcp-server │ reinforcement-learning │ d365-knowledge-routing
+Layer 4  leaf skills                  source-document-validator │ financial-compliance-guard │ fo-mcp-server │ reinforcement-learning │ d365-knowledge-routing
 ```
 
 ### Why not promote each module to a skill?
@@ -67,7 +67,7 @@ Tempting — but wrong. Skills are *capabilities*; modules are *reference knowle
 
 This keeps the orchestrator lean and parallelizes the work — large multi-module projects scale almost linearly with concurrency.
 
-## The 14 skills
+## The 15 skills
 
 ### Orchestration (Layers 0 & 2)
 | Skill | Purpose |
@@ -95,6 +95,7 @@ This keeps the orchestrator lean and parallelizes the work — large multi-modul
 | Skill | Purpose |
 |---|---|
 | [`source-document-validator`](skills/source-document-validator/SKILL.md) | **Hard gate before Phase 1.1** — verifies every file in `Requirements/` is readable + extractable; blocks the pipeline on encrypted, corrupt, or OCR-required documents |
+| [`financial-compliance-guard`](skills/financial-compliance-guard/SKILL.md) | **Non-negotiable gate** for any Finance-module scope — captures GAAP/IFRS/SOX/local frameworks at 1.1; validates at 1.4 / 1.5 / 2.2; blocks deployment on compliance failures |
 | [`d365-knowledge-routing`](skills/d365-knowledge-routing/SKILL.md) | Module → file path index, DMF load order, keyword router |
 | [`fo-mcp-server`](skills/fo-mcp-server/SKILL.md) | Dynamics 365 ERP MCP server interaction. Built from the [official Microsoft Learn article](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp). |
 | [`reinforcement-learning`](skills/reinforcement-learning/SKILL.md) | Challenge journal + knowledge feedback loop |
@@ -135,7 +136,7 @@ See [`skills/fo-mcp-server/`](skills/fo-mcp-server/) for `SKILL.md`, the full `t
 ```
 ProcessBaseline/
 ├── .github/copilot-instructions.md    ← thin orchestrator (skills index + cardinal rules)
-├── skills/                            ← 14 skills, 4 layers
+├── skills/                            ← 15 skills, 4 layers
 │   ├── phase-orchestrator/            Layer 0
 │   │   └── SKILL.md
 │   ├── module-fanout/                 Layer 2
@@ -151,6 +152,7 @@ ProcessBaseline/
 │   ├── module-deployment-worker/SKILL.md
 │   ├── module-validation-worker/SKILL.md   Layer 3 — sub-agent workers
 │   ├── source-document-validator/SKILL.md  Layer 4 — pre-flight gate
+│   ├── financial-compliance-guard/SKILL.md Layer 4 — compliance gate
 │   ├── d365-knowledge-routing/SKILL.md
 │   ├── fo-mcp-server/
 │   │   ├── SKILL.md
@@ -207,4 +209,4 @@ See [`skills/fo-mcp-server/prerequisites.md`](skills/fo-mcp-server/prerequisites
 
 ---
 
-<p align="center"><sub>Dynamics 365 Finance & Operations Implementation Accelerator · Version 2.2 (Skills + Sub-Agents + Schemas + CI)<br>Built from 14 skills across 4 layers, 47 module knowledge files, 24 DMF templates, 8 canonical schemas, and 5,767 business process items.<br>MCP guidance sourced from the <a href="https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp">official Microsoft Learn article</a>.</sub></p>
+<p align="center"><sub>Dynamics 365 Finance & Operations Implementation Accelerator · Version 2.2 (Skills + Sub-Agents + Schemas + CI)<br>Built from 15 skills across 4 layers, 47 module knowledge files, 24 DMF templates, 9 canonical schemas, and 5,767 business process items.<br>MCP guidance sourced from the <a href="https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp">official Microsoft Learn article</a>.</sub></p>

@@ -58,6 +58,7 @@ Layer 4 — leaf skills                  fo-mcp-server, reinforcement-learning, 
 | Skill | Use when |
 |---|---|
 | [`source-document-validator`](../skills/source-document-validator/SKILL.md) | **Hard gate at start of Phase 1.1.** Verifies every file in `Requirements/` is readable + extractable. Blocks the pipeline on encrypted / corrupt / OCR-required documents until remediated. |
+| [`financial-compliance-guard`](../skills/financial-compliance-guard/SKILL.md) | **Non-negotiable gate** whenever any D365 Finance module is in scope (GL/AP/AR/FA/Cash/Tax/Budget/PrjAcct/Expense). Captures GAAP/IFRS/SOX/local frameworks at 1.1; validates at 1.4 / 1.5 / 2.2. Blocks deployment on compliance failures. |
 | [`d365-knowledge-routing`](../skills/d365-knowledge-routing/SKILL.md) | Look up the file path for any module, DMF template, or process. |
 | [`fo-mcp-server`](../skills/fo-mcp-server/SKILL.md) | **Always before any `data_*` / `form_*` / `api_*` MCP tool call.** |
 | [`reinforcement-learning`](../skills/reinforcement-learning/SKILL.md) | Before risky operations and after any failure. Challenge Journal feedback loop. |
@@ -79,6 +80,12 @@ Layer 4 — leaf skills                  fo-mcp-server, reinforcement-learning, 
    - `Modules/.discoveries/<projectId>/<module>.md` for project-specific learnings — **never mutate canonical module `.md` files** in `Modules/` themselves
    - Pre-flight journal lookup: prefer `projectId` match, fall back to global (`projectId = null`).
    - Without an active project, behave globally as before.
+9. **NON-NEGOTIABLE: Financial compliance is a defect class, not a preference.** Whenever the engagement touches General Ledger, AP, AR, Fixed Assets, Cash & Bank, Tax, Budgeting, Project Accounting, or Expense, the [`financial-compliance-guard`](../skills/financial-compliance-guard/SKILL.md) skill MUST run at:
+   - Phase 1.1 — capture every applicable framework (US GAAP, IFRS, local GAAPs, SOX, ASC 606 / IFRS 15, ASC 842 / IFRS 16, SAF-T, GoBD, MTD-VAT, ESG/CSRD, etc.) explicitly from the customer.
+   - Phase 1.4 — validate proposed config against every framework check.
+   - Phase 1.5 — approval gate cannot pass while any check is `fail` + `blocker`.
+   - Phase 2.2 — re-validate against the deployed environment.
+   The agent NEVER assumes a framework, NEVER waives a blocker on convenience, and NEVER allows deployment to start with `compliance-validation.json.summary.gateStatus == "blocked"`. Waivers require written sign-off from a qualified controller, CFO, or external auditor on the specific check (`waivedBy`, `waivedAt`). LIFO under IFRS, missing audit trail under SOX, missing e-invoicing where mandated — these are immediate blockers.
 
 ---
 

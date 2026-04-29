@@ -64,4 +64,6 @@ For each requirement:
 After every mapping decision, update `requirement-profile.md` immediately. **Never batch.**
 
 ## Hand-off
+Before signalling Phase 1.2, if any Finance module (GL/AP/AR/FA/Cash/Tax/Budget/Project Accounting/Expense) is in scope, **invoke `financial-compliance-guard` Step A** to capture every applicable accounting and regulatory framework (US GAAP, IFRS, SOX, ASC 606, ASC 842, local GAAPs, SAF-T, GoBD, etc.) directly from the customer. Frameworks are recorded in `Documentation/compliance-validation.json` and referenced throughout subsequent phases. **Do not assume frameworks** — escalate if the customer cannot answer.
+
 When complete, signal that Phase 1 Step 1.2 (config building) can begin — invoke the `d365-config-builder` skill.

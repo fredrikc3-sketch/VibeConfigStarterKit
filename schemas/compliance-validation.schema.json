@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fredrikc3-sketch/VibeConfigStarterKit/schemas/compliance-validation.schema.json",
+  "title": "Financial Compliance Validation — Documentation/compliance-validation.json",
+  "description": "Output of the financial-compliance-guard skill. Records the customer's applicable accounting/regulatory frameworks and the pass/warn/fail status of each non-negotiable compliance check against the proposed and deployed configuration. Phase 1.5 (approval gate) MUST NOT pass and Phase 2.1 (deployment) MUST NOT start while any check is 'fail'.",
+  "type": "object",
+  "required": ["_metadata", "frameworks", "checks", "summary"],
+  "properties": {
+    "_metadata": {
+      "type": "object",
+      "required": ["schema_version", "generatedAt", "phase"],
+      "properties": {
+        "schema_version": { "const": "1.0" },
+        "generatedAt":    { "type": "string", "format": "date-time" },
+        "projectId":      { "type": ["string", "null"] },
+        "phase":          { "enum": ["1.4", "1.5", "2.2", "post-go-live"] },
+        "preparedBy":     { "type": ["string", "null"] },
+        "approvedBy":     { "type": ["string", "null"] }
+      }
+    },
+    "frameworks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "All applicable accounting/regulatory frameworks for this customer. Captured from Phase 1.1 requirements.",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "scope"],
+        "properties": {
+          "id":   { "enum": [
+            "US-GAAP", "IFRS", "UK-GAAP", "DE-HGB", "FR-PCG", "JP-GAAP", "CN-ASBE", "NO-NRS", "SE-K3", "DK-AAR", "AU-AASB", "CA-GAAP", "IN-IND-AS", "BR-CPC", "OTHER",
+            "SOX", "ASC-606", "ASC-842", "IFRS-15", "IFRS-16", "TAX-LOCALIZATION", "EU-VAT", "SAF-T", "GOBD", "MTD-VAT", "ESG-CSRD"
+          ] },
+          "name":  { "type": "string" },
+          "scope": { "type": "string", "description": "Which legal entities / countries this framework applies to" },
+          "evidenceSource": { "type": ["string", "null"], "description": "Document or stakeholder where this requirement was captured" }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["totalChecks", "passed", "warnings", "failures", "gateStatus"],
+      "properties": {
+        "totalChecks": { "type": "integer", "minimum": 0 },
+        "passed":      { "type": "integer", "minimum": 0 },
+        "warnings":    { "type": "integer", "minimum": 0 },
+        "failures":    { "type": "integer", "minimum": 0 },
+        "gateStatus":  { "enum": ["open", "blocked"] },
+        "blockingChecks": { "type": "array", "items": { "type": "string" } },
+        "auditorSignOffRequired": { "type": "boolean", "default": true }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/checkResult" }
+    }
+  },
+  "$defs": {
+    "checkResult": {
+      "type": "object",
+      "required": ["id", "framework", "category", "title", "result", "severity"],
+      "properties": {
+        "id":        { "type": "string", "pattern": "^FC-[0-9]{4}$" },
+        "framework": { "type": "string", "description": "Framework id from the frameworks array" },
+        "category":  { "enum": [
+          "chart-of-accounts", "fiscal-calendar", "currency-revaluation", "posting-profiles",
+          "revenue-recognition", "lease-accounting", "fixed-assets-depreciation",
+          "inventory-valuation", "consolidation", "intercompany",
+          "audit-trail", "segregation-of-duties", "period-close",
+          "tax", "statutory-reporting", "localization", "esg-disclosure", "data-retention"
+        ] },
+        "title":       { "type": "string" },
+        "requirement": { "type": "string", "description": "Plain-language requirement traced to the framework clause" },
+        "frameworkClause": { "type": ["string", "null"], "description": "e.g. 'ASC 606-10-25-1', 'IFRS 16 §22', 'SOX §404'" },
+        "configurationEvidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["artefact"],
+            "properties": {
+              "artefact": { "type": "string", "description": "Path to source file proving compliance" },
+              "anchor":   { "type": ["string", "null"], "description": "Section or row reference within the artefact" }
+            }
+          }
+        },
+        "result":   { "enum": ["pass", "warn", "fail", "not-applicable", "deferred"] },
+        "severity": { "enum": ["info", "warning", "blocker"] },
+        "rationale":{ "type": ["string", "null"] },
+        "remediation": { "type": ["string", "null"] },
+        "waivedBy":    { "type": ["string", "null"] },
+        "waivedAt":    { "type": ["string", "null"], "format": "date-time" }
+      }
+    }
+  }
+}
